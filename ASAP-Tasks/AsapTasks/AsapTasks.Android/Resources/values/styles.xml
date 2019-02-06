@@ -11,20 +11,38 @@
     <item name="windowActionBar">false</item>
     <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette -->
     <!-- colorPrimary is used for the default action bar background -->
-    <item name="colorPrimary">#2196F3</item>
+    <item name="colorPrimary">#337357</item>
     <!-- colorPrimaryDark is used for the status bar -->
-    <item name="colorPrimaryDark">#1976D2</item>
+    <item name="colorPrimaryDark">#2C2B3C</item>
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
-    <item name="colorAccent">#FF4081</item>
+    <item name="colorAccent">#337357</item>
+    <!--<item name="colorPrimaryDark2">#2E2D4D</item>-->
     <!-- You can also set colorControlNormal, colorControlActivated
          colorControlHighlight and colorSwitchThumbNormal. -->
     <item name="windowActionModeOverlay">true</item>
+    <!--<item name="android:fontFamily">@font/Ubuntu-Regular</item>-->
 
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
   </style>
 
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
-    <item name="colorAccent">#FF4081</item>
+    <item name="colorAccent">#5FC45A</item>
+  </style>
+
+  <style name="TabLayout" parent="Widget.Design.TabLayout">
+    <item name="tabTextAppearance">@style/TabText</item>
+    <item name="tabSelectedTextColor">@color/white</item>
+    <item name="tabIndicatorColor">@color/white</item>
+
+  </style>
+
+  <style name="TabText" parent="TextAppearance.Design.Tab">
+    <item name="android:textSize">14sp</item>
+    <item name="android:textColor">@color/colorAccent2</item>
+    
+    <!--<item name="android:fontFamily">Ubuntu-Regular.ttf#Ubuntu</item>-->
+    <item name="android:textStyle">normal</item>
+    <item name="android:fontWeight">400</item>
   </style>
 </resources>

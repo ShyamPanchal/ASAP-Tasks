@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AsapTasks.Pages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace AsapTasks
@@ -10,8 +11,8 @@ namespace AsapTasks
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            NavigationPage mainNavigationPage = new NavigationPage(new MainPage());
+            MainPage = mainNavigationPage;
         }
 
         protected override void OnStart()

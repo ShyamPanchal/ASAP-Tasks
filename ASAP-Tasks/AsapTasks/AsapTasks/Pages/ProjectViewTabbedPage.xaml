@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="AsapTasks.Pages.ProjectViewTabbedPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    BackgroundColor="{StaticResource color_White}">
+    <!--  Pages can be added as references or inline  -->
+    <ContentPage Title="Tasks">
+        <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="0">
+                <StackLayout Margin="20,5,20,5">
+                    <Frame Margin="1,5,1,5" CornerRadius="20">
+                        <StackLayout>
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Medium}"
+                                Text="Task Name"
+                                TextColor="{StaticResource color_SpaceCadet}" />
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Small}"
+                                Text="Task Descption: one complete line"
+                                TextColor="{StaticResource color_DimGray}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Margin="1,5,1,5" CornerRadius="20">
+                        <StackLayout>
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Medium}"
+                                Text="Task Name"
+                                TextColor="{StaticResource color_SpaceCadet}" />
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Small}"
+                                Text="Task Descption: one complete line"
+                                TextColor="{StaticResource color_DimGray}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Margin="1,5,1,5" CornerRadius="20">
+                        <StackLayout>
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Medium}"
+                                Text="Task Name"
+                                TextColor="{StaticResource color_SpaceCadet}" />
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Small}"
+                                Text="Task Descption: one complete line"
+                                TextColor="{StaticResource color_DimGray}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Margin="1,5,1,5" CornerRadius="20">
+                        <StackLayout>
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Medium}"
+                                Text="Task Name"
+                                TextColor="{StaticResource color_SpaceCadet}" />
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Small}"
+                                Text="Task Descption: one complete line"
+                                TextColor="{StaticResource color_DimGray}" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout
+                Grid.Row="1"
+                BackgroundColor="{StaticResource color_SpaceCadet}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Fill">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Margin="20,5,5,5"
+                        FontFamily="{StaticResource TitleFont}"
+                        FontSize="{StaticResource Font_Large}"
+                        HorizontalOptions="Start"
+                        Text="Project Name"
+                        TextColor="{StaticResource color_White}"
+                        VerticalOptions="Center" />
+                    <Button
+                        x:Name="btn_addTask"
+                        Grid.Column="2"
+                        Margin="5,5,20,5"
+                        Padding="20,0,20,0"
+                        BackgroundColor="{StaticResource color_GunMetal}"
+                        BorderColor="{StaticResource color_DimGray}"
+                        BorderRadius="25"
+                        BorderWidth="3"
+                        FontFamily="{StaticResource TextFont}"
+                        FontSize="{StaticResource Font_Medium}"
+                        HorizontalOptions="End"
+                        Text="Add Task"
+                        TextColor="{StaticResource color_White}"
+                        VerticalOptions="Center" />
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ContentPage>
+    <ContentPage Title="Issues">
+        <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="0">
+                <StackLayout Margin="20,5,20,5">
+                    <Frame Margin="1,5,1,5" CornerRadius="20">
+                        <StackLayout>
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Medium}"
+                                Text="Issue Name"
+                                TextColor="{StaticResource color_SpaceCadet}" />
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Small}"
+                                Text="Issue Descption: one complete line"
+                                TextColor="{StaticResource color_DimGray}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Margin="1,5,1,5" CornerRadius="20">
+                        <StackLayout>
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Medium}"
+                                Text="Issue Name"
+                                TextColor="{StaticResource color_SpaceCadet}" />
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Small}"
+                                Text="Issue Descption: one complete line"
+                                TextColor="{StaticResource color_DimGray}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Margin="1,5,1,5" CornerRadius="20">
+                        <StackLayout>
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Medium}"
+                                Text="Issue Name"
+                                TextColor="{StaticResource color_SpaceCadet}" />
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Small}"
+                                Text="Issue Descption: one complete line"
+                                TextColor="{StaticResource color_DimGray}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Margin="1,5,1,5" CornerRadius="20">
+                        <StackLayout>
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Medium}"
+                                Text="Issue Name"
+                                TextColor="{StaticResource color_SpaceCadet}" />
+                            <Label
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Small}"
+                                Text="Issue Descption: one complete line"
+                                TextColor="{StaticResource color_DimGray}" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout
+                Grid.Row="1"
+                BackgroundColor="{StaticResource color_SpaceCadet}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Fill">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="0.5" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Margin="20,5,5,5"
+                        FontFamily="{StaticResource TitleFont}"
+                        FontSize="{StaticResource Font_Large}"
+                        HorizontalOptions="Start"
+                        Text="Project Name"
+                        TextColor="{StaticResource color_White}"
+                        VerticalOptions="Center" />
+                    <Button
+                        x:Name="btn_addIssue"
+                        Grid.Column="2"
+                        Margin="5,5,20,5"
+                        Padding="20,0,20,0"
+                        BackgroundColor="{StaticResource color_GunMetal}"
+                        BorderColor="{StaticResource color_DimGray}"
+                        BorderRadius="25"
+                        BorderWidth="3"
+                        FontFamily="{StaticResource TextFont}"
+                        FontSize="{StaticResource Font_Medium}"
+                        HorizontalOptions="End"
+                        Text="Add Issue"
+                        TextColor="{StaticResource color_White}"
+                        VerticalOptions="Center" />
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ContentPage>
+    <ContentPage Title="Insights">
+        <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="0">
+                <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                    <Grid Margin="20,5,20,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Frame
+                            Grid.Row="0"
+                            Margin="0,5,0,5"
+                            CornerRadius="20">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="6*" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    FontFamily="{StaticResource TitleFont}"
+                                    FontSize="{StaticResource Font_MedLarge}"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Tasks Overview"
+                                    TextColor="{StaticResource color_SpaceCadet}" />
+                                <microcharts:ChartView x:Name="chartView_Tasks" Grid.Row="1" />
+                            </Grid>
+                        </Frame>
+                        <Frame
+                            Grid.Row="1"
+                            Margin="0,5,0,5"
+                            CornerRadius="20">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="6*" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    FontFamily="{StaticResource TitleFont}"
+                                    FontSize="{StaticResource Font_MedLarge}"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Issues Overview"
+                                    TextColor="{StaticResource color_SpaceCadet}" />
+                                <microcharts:ChartView x:Name="chartView_Issues" Grid.Row="1" />
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                    <Label
+                        FontFamily="{StaticResource TitleFont}"
+                        FontSize="{StaticResource Font_MedLarge}"
+                        HorizontalTextAlignment="Center"
+                        Text="Other Possible Statistics"
+                        TextColor="{StaticResource color_SpaceCadet}" />
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout
+                Grid.Row="1"
+                BackgroundColor="{StaticResource color_SpaceCadet}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Fill">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <!--<Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>-->
+                    <Label
+                        Grid.Column="0"
+                        Margin="20,5,5,5"
+                        FontFamily="{StaticResource TitleFont}"
+                        FontSize="{StaticResource Font_Large}"
+                        HorizontalOptions="Start"
+                        Text="Project Name"
+                        TextColor="{StaticResource color_White}"
+                        VerticalOptions="Center" />
+                    <!--<Button Grid.Column="2" x:Name="btn_addProject" Text="Add Task" FontFamily="{StaticResource TextFont}" FontSize="{StaticResource Font_MedLarge}" TextColor="{StaticResource color_White}" BackgroundColor="{StaticResource color_GunMetal}" BorderRadius="25" HorizontalOptions="End" VerticalOptions="Center" Margin="5,5,20,5" BorderWidth="3" BorderColor="{StaticResource color_DimGray}"/>-->
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ContentPage>
+    <ContentPage Title="Details">
+        <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Label Text="Tasks Page" />
+            </Grid>
+
+            <StackLayout
+                Grid.Row="1"
+                BackgroundColor="{StaticResource color_SpaceCadet}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Fill">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <!--<Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>-->
+                    <Label
+                        Grid.Column="0"
+                        Margin="20,5,5,5"
+                        FontFamily="{StaticResource TitleFont}"
+                        FontSize="{StaticResource Font_Large}"
+                        HorizontalOptions="Start"
+                        Text="Project Name"
+                        TextColor="{StaticResource color_White}"
+                        VerticalOptions="Center" />
+                    <!--<Button Grid.Column="2" x:Name="btn_addProject" Text="Add Task" FontFamily="{StaticResource TextFont}" FontSize="{StaticResource Font_MedLarge}" TextColor="{StaticResource color_White}" BackgroundColor="{StaticResource color_GunMetal}" BorderRadius="25" HorizontalOptions="End" VerticalOptions="Center" Margin="5,5,20,5" BorderWidth="3" BorderColor="{StaticResource color_DimGray}"/>-->
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ContentPage>
+</TabbedPage>

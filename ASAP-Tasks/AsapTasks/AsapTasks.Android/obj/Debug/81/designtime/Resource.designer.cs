@@ -26,6 +26,7 @@ namespace AsapTasks.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Microcharts.Droid.Resource.String.library_name = global::AsapTasks.Droid.Resource.String.library_name;
 			global::Xamarin.Auth._MobileServices.Resource.Animation.slide_in_right = global::AsapTasks.Droid.Resource.Animation.slide_in_right;
 			global::Xamarin.Auth._MobileServices.Resource.Animation.slide_out_left = global::AsapTasks.Droid.Resource.Animation.slide_out_left;
 			global::Xamarin.Auth._MobileServices.Resource.Drawable.ic_arrow_back = global::AsapTasks.Droid.Resource.Drawable.ic_arrow_back;
@@ -84,11 +85,11 @@ namespace AsapTasks.Droid
 			// aapt resource value: 0x7F01000E
 			public const int design_snackbar_out = 2130771982;
 			
-			// aapt resource value: 0x7F060002
-			public const int slide_in_right = 2131099650;
+			// aapt resource value: 0x7F080002
+			public const int slide_in_right = 2131230722;
 			
-			// aapt resource value: 0x7F060003
-			public const int slide_out_left = 2131099651;
+			// aapt resource value: 0x7F080003
+			public const int slide_out_left = 2131230723;
 			
 			// aapt resource value: 0x7F01000F
 			public const int tooltip_enter = 2130771983;
@@ -1405,14 +1406,20 @@ namespace AsapTasks.Droid
 			// aapt resource value: 0x7F060004
 			public const int cardview_shadow_start_color = 2131099652;
 			
-			// aapt resource value: 0x7F040005
-			public const int colorAccent = 2130968581;
+			// aapt resource value: 0x7F050005
+			public const int colorAccent = 2131034117;
 			
-			// aapt resource value: 0x7F040003
-			public const int colorPrimary = 2130968579;
+			// aapt resource value: 0x7F050007
+			public const int colorAccent2 = 2131034119;
 			
-			// aapt resource value: 0x7F040004
-			public const int colorPrimaryDark = 2130968580;
+			// aapt resource value: 0x7F050003
+			public const int colorPrimary = 2131034115;
+			
+			// aapt resource value: 0x7F050004
+			public const int colorPrimaryDark = 2131034116;
+			
+			// aapt resource value: 0x7F050006
+			public const int colorPrimaryDark2 = 2131034118;
 			
 			// aapt resource value: 0x7F060027
 			public const int design_bottom_navigation_shadow_color = 2131099687;
@@ -1474,8 +1481,8 @@ namespace AsapTasks.Droid
 			// aapt resource value: 0x7F06003A
 			public const int highlighted_text_material_light = 2131099706;
 			
-			// aapt resource value: 0x7F040002
-			public const int launcher_background = 2130968578;
+			// aapt resource value: 0x7F050002
+			public const int launcher_background = 2131034114;
 			
 			// aapt resource value: 0x7F06003B
 			public const int material_blue_grey_800 = 2131099707;
@@ -1587,6 +1594,9 @@ namespace AsapTasks.Droid
 			
 			// aapt resource value: 0x7F06005F
 			public const int tooltip_background_light = 2131099743;
+			
+			// aapt resource value: 0x7F050008
+			public const int white = 2131034120;
 			
 			static Color()
 			{
@@ -2355,6 +2365,12 @@ namespace AsapTasks.Droid
 			// aapt resource value: 0x7F090053
 			public const int abc_vector_test = 2131296339;
 			
+			// aapt resource value: 0x7F010002
+			public const int AppIcon = 2130771970;
+			
+			// aapt resource value: 0x7F010003
+			public const int appLogo = 2130771971;
+			
 			// aapt resource value: 0x7F090054
 			public const int avd_hide_password = 2131296340;
 			
@@ -2379,8 +2395,8 @@ namespace AsapTasks.Droid
 			// aapt resource value: 0x7F09005B
 			public const int design_snackbar_background = 2131296347;
 			
-			// aapt resource value: 0x7F070002
-			public const int ic_arrow_back = 2131165186;
+			// aapt resource value: 0x7F010004
+			public const int ic_arrow_back = 2130771972;
 			
 			// aapt resource value: 0x7F090054
 			public const int ic_audiotrack_dark = 2131296340;
@@ -3424,8 +3440,8 @@ namespace AsapTasks.Droid
 			// aapt resource value: 0x7F0C006A
 			public const int shortcut = 2131492970;
 			
-			// aapt resource value: 0x7F010002
-			public const int sliding_tabs = 2130771970;
+			// aapt resource value: 0x7F020002
+			public const int sliding_tabs = 2130837506;
 			
 			// aapt resource value: 0x7F0C006B
 			public const int smallLabel = 2131492971;
@@ -3502,8 +3518,8 @@ namespace AsapTasks.Droid
 			// aapt resource value: 0x7F0C0083
 			public const int title_template = 2131492995;
 			
-			// aapt resource value: 0x7F010003
-			public const int toolbar = 2130771971;
+			// aapt resource value: 0x7F020003
+			public const int toolbar = 2130837507;
 			
 			// aapt resource value: 0x7F0C0084
 			public const int top = 2131492996;
@@ -3544,8 +3560,8 @@ namespace AsapTasks.Droid
 			// aapt resource value: 0x7F0C007D
 			public const int volume_item_container = 2131492989;
 			
-			// aapt resource value: 0x7F010004
-			public const int webview = 2130771972;
+			// aapt resource value: 0x7F020004
+			public const int webview = 2130837508;
 			
 			// aapt resource value: 0x7F0C0090
 			public const int wrap_content = 2131493008;
@@ -3712,8 +3728,8 @@ namespace AsapTasks.Droid
 			// aapt resource value: 0x7F0F001A
 			public const int abc_select_dialog_material = 2131689498;
 			
-			// aapt resource value: 0x7F020004
-			public const int activity_webview = 2130837508;
+			// aapt resource value: 0x7F030004
+			public const int activity_webview = 2130903044;
 			
 			// aapt resource value: 0x7F0F001B
 			public const int design_bottom_navigation_item = 2131689499;
@@ -3832,11 +3848,11 @@ namespace AsapTasks.Droid
 			// aapt resource value: 0x7F0F003B
 			public const int support_simple_spinner_dropdown_item = 2131689531;
 			
-			// aapt resource value: 0x7F020002
-			public const int Tabbar = 2130837506;
+			// aapt resource value: 0x7F030002
+			public const int Tabbar = 2130903042;
 			
-			// aapt resource value: 0x7F020003
-			public const int Toolbar = 2130837507;
+			// aapt resource value: 0x7F030003
+			public const int Toolbar = 2130903043;
 			
 			// aapt resource value: 0x7F0F003C
 			public const int tooltip = 2131689532;
@@ -3854,14 +3870,14 @@ namespace AsapTasks.Droid
 		public partial class Mipmap
 		{
 			
-			// aapt resource value: 0x7F030002
-			public const int icon = 2130903042;
+			// aapt resource value: 0x7F040002
+			public const int icon = 2130968578;
 			
-			// aapt resource value: 0x7F030003
-			public const int icon_round = 2130903043;
+			// aapt resource value: 0x7F040003
+			public const int icon_round = 2130968579;
 			
-			// aapt resource value: 0x7F030004
-			public const int launcher_foreground = 2130903044;
+			// aapt resource value: 0x7F040004
+			public const int launcher_foreground = 2130968580;
 			
 			static Mipmap()
 			{
@@ -3966,8 +3982,8 @@ namespace AsapTasks.Droid
 			// aapt resource value: 0x7F15001E
 			public const int appbar_scrolling_view_behavior = 2132082718;
 			
-			// aapt resource value: 0x7F080004
-			public const int ApplicationName = 2131230724;
+			// aapt resource value: 0x7F070005
+			public const int ApplicationName = 2131165189;
 			
 			// aapt resource value: 0x7F15001F
 			public const int bottom_sheet_behavior = 2132082719;
@@ -3975,8 +3991,11 @@ namespace AsapTasks.Droid
 			// aapt resource value: 0x7F150020
 			public const int character_counter_pattern = 2132082720;
 			
-			// aapt resource value: 0x7F080003
-			public const int Hello = 2131230723;
+			// aapt resource value: 0x7F070004
+			public const int Hello = 2131165188;
+			
+			// aapt resource value: 0x7F070002
+			public const int library_name = 2131165186;
 			
 			// aapt resource value: 0x7F15001E
 			public const int mr_button_content_description = 2132082718;
@@ -4062,8 +4081,8 @@ namespace AsapTasks.Droid
 			// aapt resource value: 0x7F150001
 			public const int status_bar_notification_info_overflow = 2132082689;
 			
-			// aapt resource value: 0x7F080002
-			public const int title_activity_webview = 2131230722;
+			// aapt resource value: 0x7F070003
+			public const int title_activity_webview = 2131165187;
 			
 			static String()
 			{
@@ -4096,8 +4115,8 @@ namespace AsapTasks.Droid
 			// aapt resource value: 0x7F160006
 			public const int Animation_Design_BottomSheetDialog = 2132148230;
 			
-			// aapt resource value: 0x7F050004
-			public const int AppCompatDialogStyle = 2131034116;
+			// aapt resource value: 0x7F060004
+			public const int AppCompatDialogStyle = 2131099652;
 			
 			// aapt resource value: 0x7F160007
 			public const int Base_AlertDialog_AppCompat = 2132148231;
@@ -4600,11 +4619,11 @@ namespace AsapTasks.Droid
 			// aapt resource value: 0x7F160004
 			public const int CardView_Light = 2132148228;
 			
-			// aapt resource value: 0x7F050002
-			public const int MainTheme = 2131034114;
+			// aapt resource value: 0x7F060002
+			public const int MainTheme = 2131099650;
 			
-			// aapt resource value: 0x7F050003
-			public const int MainTheme_Base = 2131034115;
+			// aapt resource value: 0x7F060003
+			public const int MainTheme_Base = 2131099651;
 			
 			// aapt resource value: 0x7F1600AA
 			public const int Platform_AppCompat = 2132148394;
@@ -4689,6 +4708,12 @@ namespace AsapTasks.Droid
 			
 			// aapt resource value: 0x7F1600C5
 			public const int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = 2132148421;
+			
+			// aapt resource value: 0x7F060005
+			public const int TabLayout = 2131099653;
+			
+			// aapt resource value: 0x7F060006
+			public const int TabText = 2131099654;
 			
 			// aapt resource value: 0x7F1600C6
 			public const int TextAppearance_AppCompat = 2132148422;

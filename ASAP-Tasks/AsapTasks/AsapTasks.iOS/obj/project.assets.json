@@ -796,6 +796,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.Azure.Mobile.Client": "4.1.1",
+          "Microsoft.Azure.Mobile.Client.SQLiteStore": "4.1.1",
           "Xamarin.Forms": "3.4.0.1008975"
         },
         "compile": {
@@ -1537,6 +1538,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.Azure.Mobile.Client": "4.1.1",
+          "Microsoft.Azure.Mobile.Client.SQLiteStore": "4.1.1",
           "Xamarin.Forms": "3.4.0.1008975"
         },
         "compile": {
@@ -2278,6 +2280,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.Azure.Mobile.Client": "4.1.1",
+          "Microsoft.Azure.Mobile.Client.SQLiteStore": "4.1.1",
           "Xamarin.Forms": "3.4.0.1008975"
         },
         "compile": {
@@ -3019,6 +3022,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.Azure.Mobile.Client": "4.1.1",
+          "Microsoft.Azure.Mobile.Client.SQLiteStore": "4.1.1",
           "Xamarin.Forms": "3.4.0.1008975"
         },
         "compile": {

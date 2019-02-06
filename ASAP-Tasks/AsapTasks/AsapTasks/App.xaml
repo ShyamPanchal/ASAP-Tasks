@@ -1,8 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AsapTasks.App">
+<Application
+    x:Class="AsapTasks.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="color_DimGray">#686E77</Color>
+            <Color x:Key="color_GunMetal">#2C2B3C</Color>
+            <Color x:Key="color_Mantis">#5FC45A</Color>
+            <Color x:Key="color_SpaceCadet">#2E2D4D</Color>
+            <Color x:Key="color_Amazon">#337357</Color>
+            <Color x:Key="color_White">#FFFFFF</Color>
 
+            <OnPlatform x:Key="TitleFont" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Ubuntu-Regular.ttf#Ubuntu" />
+                <!--<On Platform="iOS" Value="Ubuntu-Regular" />-->
+            </OnPlatform>
+            <OnPlatform x:Key="TextFont" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Ubuntu-Light.ttf#Ubuntu" />
+                <!--<On Platform="iOS" Value="Ubuntu-Light" />-->
+            </OnPlatform>
+
+            <OnPlatform x:Key="Font_XXLarge" x:TypeArguments="x:Double">
+                <!--<On Platform="iOS">40</On>-->
+                <On Platform="Android">40</On>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Font_XLarge" x:TypeArguments="x:Double">
+                <!--<On Platform="iOS">34</On>-->
+                <On Platform="Android">34</On>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Font_Large" x:TypeArguments="x:Double">
+                <!--<On Platform="iOS">22</On>-->
+                <On Platform="Android">22</On>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Font_Medium" x:TypeArguments="x:Double">
+                <!--<On Platform="iOS">16</On>-->
+                <On Platform="Android">16</On>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Font_MedLarge" x:TypeArguments="x:Double">
+                <!--<On Platform="iOS">18</On>-->
+                <On Platform="Android">18</On>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Font_Small" x:TypeArguments="x:Double">
+                <!--<On Platform="iOS">14</On>-->
+                <On Platform="Android">14</On>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Font_XSmall" x:TypeArguments="x:Double">
+                <!--<On Platform="iOS">12</On>-->
+                <On Platform="Android">12</On>
+            </OnPlatform>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AsapTasks.Pages.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AsapTasks"
+    xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
+    BackgroundColor="{StaticResource color_White}">
+
+    <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*" />
+            <!--<RowDefinition Height="1*"/>-->
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="20,20,20,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="5*" />
+            </Grid.RowDefinitions>
+
+            <Image
+                Grid.Row="0"
+                HorizontalOptions="Center"
+                Source="appLogo.png"
+                VerticalOptions="Center" />
+
+            <Grid Grid.Row="1" RowSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="0.5*" />
+                </Grid.RowDefinitions>
+
+                <xfx:XfxEntry
+                    x:Name="entry_email"
+                    Grid.Row="0"
+                    FontFamily="{StaticResource TextFont}"
+                    FontSize="{StaticResource Font_MedLarge}"
+                    Placeholder="Email"
+                    TextColor="{StaticResource color_SpaceCadet}"
+                    VerticalOptions="Center" />
+                <xfx:XfxEntry
+                    x:Name="entry_password"
+                    Grid.Row="1"
+                    FontFamily="{StaticResource TextFont}"
+                    FontSize="{StaticResource Font_MedLarge}"
+                    IsPassword="True"
+                    Placeholder="Password"
+                    TextColor="{StaticResource color_SpaceCadet}"
+                    VerticalOptions="Center" />
+
+                <Button
+                    x:Name="button_login"
+                    Grid.Row="2"
+                    BackgroundColor="{StaticResource color_SpaceCadet}"
+                    BorderRadius="20"
+                    Clicked="fn_loginClicked"
+                    FontFamily="{StaticResource TitleFont}"
+                    FontSize="{StaticResource Font_Large}"
+                    HorizontalOptions="Fill"
+                    Text="Login"
+                    TextColor="{StaticResource color_White}"
+                    VerticalOptions="Center" />
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="7*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        x:Name="button_forgot_password"
+                        Grid.Column="0"
+                        BackgroundColor="{StaticResource color_White}"
+                        FontFamily="{StaticResource TextFont}"
+                        FontSize="{StaticResource Font_Small}"
+                        HorizontalOptions="EndAndExpand"
+                        Text="Forgot Password?"
+                        TextColor="{StaticResource color_DimGray}"
+                        VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="fn_forgotPassword" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <BoxView
+                        Grid.Column="1"
+                        Margin="0,2,0,2"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Fill"
+                        WidthRequest="1"
+                        Color="{StaticResource color_DimGray}" />
+                    <Label
+                        x:Name="button_register_now"
+                        Grid.Column="2"
+                        BackgroundColor="{StaticResource color_White}"
+                        FontFamily="{StaticResource TextFont}"
+                        FontSize="{StaticResource Font_Small}"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Register Now !"
+                        TextColor="{StaticResource color_DimGray}"
+                        VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="fn_registerNow" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </Grid>
+
+        </Grid>
+        <!--
+        <StackLayout Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource color_GunMetal}">
+            <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Label Text="PROJECTS" VerticalOptions="Center" TextColor="{StaticResource color_White}" FontFamily="{StaticResource TitleFont}" FontSize="{StaticResource Font_Large}" HorizontalOptions="Start" Margin="20,5,5,5"/>
+            </StackLayout>
+        </StackLayout>-->
+    </Grid>
+
+</ContentPage>
