@@ -32,7 +32,7 @@
                                 <Label Text="Project Descption: one complete line" FontFamily="{StaticResource TextFont}" FontSize="{StaticResource Font_Small}" TextColor="{StaticResource color_DimGray}"/>
                             </StackLayout>
                         </Frame>-->
-                        <ListView x:Name="listview_projectList" HasUnevenRows="True" SeparatorVisibility="None">
+                        <ListView x:Name="listview_projectList" HasUnevenRows="True" SeparatorVisibility="None" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
