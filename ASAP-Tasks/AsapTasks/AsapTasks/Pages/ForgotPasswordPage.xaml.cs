@@ -15,6 +15,12 @@ namespace AsapTasks.Pages
 		public ForgotPasswordPage ()
 		{
 			InitializeComponent ();
-		}
-	}
+            NavigationPage.SetHasNavigationBar(this, false);
+        }
+
+        private void Btn_phoneNumber_Clicked(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

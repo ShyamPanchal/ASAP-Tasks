@@ -10,7 +10,7 @@ namespace AsapTasks.Pages
 {
     public partial class MainPage : ContentPage
     {
-        bool _emailValid;
+        bool _phoneValid;
         bool _passwordValid;
 
         public MainPage()
@@ -18,26 +18,31 @@ namespace AsapTasks.Pages
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
 
-            _emailValid = false;
+            _phoneValid = false;
             _passwordValid = false;
 
-            entry_email.Unfocused += fn_emailChanged;
-            entry_email.TextChanged += fn_emailChanged;
+            entry_phone.Unfocused += fn_phoneChanged;
+            entry_phone.TextChanged += fn_phoneChanged;
 
             entry_password.Unfocused += fn_passwordChanged;
             entry_password.TextChanged += fn_passwordChanged;
         }
 
-        public void fn_emailChanged(object sender, EventArgs e)
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
+        public void fn_phoneChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
 
-            var regex = @"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$";
+            var regex = @"^(\+([0-9]){1,3})?([0-9]){10}$";
 
             if (entry.Text == null)
             {
-                entry.ErrorText = "Email address is empty";
-                _emailValid = false;
+                entry.ErrorText = "Phone number is empty";
+                _phoneValid = false;
                 return;
             }
 
@@ -47,18 +52,20 @@ namespace AsapTasks.Pages
 
             if (entry.Text == "")
             {
-                entry.ErrorText = "Email address is empty";
-                _emailValid = false;
+                entry.ErrorText = "Phone number is empty";
+                _phoneValid = false;
             }
             else if (!match.Success)
             {
-                entry.ErrorText = "Please enter a valid email address";
-                _emailValid = false;
+                entry.ErrorText = "Required format is +1XXXXXXXXX";
+                _phoneValid = false;
             }
             else
             {
+                if (entry.Text[0] != '+')
+                    entry.Text = "+1" + entry.Text;
                 entry.ErrorText = "";
-                _emailValid = true;
+                _phoneValid = true;
             }
         }
 
@@ -91,16 +98,16 @@ namespace AsapTasks.Pages
         {
             try
             {
-                string __email = entry_email.Text;
-                if (_emailValid)
-                    _emailValid = !(__email == "");
+                string __phone = entry_phone.Text;
+                if (_phoneValid)
+                    _phoneValid = !(__phone == "");
 
                 string __password = entry_password.Text;
                 if (_passwordValid)
                     _passwordValid = !(__password == "");
 
 
-                if (_emailValid && _passwordValid)
+                if (_phoneValid && _passwordValid)
                 {
                     // Login Successful
                     // if phone verified, send to projects home page
@@ -109,7 +116,7 @@ namespace AsapTasks.Pages
                 }
                 else
                 {                    
-                    fn_emailChanged(entry_email, e);
+                    fn_phoneChanged(entry_phone, e);
                     fn_passwordChanged(entry_password, e);
                     return;
                 }
@@ -125,9 +132,9 @@ namespace AsapTasks.Pages
 
         }
 
-        private void fn_registerNow(object sender, EventArgs e)
+        private async void fn_registerNow(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new RegistrationPage());
         }
     }
 }

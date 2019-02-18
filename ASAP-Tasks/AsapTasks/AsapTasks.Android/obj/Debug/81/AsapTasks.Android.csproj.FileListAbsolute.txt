@@ -110,4 +110,9 @@ C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Deb
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Xamarin.Forms.Core.pdb
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Xamarin.Forms.Platform.Android.pdb
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Xamarin.Forms.Xaml.pdb
+C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\res\drawable\rocket.png
+C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\res\drawable\plus25.png
+C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\res\drawable\logout25.png
+C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\bin\Debug\netstandard2.0\AsapTasks.dll
+C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\bin\Debug\AsapTasks.dll.mdb
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\linksrc\AsapTasks.dll.mdb

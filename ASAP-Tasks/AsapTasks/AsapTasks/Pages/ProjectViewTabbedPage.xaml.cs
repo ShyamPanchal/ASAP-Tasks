@@ -89,5 +89,15 @@ namespace AsapTasks.Pages
             this.chartView_Issues.Chart = pieChart_Issues;
             #endregion
         }
+
+        public async void fn_addTaskClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewTaskPage());
+        }
+
+        public async void fn_addIssueClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewIssuePage());
+        }
     }
 }

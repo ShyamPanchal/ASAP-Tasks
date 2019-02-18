@@ -1,65 +1,131 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AsapTasks.Pages.ProjectsHomePage">
+<ContentPage
+    x:Class="AsapTasks.Pages.ProjectsHomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentPage.Content>
-        <Grid VerticalOptions="Fill" HorizontalOptions="Fill">
+        <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="9*"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*" />
+                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="8*" />
                 </Grid.RowDefinitions>
 
-                <StackLayout Grid.Row="0" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource color_SpaceCadet}">
-                    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                        <Label Text="Shyam Panchal" VerticalOptions="Center" TextColor="{StaticResource color_White}" FontFamily="{StaticResource TitleFont}" FontSize="{StaticResource Font_Large}" HorizontalOptions="Start" Margin="20,5,0,5"/>
-                        <Label Text="(0 open projects)" VerticalOptions="Center" TextColor="{StaticResource color_White}" FontFamily="{StaticResource TitleFont}" FontSize="{StaticResource Font_Small}" HorizontalOptions="Start" Margin="0,5,5,5"/>
-                    </StackLayout>
+                <StackLayout
+                    Grid.Row="0"
+                    BackgroundColor="{StaticResource color_SpaceCadet}"
+                    HorizontalOptions="Fill"
+                    Orientation="Horizontal"
+                    VerticalOptions="Fill">
+                    <Label
+                        Margin="20,5,0,5"
+                        FontFamily="{StaticResource TitleFont}"
+                        FontSize="{StaticResource Font_Large}"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Shyam Panchal"
+                        TextColor="{StaticResource color_White}"
+                        VerticalOptions="Center" />
+                    <Button
+                        x:Name="btn_Logout"
+                        Margin="0,5,15,5"
+                        BackgroundColor="{StaticResource color_SpaceCadet}"
+                        BorderRadius="20"
+                        Clicked="Btn_Logout_Clicked"
+                        HeightRequest="40"
+                        HorizontalOptions="End"
+                        Image="logout25.png"
+                        VerticalOptions="Center"
+                        WidthRequest="40" />
                 </StackLayout>
 
                 <ScrollView Grid.Row="1">
-                    <StackLayout  Margin="20,5,20,5">
-                        <!-- Main Content -->
-                        <!--<Frame CornerRadius="20" BackgroundColor="{StaticResource color_GunMetal}">
+                    <StackLayout>
+                        <StackLayout BackgroundColor="{StaticResource color_SpaceCadet}">
+                            <Label
+                                Margin="5,0,5,5"
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_XSmall}"
+                                HorizontalOptions="Fill"
+                                HorizontalTextAlignment="Center"
+                                Text="5 open projects and 7 closed projects"
+                                TextColor="{StaticResource color_White}" />
+                        </StackLayout>
+                        <StackLayout Margin="20,5,20,5">
+                            <!--  Main Content  -->
+                            <!--<Frame CornerRadius="20" BackgroundColor="{StaticResource color_GunMetal}">
                             <StackLayout>
                                 <Label Text="Project Name" FontFamily="{StaticResource TextFont}" FontSize="{StaticResource Font_Medium}" TextColor="{StaticResource color_DimGray}"/>
                                 <Label Text="Project Descption: one complete line" FontFamily="{StaticResource TextFont}" FontSize="{StaticResource Font_Small}" TextColor="{StaticResource color_DimGray}"/>
                             </StackLayout>
                         </Frame>-->
-                        <ListView x:Name="listview_projectList" HasUnevenRows="True" SeparatorVisibility="None" >
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <Frame CornerRadius="20" Margin="1,5,1,5">
-                                            <StackLayout>
-                                                <Label Text="Project Name" FontFamily="{StaticResource TextFont}" FontSize="{StaticResource Font_Medium}" TextColor="{StaticResource color_SpaceCadet}"/>
-                                                <Label Text="Project Descption: one complete line" FontFamily="{StaticResource TextFont}" FontSize="{StaticResource Font_Small}" TextColor="{StaticResource color_DimGray}"/>
-                                            </StackLayout>
-                                        </Frame>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <!-- Main Content End -->
+                            <ListView
+                                x:Name="listview_projectList"
+                                HasUnevenRows="True"
+                                SeparatorVisibility="None">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Frame Margin="1,5,1,5" CornerRadius="20">
+                                                <StackLayout>
+                                                    <Label
+                                                        FontFamily="{StaticResource TextFont}"
+                                                        FontSize="{StaticResource Font_Medium}"
+                                                        Text="Project Name"
+                                                        TextColor="{StaticResource color_SpaceCadet}" />
+                                                    <Label
+                                                        FontFamily="{StaticResource TextFont}"
+                                                        FontSize="{StaticResource Font_Small}"
+                                                        Text="Project Descption: one complete line"
+                                                        TextColor="{StaticResource color_DimGray}" />
+                                                </StackLayout>
+                                            </Frame>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <!--  Main Content End  -->
+                        </StackLayout>
                     </StackLayout>
                 </ScrollView>
             </Grid>
 
-            <StackLayout Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource color_SpaceCadet}">
-                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout
+                Grid.Row="1"
+                BackgroundColor="{StaticResource color_SpaceCadet}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Fill">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Text="PROJECTS" VerticalOptions="Center" TextColor="{StaticResource color_White}" FontFamily="{StaticResource TitleFont}" FontSize="{StaticResource Font_Large}" HorizontalOptions="Start" Margin="20,5,5,5"/>
-                    <Button Grid.Column="2" x:Name="btn_addProject" Text="Add" FontFamily="{StaticResource TextFont}" FontSize="{StaticResource Font_MedLarge}" TextColor="{StaticResource color_White}" BackgroundColor="{StaticResource color_GunMetal}" BorderRadius="25" HorizontalOptions="End" VerticalOptions="Center" Margin="5,5,20,5" BorderWidth="3" BorderColor="{StaticResource color_DimGray}"/>
+                    <Label
+                        Grid.Column="0"
+                        Margin="20,5,5,5"
+                        FontFamily="{StaticResource TitleFont}"
+                        FontSize="{StaticResource Font_Large}"
+                        HorizontalOptions="Start"
+                        Text="PROJECTS"
+                        TextColor="{StaticResource color_White}"
+                        VerticalOptions="Center" />
+                    <Button
+                        x:Name="btn_addProject"
+                        Grid.Column="2"
+                        Margin="5,5,20,5"
+                        BackgroundColor="{StaticResource color_SpaceCadet}"
+                        BorderRadius="20"
+                        HeightRequest="40"
+                        HorizontalOptions="End"
+                        Image="plus25.png"
+                        VerticalOptions="Center"
+                        WidthRequest="40" />
                 </Grid>
             </StackLayout>
         </Grid>

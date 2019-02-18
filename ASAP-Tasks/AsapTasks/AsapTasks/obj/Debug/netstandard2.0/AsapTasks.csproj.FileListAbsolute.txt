@@ -13,3 +13,10 @@ C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netst
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\AsapTasks.pdb
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\AsapTasks.csprojAssemblyReference.cache
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\Pages\ForgotPasswordPage.xaml.g.cs
+C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\Pages\NewIssuePage.xaml.g.cs
+C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\Pages\NewProjectPage.xaml.g.cs
+C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\Pages\NewTaskPage.xaml.g.cs
+C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\Pages\ProjectInvitePage.xaml.g.cs
+C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\Pages\RegistrationPage.xaml.g.cs
+C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\Pages\ResetPasswordPage.xaml.g.cs

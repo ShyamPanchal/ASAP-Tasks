@@ -83,7 +83,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*" />
                         <ColumnDefinition Width="0.5*" />
-                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="2*" />
                     </Grid.ColumnDefinitions>
                     <Label
                         Grid.Column="0"
@@ -98,17 +98,14 @@
                         x:Name="btn_addTask"
                         Grid.Column="2"
                         Margin="5,5,20,5"
-                        Padding="20,0,20,0"
-                        BackgroundColor="{StaticResource color_GunMetal}"
-                        BorderColor="{StaticResource color_DimGray}"
-                        BorderRadius="25"
-                        BorderWidth="3"
-                        FontFamily="{StaticResource TextFont}"
-                        FontSize="{StaticResource Font_Medium}"
+                        BackgroundColor="{StaticResource color_SpaceCadet}"
+                        BorderRadius="20"
+                        Clicked="fn_addTaskClicked"
+                        HeightRequest="40"
                         HorizontalOptions="End"
-                        Text="Add Task"
-                        TextColor="{StaticResource color_White}"
-                        VerticalOptions="Center" />
+                        Image="plus25.png"
+                        VerticalOptions="Center"
+                        WidthRequest="40" />
                 </Grid>
             </StackLayout>
         </Grid>
@@ -191,7 +188,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*" />
                         <ColumnDefinition Width="0.5" />
-                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="2*" />
                     </Grid.ColumnDefinitions>
                     <Label
                         Grid.Column="0"
@@ -206,17 +203,14 @@
                         x:Name="btn_addIssue"
                         Grid.Column="2"
                         Margin="5,5,20,5"
-                        Padding="20,0,20,0"
-                        BackgroundColor="{StaticResource color_GunMetal}"
-                        BorderColor="{StaticResource color_DimGray}"
-                        BorderRadius="25"
-                        BorderWidth="3"
-                        FontFamily="{StaticResource TextFont}"
-                        FontSize="{StaticResource Font_Medium}"
+                        BackgroundColor="{StaticResource color_SpaceCadet}"
+                        BorderRadius="20"
+                        Clicked="fn_addIssueClicked"
+                        HeightRequest="40"
                         HorizontalOptions="End"
-                        Text="Add Issue"
-                        TextColor="{StaticResource color_White}"
-                        VerticalOptions="Center" />
+                        Image="plus25.png"
+                        VerticalOptions="Center"
+                        WidthRequest="40" />
                 </Grid>
             </StackLayout>
         </Grid>

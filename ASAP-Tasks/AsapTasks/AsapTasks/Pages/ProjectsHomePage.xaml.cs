@@ -39,5 +39,10 @@ namespace AsapTasks.Pages
             }
             listview_projectList.SelectedItem = null;           
         }
-	}
+
+        private void Btn_Logout_Clicked(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
