@@ -28,7 +28,7 @@
                         FontFamily="{StaticResource TitleFont}"
                         FontSize="{StaticResource Font_Large}"
                         HorizontalOptions="StartAndExpand"
-                        Text="Shyam Panchal"
+                        Text="User Name"
                         TextColor="{StaticResource color_White}"
                         VerticalOptions="Center" />
                     <Button
@@ -36,7 +36,7 @@
                         Margin="0,5,15,5"
                         BackgroundColor="{StaticResource color_SpaceCadet}"
                         BorderRadius="20"
-                        Clicked="Btn_Logout_Clicked"
+                        Clicked="fn_logoutClicked"
                         HeightRequest="40"
                         HorizontalOptions="End"
                         Image="logout25.png"

@@ -59,11 +59,11 @@ namespace AsapTasks.Pages
                 if (_passwordsValid)
                     _passwordsValid = !(__password == "");
 
-                string __phone = entry_password.Text;
+                string __phone = entry_phone.Text;
                 if (_phoneValid)
                     _phoneValid = !(__phone == "");
 
-                string __confirmPassword = entry_password.Text;
+                string __confirmPassword = entry_confirmPassword.Text;
                 if (_passwordsValid)
                     _passwordsValid = !(__confirmPassword == "");
 

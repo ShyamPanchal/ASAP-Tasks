@@ -11,7 +11,7 @@ namespace AsapTasks
         public App()
         {
             InitializeComponent();
-            NavigationPage mainNavigationPage = new NavigationPage(new ProjectViewTabbedPage());
+            NavigationPage mainNavigationPage = new NavigationPage(new MainPage());
             MainPage = mainNavigationPage;
         }
 

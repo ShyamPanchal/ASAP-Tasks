@@ -48,6 +48,7 @@
                         x:Name="entry_password"
                         FontFamily="{StaticResource TextFont}"
                         FontSize="{StaticResource Font_Small}"
+                        IsPassword="True"
                         Placeholder="Password"
                         TextColor="{StaticResource color_SpaceCadet}" />
 
@@ -55,6 +56,7 @@
                         x:Name="entry_confirmPassword"
                         FontFamily="{StaticResource TextFont}"
                         FontSize="{StaticResource Font_Small}"
+                        IsPassword="True"
                         MaxLength="15"
                         Placeholder="Retype Password"
                         TextColor="{StaticResource color_SpaceCadet}" />

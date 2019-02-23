@@ -99,5 +99,10 @@ namespace AsapTasks.Pages
         {
             await Navigation.PushAsync(new NewIssuePage());
         }
+
+        public void fn_backClicked(object sender, EventArgs e)
+        {
+            base.OnBackButtonPressed();
+        }
     }
 }

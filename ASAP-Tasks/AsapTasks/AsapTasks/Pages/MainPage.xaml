@@ -18,7 +18,7 @@
                 <Image
                     HeightRequest="100"
                     HorizontalOptions="Center"
-                    Source="rocket.png"
+                    Source="ClipBoard.ico"
                     WidthRequest="100" />
                 <Label
                     FontFamily="{StaticResource TitleFont}"

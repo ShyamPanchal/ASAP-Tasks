@@ -13,6 +13,7 @@ namespace AsapTasks.Pages
 	public partial class ProjectsHomePage : ContentPage
 	{
         List<string> demoList;
+
 		public ProjectsHomePage ()
 		{
 			InitializeComponent ();
@@ -29,6 +30,8 @@ namespace AsapTasks.Pages
             demoList.Add("asdf");
 
             listview_projectList.ItemsSource = demoList;
+
+            listview_projectList.ItemTapped += fn_itemClicked;
         }
 
         public void fn_onItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -40,9 +43,14 @@ namespace AsapTasks.Pages
             listview_projectList.SelectedItem = null;           
         }
 
-        private void Btn_Logout_Clicked(object sender, EventArgs e)
+        private async void fn_logoutClicked(object sender, EventArgs e)
         {
+            await Navigation.PopAsync();
+        }
 
+        private async void fn_itemClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProjectViewTabbedPage());
         }
     }
 }

@@ -79,15 +79,28 @@
                 BackgroundColor="{StaticResource color_SpaceCadet}"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Fill">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid
+                    Margin="10,5,10,5"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*" />
-                        <ColumnDefinition Width="0.5*" />
-                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label
+                    <Button
+                        x:Name="button_backTasks"
                         Grid.Column="0"
-                        Margin="20,5,5,5"
+                        BackgroundColor="{StaticResource color_SpaceCadet}"
+                        BorderRadius="20"
+                        Clicked="fn_backClicked"
+                        HeightRequest="40"
+                        HorizontalOptions="Start"
+                        Image="back24.png"
+                        VerticalOptions="Center"
+                        WidthRequest="40" />
+                    <Label
+                        Grid.Column="1"
                         FontFamily="{StaticResource TitleFont}"
                         FontSize="{StaticResource Font_Large}"
                         HorizontalOptions="Start"
@@ -95,17 +108,16 @@
                         TextColor="{StaticResource color_White}"
                         VerticalOptions="Center" />
                     <Button
-                        x:Name="btn_addTask"
+                        x:Name="button_addTask"
                         Grid.Column="2"
-                        Margin="5,5,20,5"
                         BackgroundColor="{StaticResource color_SpaceCadet}"
-                        BorderRadius="20"
+                        BorderRadius="17"
                         Clicked="fn_addTaskClicked"
-                        HeightRequest="40"
+                        HeightRequest="34"
                         HorizontalOptions="End"
                         Image="plus25.png"
                         VerticalOptions="Center"
-                        WidthRequest="40" />
+                        WidthRequest="34" />
                 </Grid>
             </StackLayout>
         </Grid>
@@ -184,33 +196,45 @@
                 BackgroundColor="{StaticResource color_SpaceCadet}"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Fill">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid
+                    Margin="10,5,10,5"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*" />
-                        <ColumnDefinition Width="0.5" />
-                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label
+                    <Button
+                        x:Name="button_backIssues"
                         Grid.Column="0"
-                        Margin="20,5,5,5"
+                        BackgroundColor="{StaticResource color_SpaceCadet}"
+                        BorderRadius="20"
+                        Clicked="fn_backClicked"
+                        HeightRequest="40"
+                        HorizontalOptions="Start"
+                        Image="back24.png"
+                        VerticalOptions="Center"
+                        WidthRequest="40" />
+                    <Label
+                        Grid.Column="1"
                         FontFamily="{StaticResource TitleFont}"
                         FontSize="{StaticResource Font_Large}"
-                        HorizontalOptions="Start"
+                        HorizontalOptions="CenterAndExpand"
                         Text="Project Name"
                         TextColor="{StaticResource color_White}"
                         VerticalOptions="Center" />
                     <Button
                         x:Name="btn_addIssue"
                         Grid.Column="2"
-                        Margin="5,5,20,5"
                         BackgroundColor="{StaticResource color_SpaceCadet}"
-                        BorderRadius="20"
+                        BorderRadius="17"
                         Clicked="fn_addIssueClicked"
-                        HeightRequest="40"
+                        HeightRequest="34"
                         HorizontalOptions="End"
                         Image="plus25.png"
                         VerticalOptions="Center"
-                        WidthRequest="40" />
+                        WidthRequest="34" />
                 </Grid>
             </StackLayout>
         </Grid>
@@ -283,27 +307,39 @@
                 BackgroundColor="{StaticResource color_SpaceCadet}"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Fill">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <!--<Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>-->
-                    <Label
+                <Grid
+                    Margin="10,5,10,5"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        x:Name="button_backInsights"
                         Grid.Column="0"
-                        Margin="20,5,5,5"
+                        BackgroundColor="{StaticResource color_SpaceCadet}"
+                        BorderRadius="20"
+                        Clicked="fn_backClicked"
+                        HeightRequest="40"
+                        HorizontalOptions="Start"
+                        Image="back24.png"
+                        VerticalOptions="Center"
+                        WidthRequest="40" />
+                    <Label
+                        Grid.Column="1"
                         FontFamily="{StaticResource TitleFont}"
                         FontSize="{StaticResource Font_Large}"
-                        HorizontalOptions="Start"
+                        HorizontalOptions="CenterAndExpand"
                         Text="Project Name"
                         TextColor="{StaticResource color_White}"
                         VerticalOptions="Center" />
-                    <!--<Button Grid.Column="2" x:Name="btn_addProject" Text="Add Task" FontFamily="{StaticResource TextFont}" FontSize="{StaticResource Font_MedLarge}" TextColor="{StaticResource color_White}" BackgroundColor="{StaticResource color_GunMetal}" BorderRadius="25" HorizontalOptions="End" VerticalOptions="Center" Margin="5,5,20,5" BorderWidth="3" BorderColor="{StaticResource color_DimGray}"/>-->
                 </Grid>
             </StackLayout>
         </Grid>
     </ContentPage>
-    <ContentPage Title="Details">
+    <!--<ContentPage Title="Details">
         <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
 
             <Grid.RowDefinitions>
@@ -320,24 +356,36 @@
                 BackgroundColor="{StaticResource color_SpaceCadet}"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Fill">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <!--<Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>-->
-                    <Label
+                <Grid
+                    Margin="10,5,10,5"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        x:Name="button_backDetails"
                         Grid.Column="0"
-                        Margin="20,5,5,5"
+                        BackgroundColor="{StaticResource color_SpaceCadet}"
+                        BorderRadius="20"
+                        Clicked="fn_backClicked"
+                        HeightRequest="40"
+                        HorizontalOptions="Start"
+                        Image="back24.png"
+                        VerticalOptions="Center"
+                        WidthRequest="40" />
+                    <Label
+                        Grid.Column="1"
                         FontFamily="{StaticResource TitleFont}"
                         FontSize="{StaticResource Font_Large}"
-                        HorizontalOptions="Start"
+                        HorizontalOptions="CenterAndExpand"
                         Text="Project Name"
                         TextColor="{StaticResource color_White}"
                         VerticalOptions="Center" />
-                    <!--<Button Grid.Column="2" x:Name="btn_addProject" Text="Add Task" FontFamily="{StaticResource TextFont}" FontSize="{StaticResource Font_MedLarge}" TextColor="{StaticResource color_White}" BackgroundColor="{StaticResource color_GunMetal}" BorderRadius="25" HorizontalOptions="End" VerticalOptions="Center" Margin="5,5,20,5" BorderWidth="3" BorderColor="{StaticResource color_DimGray}"/>-->
                 </Grid>
             </StackLayout>
         </Grid>
-    </ContentPage>
+    </ContentPage>-->
 </TabbedPage>

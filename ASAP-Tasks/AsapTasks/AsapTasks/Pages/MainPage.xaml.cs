@@ -127,9 +127,9 @@ namespace AsapTasks.Pages
             }
         }
 
-        private void fn_forgotPassword(object sender, EventArgs e)
+        private async void fn_forgotPassword(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new ForgotPasswordPage());
         }
 
         private async void fn_registerNow(object sender, EventArgs e)
