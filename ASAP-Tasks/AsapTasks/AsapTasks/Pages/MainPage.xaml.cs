@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AsapTasks.Data;
+using AsapTasks.Managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,19 +12,23 @@ namespace AsapTasks.Pages
 {
     public partial class MainPage : ContentPage
     {
-        bool _phoneValid;
-        bool _passwordValid;
+        #region Private Variables
+        private bool _emailValid;
+        private bool _passwordValid;
+
+        private DeveloperManager developerManager;
+        #endregion
 
         public MainPage()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
 
-            _phoneValid = false;
+            _emailValid = false;
             _passwordValid = false;
 
-            entry_phone.Unfocused += fn_phoneChanged;
-            entry_phone.TextChanged += fn_phoneChanged;
+            entry_email.Unfocused += fn_emailChanged;
+            entry_email.TextChanged += fn_emailChanged;
 
             entry_password.Unfocused += fn_passwordChanged;
             entry_password.TextChanged += fn_passwordChanged;
@@ -31,18 +37,21 @@ namespace AsapTasks.Pages
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            this.activityIndicator.IsRunning = true;
+            developerManager = DeveloperManager.DefaultManager;
+            this.activityIndicator.IsRunning = false;
         }
 
-        public void fn_phoneChanged(object sender, EventArgs e)
+        public void fn_emailChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
 
-            var regex = @"^(\+([0-9]){1,3})?([0-9]){10}$";
+            var regex = @"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$";
 
             if (entry.Text == null)
             {
-                entry.ErrorText = "Phone number is empty";
-                _phoneValid = false;
+                entry.ErrorText = "Email Address is empty";
+                _emailValid = false;
                 return;
             }
 
@@ -52,20 +61,18 @@ namespace AsapTasks.Pages
 
             if (entry.Text == "")
             {
-                entry.ErrorText = "Phone number is empty";
-                _phoneValid = false;
+                entry.ErrorText = "Email Address is empty";
+                _emailValid = false;
             }
             else if (!match.Success)
             {
-                entry.ErrorText = "Required format is +1XXXXXXXXX";
-                _phoneValid = false;
+                entry.ErrorText = "Invalid Email Format";
+                _emailValid = false;
             }
             else
             {
-                if (entry.Text[0] != '+')
-                    entry.Text = "+1" + entry.Text;
                 entry.ErrorText = "";
-                _phoneValid = true;
+                _emailValid = true;
             }
         }
 
@@ -98,32 +105,45 @@ namespace AsapTasks.Pages
         {
             try
             {
-                string __phone = entry_phone.Text;
-                if (_phoneValid)
-                    _phoneValid = !(__phone == "");
+                this.activityIndicator.IsRunning = true;
+
+                string __email = entry_email.Text;
+                if (_emailValid)
+                    _emailValid = !(__email == "");
 
                 string __password = entry_password.Text;
                 if (_passwordValid)
                     _passwordValid = !(__password == "");
 
 
-                if (_phoneValid && _passwordValid)
+                if (_emailValid && _passwordValid)
                 {
-                    // Login Successful
-                    // if phone verified, send to projects home page
-                    await Navigation.PushAsync(new ProjectsHomePage());
-                    // else send to phone number verification page
+                    Developer developer = await developerManager.GetDeveloperAsync(__email, __password);
+                    // Developer developer = new Developer();
+                    // await Task.Delay(3000);
+
+                    if (developer == null)
+                    {
+                        label_error.IsVisible = true;
+                    }
+                    else
+                    {
+                        this.activityIndicator.IsRunning = false;
+                        await Navigation.PushAsync(new ProjectsHomePage());
+                    }
                 }
                 else
-                {                    
-                    fn_phoneChanged(entry_phone, e);
+                {
+                    fn_emailChanged(entry_email, e);
                     fn_passwordChanged(entry_password, e);
                     return;
                 }
+                this.activityIndicator.IsRunning = false;
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex);
+                this.activityIndicator.IsRunning = false;
             }
         }
 

@@ -2,6 +2,8 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AsapTasks.Pages;
+using AsapTasks.Data;
+using AsapTasks.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace AsapTasks
@@ -17,6 +19,7 @@ namespace AsapTasks
 
         protected override void OnStart()
         {
+            //await EmailService.SendEmail(developer, "4A693B");
             // Handle when your app starts
         }
 

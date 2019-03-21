@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AsapTasks.Pages.EmailVerificationPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
+    BackgroundColor="{StaticResource color_SpaceCadet}">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
+                <Frame
+                    Margin="20,20,20,5"
+                    BackgroundColor="{StaticResource color_White}"
+                    CornerRadius="25">
+                    <StackLayout Margin="10,0,10,0" Spacing="20">
+                        <Label
+                            FontFamily="{StaticResource TitleFont}"
+                            FontSize="{StaticResource Font_Large}"
+                            HorizontalOptions="Fill"
+                            HorizontalTextAlignment="Center"
+                            Text="Email Verification"
+                            TextColor="{StaticResource color_SpaceCadet}" />
+
+                        <Label
+                            FontFamily="{StaticResource TextFont}"
+                            FontSize="{StaticResource Font_Small}"
+                            HorizontalOptions="Fill"
+                            HorizontalTextAlignment="Center"
+                            Text="Please enter the code sent on the email id:"
+                            TextColor="{StaticResource color_SpaceCadet}" />
+
+                        <Label
+                            x:Name="label_error"
+                            FontFamily="{StaticResource TextFont}"
+                            FontSize="{StaticResource Font_Small}"
+                            HorizontalOptions="Fill"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Incorrect Code"
+                            TextColor="{StaticResource color_Error}" />
+
+                        <xfx:XfxEntry
+                            x:Name="entry_code"
+                            FontFamily="{StaticResource TextFont}"
+                            FontSize="{StaticResource Font_Small}"
+                            HorizontalOptions="Fill"
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Numeric"
+                            Placeholder="Code"
+                            TextColor="{StaticResource color_SpaceCadet}" />
+
+                        <Label
+                            x:Name="label_time"
+                            FontFamily="{StaticResource TextFont}"
+                            FontSize="{StaticResource Font_Small}"
+                            HorizontalOptions="Fill"
+                            HorizontalTextAlignment="Center"
+                            Text=""
+                            TextColor="{StaticResource color_SpaceCadet}" />
+
+                        <Button
+                            x:Name="button_submit"
+                            BackgroundColor="{StaticResource color_SpaceCadet}"
+                            BorderRadius="25"
+                            Clicked="fn_submitClicked"
+                            FontFamily="{StaticResource TitleFont}"
+                            FontSize="{StaticResource Font_Medium}"
+                            HorizontalOptions="Fill"
+                            Text="Submit"
+                            TextColor="{StaticResource color_White}" />
+
+                        <Button
+                            x:Name="button_resend"
+                            BackgroundColor="{StaticResource color_SpaceCadet}"
+                            BorderRadius="25"
+                            Clicked="fn_resendClicked"
+                            FontFamily="{StaticResource TitleFont}"
+                            FontSize="{StaticResource Font_Medium}"
+                            HorizontalOptions="Fill"
+                            IsVisible="False"
+                            Text="Resend Code"
+                            TextColor="{StaticResource color_White}" />
+                    </StackLayout>
+                </Frame>
+                <Button
+                    x:Name="button_cancel"
+                    Margin="20,5,20,20"
+                    BackgroundColor="{StaticResource color_White}"
+                    BorderRadius="25"
+                    Clicked="fn_submitClicked"
+                    FontFamily="{StaticResource TitleFont}"
+                    FontSize="{StaticResource Font_Medium}"
+                    HorizontalOptions="Fill"
+                    Text="Cancel"
+                    TextColor="{StaticResource color_SpaceCadet}" />
+            </StackLayout>
+            <ActivityIndicator
+                x:Name="activityIndicator"
+                HorizontalOptions="Center"
+                IsRunning="False"
+                VerticalOptions="Center"
+                Color="{StaticResource color_Mantis}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AsapTasks.Data;
+using AsapTasks.Managers;
+using AsapTasks.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,22 +16,40 @@ namespace AsapTasks.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ForgotPasswordPage : ContentPage
     {
+        #region Private Variables
+
         string confirmButtonState;
-        bool _phoneValid, _passwordsValid, _codeValid;
+
+        bool _emailValid, _passwordsValid, _codeValid;
+
+        private System.Diagnostics.Stopwatch _stopwatch;
+
+        private bool _isTimerStart;
+
+        private DeveloperManager developerManager;
+
+        private Developer developer;
+
+        private int _verificationCode;
+
+        //private TimeSpan _maxTime = new TimeSpan(0, 3, 0);
+        private TimeSpan _maxTime = new TimeSpan(0, 0, 10);
+
+        #endregion
 
         public ForgotPasswordPage()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
 
-            confirmButtonState = "Phone";
+            confirmButtonState = "Email";
 
             _codeValid = false;
-            _phoneValid = false;
+            _emailValid = false;
             _passwordsValid = false;
 
-            entry_phone.Unfocused += fn_phoneChanged;
-            entry_phone.TextChanged += fn_phoneChanged;
+            entry_email.Unfocused += fn_emailChanged;
+            entry_email.TextChanged += fn_emailChanged;
 
             entry_password.Unfocused += fn_passwordChanged;
             entry_password.TextChanged += fn_passwordChanged;
@@ -38,42 +59,69 @@ namespace AsapTasks.Pages
 
             entry_verificationCode.Unfocused += fn_codeChanged;
             entry_verificationCode.TextChanged += fn_codeChanged;
+
+            this.activityIndicator.IsRunning = true;
+            developerManager = DeveloperManager.DefaultManager;
+            this.activityIndicator.IsRunning = false;
         }
 
         private async void fn_confirmClicked(object sender, EventArgs e)
         {
             switch (confirmButtonState)
             {
-                case "Phone":
+                case "Email":
                     {
                         try
                         {
-                            string __phone = entry_password.Text;
-                            if (_phoneValid)
-                                _phoneValid = !(__phone == "");
+                            string __email = entry_email.Text;
+                            if (_emailValid)
+                                _emailValid = !(__email == "");
 
 
-                            if (_phoneValid)
+                            if (_emailValid)
                             {
-                                entry_phone.IsEnabled = false;
+                                this.activityIndicator.IsRunning = true;
 
-                                button_confirm.Text = "Confirm";
+                                developer = await developerManager.CheckDeveloperEmailAsync(__email);
 
-                                entry_verificationCode.IsVisible = true;
+                                if (developer == null)
+                                {
+                                    label_error.Text = "No account found with this email";
+                                    label_error.IsVisible = true;
+                                    this.activityIndicator.IsRunning = false;
+                                    return;
+                                }
+                                else
+                                {
+                                    entry_email.IsEnabled = false;
 
-                                confirmButtonState = "Verify";
+                                    button_confirm.Text = "Confirm";
 
-                                label_title.Text = "Verify Account";
+                                    await fn_sendEmail();
+
+                                    entry_verificationCode.IsVisible = true;
+                                    label_instruction.IsVisible = true;
+                                    label_time.IsVisible = true;
+                                    label_error.Text = "Invalid Code";
+                                    label_error.IsVisible = false;
+
+                                    confirmButtonState = "Verify";
+
+                                    label_title.Text = "Verify Account";
+                                    this.activityIndicator.IsRunning = false;
+                                }
                             }
                             else
                             {
-                                fn_phoneChanged(entry_phone, e);
+                                fn_emailChanged(entry_email, e);
+                                this.activityIndicator.IsRunning = false;
                                 return;
                             }
                         }
                         catch(Exception ex)
                         {
                             System.Diagnostics.Debug.WriteLine(ex);
+                            this.activityIndicator.IsRunning = false;
                         }
                         
                         break;
@@ -82,33 +130,46 @@ namespace AsapTasks.Pages
                     {
                         try
                         {
-                            string __phone = entry_password.Text;
-                            if (_phoneValid)
-                                _phoneValid = !(__phone == "");
+                            string __email = entry_password.Text;
+                            if (_emailValid)
+                                _emailValid = !(__email == "");
 
                             string __code = entry_verificationCode.Text;
                             if (_codeValid)
                                 _codeValid = !(__code == "");
 
 
-                            if (_phoneValid && _codeValid)
+                            if (_emailValid && _codeValid)
                             {
-                                entry_phone.IsEnabled = false;
+                                if (__code == _verificationCode.ToString()){
+                                    entry_email.IsEnabled = false;
 
-                                button_confirm.Text = "Change Password";
+                                    button_confirm.Text = "Change Password";
 
-                                entry_verificationCode.IsVisible = false;
+                                    entry_verificationCode.IsVisible = false;
+                                    label_instruction.IsVisible = false;
+                                    label_time.IsVisible = false;
 
-                                entry_password.IsVisible = true;
-                                entry_confirmPassword.IsVisible = true;
+                                    entry_password.IsVisible = true;
+                                    entry_confirmPassword.IsVisible = true;
 
-                                label_title.Text = "Reset Password";
+                                    label_title.Text = "Reset Password";
 
-                                confirmButtonState = "Reset";
+                                    confirmButtonState = "Reset";
+                                    label_error.IsVisible = false;
+
+                                    _isTimerStart = false;
+                                    _stopwatch.Stop();
+                                    button_resend.IsVisible = false;
+                                }
+                                else
+                                {
+                                    label_error.IsVisible = true;
+                                }
                             }
                             else
                             {
-                                fn_phoneChanged(entry_phone, e);
+                                fn_emailChanged(entry_email, e);
                                 fn_codeChanged(entry_verificationCode, e);
                                 return;
                             }
@@ -128,31 +189,44 @@ namespace AsapTasks.Pages
                             if (_passwordsValid)
                                 _passwordsValid = !(__password == "");
 
-                            string __phone = entry_phone.Text;
-                            if (_phoneValid)
-                                _phoneValid = !(__phone == "");
+                            string __email = entry_email.Text;
+                            if (_emailValid)
+                                _emailValid = !(__email == "");
 
                             string __confirmPassword = entry_confirmPassword.Text;
                             if (_passwordsValid)
                                 _passwordsValid = !(__confirmPassword == "");
 
 
-                            if (_passwordsValid && _phoneValid)
+                            if (_passwordsValid && _emailValid)
                             {
-                                await DisplayAlert("Reset Password", "Password Reset was sucessfull for " + __phone, "OK");
-                                await Navigation.PopAsync();
+                                this.activityIndicator.IsRunning = true;
+                                developer.Password = __password;
+                                var check = await developerManager.SaveDeveloperAsync(developer);
+                                if (check == Constants.DataEntryErrors.SUCCESS)
+                                {
+                                    await DisplayAlert("Reset Password", "Password Reset was sucessful for " + __email, "OK");
+                                    await Navigation.PopAsync();
+                                }
+                                else
+                                {
+                                    await DisplayAlert("Connection Error", "Please check your internet connection", "OK");
+                                }
+                                this.activityIndicator.IsRunning = false;
                             }
                             else
                             {
                                 fn_passwordChanged(entry_password, e);
                                 fn_confirmPasswordChanged(entry_confirmPassword, e);
-                                fn_phoneChanged(entry_phone, e);
+                                fn_emailChanged(entry_email, e);
+                                this.activityIndicator.IsRunning = false;
                                 return;
                             }
                         }
                         catch (Exception ex)
                         {
                             System.Diagnostics.Debug.WriteLine(ex);
+                            this.activityIndicator.IsRunning = false;
                         }
 
                         break;
@@ -164,21 +238,39 @@ namespace AsapTasks.Pages
             }
         }
 
+        private async Task fn_sendEmail()
+        {
+            Random random = new Random();
+
+            _verificationCode = random.Next(15432, 99999);
+
+            await EmailService.SendEmail(developer, _verificationCode.ToString());
+
+            System.Diagnostics.Debug.WriteLine(_verificationCode);
+
+            _stopwatch = new System.Diagnostics.Stopwatch();
+            _stopwatch.Start();
+
+            _isTimerStart = true;
+
+            Device.StartTimer(TimeSpan.FromSeconds(1), fn_timeElapsed);
+        }
+
         private async void fn_cancelClicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
 
-        private void fn_phoneChanged(object sender, EventArgs e)
+        public void fn_emailChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
 
-            var regex = @"^(\+([0-9]){1,3})?([0-9]){10}$";
+            var regex = @"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$";
 
             if (entry.Text == null)
             {
-                entry.ErrorText = "Phone number is empty";
-                _phoneValid = false;
+                entry.ErrorText = "Email Address is empty";
+                _emailValid = false;
                 return;
             }
 
@@ -188,20 +280,18 @@ namespace AsapTasks.Pages
 
             if (entry.Text == "")
             {
-                entry.ErrorText = "Phone number is empty";
-                _phoneValid = false;
+                entry.ErrorText = "Email Address is empty";
+                _emailValid = false;
             }
             else if (!match.Success)
             {
-                entry.ErrorText = "Required format is +1XXXXXXXXX";
-                _phoneValid = false;
+                entry.ErrorText = "Invalid Email Format";
+                _emailValid = false;
             }
             else
             {
-                if (entry.Text[0] != '+')
-                    entry.Text = "+1" + entry.Text;
                 entry.ErrorText = "";
-                _phoneValid = true;
+                _emailValid = true;
             }
         }
 
@@ -282,16 +372,21 @@ namespace AsapTasks.Pages
 
             if (entry.Text == null)
             {
-                entry.ErrorText = "Enter the Verification Code";
+                entry.ErrorText = "Please enter the code";
                 _codeValid = false;
                 return;
             }
 
-            entry.Text = entry.Text.TrimStart();
+            entry.Text = entry.Text.Trim();
             System.Diagnostics.Debug.WriteLine("-" + entry.Text + "-");
             if (entry.Text == "")
             {
-                entry.ErrorText = "Enter the Verification Code";
+                entry.ErrorText = "Please enter the code";
+                _codeValid = false;
+            }
+            else if (entry.Text.Length != 5)
+            {
+                entry.ErrorText = "Please enter a valid code";
                 _codeValid = false;
             }
             else
@@ -299,6 +394,42 @@ namespace AsapTasks.Pages
                 entry.ErrorText = "";
                 _codeValid = true;
             }
+        }
+
+        public async void fn_resendClicked(object sender, EventArgs e)
+        {
+            await EmailService.SendEmail(developer, _verificationCode.ToString());
+
+            label_error.IsVisible = false;
+
+            _stopwatch.Restart();
+
+            _isTimerStart = true;
+
+            Device.StartTimer(TimeSpan.FromSeconds(1), fn_timeElapsed);
+
+            button_resend.IsVisible = false;
+        }
+
+        private bool fn_timeElapsed()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                TimeSpan time = _stopwatch.Elapsed;
+                TimeSpan leftTime = _maxTime.Subtract(time);
+
+                System.Diagnostics.Debug.WriteLine(time.ToString());
+
+                label_time.Text = leftTime.Minutes.ToString("D2") + ":" + leftTime.Seconds.ToString("D2");
+
+                if (time.TotalSeconds >= _maxTime.TotalSeconds)
+                {
+                    _stopwatch.Stop();
+                    _isTimerStart = false;
+                    button_resend.IsVisible = true;
+                }
+            });
+            return _isTimerStart;
         }
     }
 }

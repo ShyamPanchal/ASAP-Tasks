@@ -11,6 +11,7 @@
             <Color x:Key="color_SpaceCadet">#2E2D4D</Color>
             <Color x:Key="color_Amazon">#337357</Color>
             <Color x:Key="color_White">#FFFFFF</Color>
+            <Color x:Key="color_Error">#FF0000</Color>
 
             <OnPlatform x:Key="TitleFont" x:TypeArguments="x:String">
                 <On Platform="Android" Value="Ubuntu-Regular.ttf#Ubuntu" />

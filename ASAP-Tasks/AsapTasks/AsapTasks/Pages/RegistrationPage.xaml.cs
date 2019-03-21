@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AsapTasks.Data;
+using AsapTasks.Managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,29 +12,31 @@ using Xamarin.Forms.Xaml;
 
 namespace AsapTasks.Pages
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class RegistrationPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class RegistrationPage : ContentPage
+    {
+        #region Private Variables
         bool _nameValid;
-        bool _phoneValid;
+        bool _emailValid;
         bool _passwordsValid;
 
-		public RegistrationPage ()
-		{
-			InitializeComponent ();
+        DeveloperManager developerManager;
+        #endregion
+
+        public RegistrationPage()
+        {
+            InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
 
             _nameValid = false;
-            _phoneValid = false;
+            _emailValid = false;
             _passwordsValid = false;
-
-            entry_phone.Text = "+1";
 
             entry_name.Unfocused += fn_nameChanged;
             entry_name.TextChanged += fn_nameChanged;
 
-            entry_phone.Unfocused += fn_phoneChanged;
-            entry_phone.TextChanged += fn_phoneChanged;
+            entry_email.Unfocused += fn_emailChanged;
+            entry_email.TextChanged += fn_emailChanged;
 
             entry_password.Unfocused += fn_passwordChanged;
             entry_password.TextChanged += fn_passwordChanged;
@@ -44,7 +48,9 @@ namespace AsapTasks.Pages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            this.activityIndicator.IsRunning = true;
+            developerManager = DeveloperManager.DefaultManager;
+            this.activityIndicator.IsRunning = false;
         }
 
         private async void fn_signupClicked(object sender, EventArgs e)
@@ -59,28 +65,52 @@ namespace AsapTasks.Pages
                 if (_passwordsValid)
                     _passwordsValid = !(__password == "");
 
-                string __phone = entry_phone.Text;
-                if (_phoneValid)
-                    _phoneValid = !(__phone == "");
+                string __email = entry_email.Text;
+                if (_emailValid)
+                    _emailValid = !(__email == "");
 
                 string __confirmPassword = entry_confirmPassword.Text;
                 if (_passwordsValid)
                     _passwordsValid = !(__confirmPassword == "");
 
 
-                if (_nameValid && _passwordsValid && _phoneValid)
+                if (_nameValid && _passwordsValid && _emailValid)
                 {
-                    // Signup Successful
-                    // to phone verification page
-                    await Navigation.PushAsync(new ProjectsHomePage());
-                    // else send to phone number verification page
+                    this.activityIndicator.IsRunning = true;
+                    Developer developer = new Developer()
+                    {
+                        Name = __name,
+                        Email = __email,
+                        Password = __password,
+                        IsVerified = false
+                    };
+
+                    Constants.DataCheckErrors check = await developerManager.CheckEmailAsync(__email);
+
+                    if (check == Constants.DataCheckErrors.DN_EXISTS)
+                    {
+                        EmailVerificationPage emailVerificationPage = new EmailVerificationPage() { BindingContext = developer };
+                        await Navigation.PushAsync(emailVerificationPage);
+                    }
+                    else if(check == Constants.DataCheckErrors.EXISTS)
+                    {
+                        entry_email.ErrorText = "An account with this email already exists";
+                        _emailValid = false;
+                    }
+                    else if(check == Constants.DataCheckErrors.ERROR)
+                    {
+                        await DisplayAlert("Connection Error", "Please check your internet connection", "OK");
+                    }
+
+                    this.activityIndicator.IsRunning = false;
                 }
                 else
                 {
                     fn_nameChanged(entry_name, e);
                     fn_passwordChanged(entry_password, e);
                     fn_confirmPasswordChanged(entry_confirmPassword, e);
-                    fn_phoneChanged(entry_phone, e);
+                    fn_emailChanged(entry_email, e);
+                    this.activityIndicator.IsRunning = false;
                     return;
                 }
             }
@@ -120,16 +150,16 @@ namespace AsapTasks.Pages
             }
         }
 
-        public void fn_phoneChanged(object sender, EventArgs e)
+        public void fn_emailChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
 
-            var regex = @"^(\+([0-9]){1,3})?([0-9]){10}$";
+            var regex = @"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$";
 
             if (entry.Text == null)
             {
-                entry.ErrorText = "Phone number is empty";
-                _phoneValid = false;
+                entry.ErrorText = "Email Address is empty";
+                _emailValid = false;
                 return;
             }
 
@@ -139,20 +169,18 @@ namespace AsapTasks.Pages
 
             if (entry.Text == "")
             {
-                entry.ErrorText = "Phone number is empty";
-                _phoneValid = false;
+                entry.ErrorText = "Email Address is empty";
+                _emailValid = false;
             }
             else if (!match.Success)
             {
-                entry.ErrorText = "Required format is +1XXXXXXXXX";
-                _phoneValid = false;
+                entry.ErrorText = "Invalid Email Format";
+                _emailValid = false;
             }
             else
             {
-                if (entry.Text[0] != '+')
-                    entry.Text = "+1" + entry.Text;
                 entry.ErrorText = "";
-                _phoneValid = true;
+                _emailValid = true;
             }
         }
 
@@ -176,12 +204,12 @@ namespace AsapTasks.Pages
             }
             else
             {
-                if(entry_confirmPassword.Text == null || entry_confirmPassword.Text == "")
+                if (entry_confirmPassword.Text == null || entry_confirmPassword.Text == "")
                 {
                     entry.ErrorText = "";
                     _passwordsValid = true;
                 }
-                else if(entry.Text == entry_confirmPassword.Text)
+                else if (entry.Text == entry_confirmPassword.Text)
                 {
                     entry.ErrorText = "";
                     _passwordsValid = true;

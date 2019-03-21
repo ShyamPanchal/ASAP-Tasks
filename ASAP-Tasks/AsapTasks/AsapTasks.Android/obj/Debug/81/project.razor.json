@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "c:\\Users\\Shyam\\Desktop\\ASAP-Tasks\\ASAP-Tasks\\AsapTasks\\AsapTasks.Android\\AsapTasks.Android.csproj",
+  "TargetFramework": "v8.1",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
+}

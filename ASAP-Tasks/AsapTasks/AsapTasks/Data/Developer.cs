@@ -10,7 +10,7 @@ namespace AsapTasks.Data
         string name;
         bool isVerified;
         string password;
-        string phoneNumber;
+        string email;
 
         [JsonProperty(PropertyName = "id")]
         public string Id
@@ -19,32 +19,32 @@ namespace AsapTasks.Data
             set { id = value; }
         }
 
-        [JsonProperty(PropertyName = "name")]
+        [JsonProperty(PropertyName = "Name")]
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
 
-        [JsonProperty(PropertyName = "is_verified")]
+        [JsonProperty(PropertyName = "IsVerified")]
         public bool IsVerified
         {
             get { return isVerified; }
             set { isVerified = value; }
         }
 
-        [JsonProperty(PropertyName = "password")]
+        [JsonProperty(PropertyName = "Password")]
         public string Password
         {
             get { return password; }
             set { password = value; }
         }
 
-        [JsonProperty(PropertyName = "phoneNumber")]
-        public string PhoneNumber
+        [JsonProperty(PropertyName = "Email")]
+        public string Email
         {
-            get { return phoneNumber; }
-            set { phoneNumber = value; }
+            get { return email; }
+            set { email = value; }
         }
 
         [Version]

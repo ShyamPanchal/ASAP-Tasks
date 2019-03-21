@@ -76,7 +76,7 @@ namespace AsapTasks.Managers
             get { return devTable is Microsoft.WindowsAzure.MobileServices.Sync.IMobileServiceSyncTable<Developer>; }
         }
 
-        public async Task<ObservableCollection<Developer>> GetTodoItemsAsync(bool syncItems = false)
+        public async Task<ObservableCollection<Developer>> GetDevelopersAsync(bool syncItems = false)
         {
             try
             {
@@ -87,7 +87,6 @@ namespace AsapTasks.Managers
                 }
 #endif
                 IEnumerable<Developer> items = await devTable
-                    .Where(x => !x.IsVerified)
                     .ToEnumerableAsync();
 
                 return new ObservableCollection<Developer>(items);
@@ -103,24 +102,110 @@ namespace AsapTasks.Managers
             return null;
         }
 
-        public async Task SaveTaskAsync(Developer item)
+        public async Task<Developer> GetDeveloperAsync(string email, string password, bool syncItems = false)
+        {
+            try
+            {
+#if OFFLINE_SYNC_ENABLED
+                if (syncItems)
+                {
+                    await this.SyncAsync();
+                }
+#endif
+                IEnumerable<Developer> items = await devTable
+                    .Where(x => x.Email == email)
+                    .Where(x => x.Password == password).ToEnumerableAsync();
+
+                return items.FirstOrDefault();
+            }
+            catch (MobileServiceInvalidOperationException msioe)
+            {
+                Debug.WriteLine("Invalid sync operation: {0}", new[] { msioe.Message });
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Sync error: {0}", new[] { e.Message });
+            }
+            return null;
+        }
+
+        public async Task<Developer> CheckDeveloperEmailAsync(string email, bool syncItems = false)
+        {
+            try
+            {
+                IEnumerable<Developer> items = await devTable
+                    .Where(x => x.Email == email).ToEnumerableAsync();
+
+                if(items.Count() > 0)
+                {
+                    return items.FirstOrDefault();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (MobileServiceInvalidOperationException msioe)
+            {
+                Debug.WriteLine("Invalid sync operation: {0}", new[] { msioe.Message });
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Sync error: {0}", new[] { e.Message });
+            }
+            return null;
+        }
+
+        public async Task<Constants.DataEntryErrors> SaveDeveloperAsync(Developer item)
         {
             try
             {
                 if (item.Id == null)
                 {
-                    await devTable.InsertAsync(item);
+                    IEnumerable<Developer> items = await devTable.Where(x => x.Email == item.Email).ToEnumerableAsync();
+                    if (items.Count() == 0)
+                    {
+                        await devTable.InsertAsync(item);
+                        return Constants.DataEntryErrors.SUCCESS;
+                    }
+                    else
+                    {
+                        return Constants.DataEntryErrors.INVALID;
+                    }
                 }
                 else
                 {
                     await devTable.UpdateAsync(item);
+                    return Constants.DataEntryErrors.SUCCESS;
                 }
             }
             catch (Exception e)
             {
                 Debug.WriteLine("Save error: {0}", new[] { e.Message });
+                return Constants.DataEntryErrors.FAILURE;
             }
         }
+
+        public async Task<Constants.DataCheckErrors> CheckEmailAsync(string email)
+        {
+            try
+            {
+                IEnumerable<Developer> items = await devTable
+                    .Where(x => x.Email == email).ToEnumerableAsync();
+
+                return (items.Count() > 0) ? Constants.DataCheckErrors.EXISTS : Constants.DataCheckErrors.DN_EXISTS;
+            }
+            catch (MobileServiceInvalidOperationException msioe)
+            {
+                Debug.WriteLine("Invalid sync operation: {0}", new[] { msioe.Message });
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Sync error: {0}", new[] { e.Message });
+            }
+            return Constants.DataCheckErrors.ERROR;
+        }
+
 
 #if OFFLINE_SYNC_ENABLED
         public async Task SyncAsync()

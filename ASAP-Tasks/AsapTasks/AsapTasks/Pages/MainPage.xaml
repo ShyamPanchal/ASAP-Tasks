@@ -7,92 +7,106 @@
     xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
     BackgroundColor="{StaticResource color_SpaceCadet}">
 
-    <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
-        <Frame
-            Margin="20,20,20,5"
-            BackgroundColor="{StaticResource color_White}"
-            CornerRadius="25"
-            HorizontalOptions="Fill"
-            VerticalOptions="Start">
-            <StackLayout>
-                <Image
-                    HeightRequest="100"
-                    HorizontalOptions="Center"
-                    Source="ClipBoard.ico"
-                    WidthRequest="100" />
-                <Label
-                    FontFamily="{StaticResource TitleFont}"
-                    FontSize="{StaticResource Font_Large}"
-                    HorizontalOptions="Center"
-                    Text="ASAP"
-                    TextColor="{StaticResource color_SpaceCadet}" />
-                <Label
-                    FontFamily="{StaticResource TitleFont}"
-                    FontSize="{StaticResource Font_Large}"
-                    HorizontalOptions="Center"
-                    Text="Task Manager"
-                    TextColor="{StaticResource color_SpaceCadet}" />
-                <StackLayout Margin="10,5,10,0">
-                    <xfx:XfxEntry
-                        x:Name="entry_phone"
-                        FontFamily="{StaticResource TextFont}"
-                        FontSize="{StaticResource Font_Small}"
-                        Keyboard="Telephone"
-                        Placeholder="Phone Number"
-                        TextColor="{StaticResource color_SpaceCadet}" />
-                    <xfx:XfxEntry
-                        x:Name="entry_password"
-                        FontFamily="{StaticResource TextFont}"
-                        FontSize="{StaticResource Font_Small}"
-                        IsPassword="True"
-                        Keyboard="Email"
-                        Placeholder="Password"
-                        TextColor="{StaticResource color_SpaceCadet}" />
-                    <Button
-                        x:Name="button_login"
-                        BackgroundColor="{StaticResource color_SpaceCadet}"
-                        BorderRadius="25"
-                        Clicked="fn_loginClicked"
-                        FontFamily="{StaticResource TitleFont}"
-                        FontSize="{StaticResource Font_Medium}"
-                        HorizontalOptions="Fill"
-                        Text="Login"
-                        TextColor="{StaticResource color_White}" />
-                    <Label
-                        x:Name="button_forgot_password"
-                        BackgroundColor="{StaticResource color_White}"
-                        FontFamily="{StaticResource TextFont}"
-                        FontSize="{StaticResource Font_Small}"
-                        HorizontalOptions="Center"
-                        Text="Forgot Password?"
-                        TextColor="{StaticResource color_DimGray}">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="fn_forgotPassword" />
-                        </Label.GestureRecognizers>
-                    </Label>
-                </StackLayout>
-            </StackLayout>
-        </Frame>
-        <Frame
-            Margin="20,5,20,20"
-            BackgroundColor="{StaticResource color_White}"
-            CornerRadius="25"
-            HorizontalOptions="Fill"
-            VerticalOptions="Start">
-            <Frame.GestureRecognizers>
-                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="fn_registerNow" />
-            </Frame.GestureRecognizers>
-            <Label
-                x:Name="button_register_now"
-                Grid.Column="2"
+    <Grid>
+        <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
+            <Frame
+                Margin="20,20,20,5"
                 BackgroundColor="{StaticResource color_White}"
-                FontFamily="{StaticResource TextFont}"
-                FontSize="{StaticResource Font_Small}"
-                HorizontalOptions="Center"
-                Text="Not a member? Register Now !"
-                TextColor="{StaticResource color_DimGray}"
-                VerticalOptions="Center" />
-        </Frame>
-    </StackLayout>
+                CornerRadius="25"
+                HorizontalOptions="Fill"
+                VerticalOptions="Start">
+                <StackLayout>
+                    <Image
+                        HeightRequest="100"
+                        HorizontalOptions="Center"
+                        Source="ClipBoard.ico"
+                        WidthRequest="100" />
+                    <Label
+                        FontFamily="{StaticResource TitleFont}"
+                        FontSize="{StaticResource Font_Large}"
+                        HorizontalOptions="Center"
+                        Text="ASAP"
+                        TextColor="{StaticResource color_SpaceCadet}" />
+                    <Label
+                        FontFamily="{StaticResource TitleFont}"
+                        FontSize="{StaticResource Font_Large}"
+                        HorizontalOptions="Center"
+                        Text="Task Manager"
+                        TextColor="{StaticResource color_SpaceCadet}" />
+                    <StackLayout Margin="10,5,10,0">
+                        <Label
+                            x:Name="label_error"
+                            FontFamily="{StaticResource TextFont}"
+                            FontSize="{StaticResource Font_Small}"
+                            IsVisible="False"
+                            Text="Invaid Email Address or Password"
+                            TextColor="{StaticResource color_Error}" />
+                        <xfx:XfxEntry
+                            x:Name="entry_email"
+                            FontFamily="{StaticResource TextFont}"
+                            FontSize="{StaticResource Font_Small}"
+                            Keyboard="Email"
+                            Placeholder="Email"
+                            TextColor="{StaticResource color_SpaceCadet}" />
+                        <xfx:XfxEntry
+                            x:Name="entry_password"
+                            FontFamily="{StaticResource TextFont}"
+                            FontSize="{StaticResource Font_Small}"
+                            IsPassword="True"
+                            Keyboard="Email"
+                            Placeholder="Password"
+                            TextColor="{StaticResource color_SpaceCadet}" />
+                        <Button
+                            x:Name="button_login"
+                            BackgroundColor="{StaticResource color_SpaceCadet}"
+                            BorderRadius="25"
+                            Clicked="fn_loginClicked"
+                            FontFamily="{StaticResource TitleFont}"
+                            FontSize="{StaticResource Font_Medium}"
+                            HorizontalOptions="Fill"
+                            Text="Login"
+                            TextColor="{StaticResource color_White}" />
+                        <Label
+                            x:Name="button_forgot_password"
+                            BackgroundColor="{StaticResource color_White}"
+                            FontFamily="{StaticResource TextFont}"
+                            FontSize="{StaticResource Font_Small}"
+                            HorizontalOptions="Center"
+                            Text="Forgot Password?"
+                            TextColor="{StaticResource color_DimGray}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="fn_forgotPassword" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <Frame
+                Margin="20,5,20,20"
+                BackgroundColor="{StaticResource color_White}"
+                CornerRadius="25"
+                HorizontalOptions="Fill"
+                VerticalOptions="Start">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="fn_registerNow" />
+                </Frame.GestureRecognizers>
+                <Label
+                    x:Name="button_register_now"
+                    Grid.Column="2"
+                    BackgroundColor="{StaticResource color_White}"
+                    FontFamily="{StaticResource TextFont}"
+                    FontSize="{StaticResource Font_Small}"
+                    HorizontalOptions="Center"
+                    Text="Not a member? Register Now !"
+                    TextColor="{StaticResource color_DimGray}"
+                    VerticalOptions="Center" />
+            </Frame>
+        </StackLayout>
+        <ActivityIndicator
+            x:Name="activityIndicator"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Color="{StaticResource color_Mantis}" />
+    </Grid>
 
 </ContentPage>

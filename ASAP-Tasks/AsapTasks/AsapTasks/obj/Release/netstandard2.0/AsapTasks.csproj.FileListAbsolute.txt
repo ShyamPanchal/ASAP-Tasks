@@ -16,6 +16,7 @@ C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\net
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\AsapTasks.csproj.CoreCompileInputs.cache
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\AsapTasks.AssemblyInfoInputs.cache
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\AsapTasks.AssemblyInfo.cs
-C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\XamlC.stamp
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\AsapTasks.dll
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\AsapTasks.pdb
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\AsapTasks.csprojAssemblyReference.cache
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\XamlC.stamp
