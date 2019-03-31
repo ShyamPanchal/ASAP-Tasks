@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
+      "ExifLib.PCL/1.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/ExifLib.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/ExifLib.dll": {}
+        }
+      },
       "Microcharts/0.7.1": {
         "type": "package",
         "dependencies": {
@@ -1207,10 +1216,78 @@
         "runtime": {
           "lib/netstandard1.3/Xfx.Controls.dll": {}
         }
+      },
+      "XLabs.Core/2.0.5782": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Core.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Core.dll": {}
+        }
+      },
+      "XLabs.Forms/2.0.5782": {
+        "type": "package",
+        "dependencies": {
+          "XLabs.Core": "[2.0.5782]",
+          "XLabs.IoC": "[2.0.5782]",
+          "XLabs.Platform": "[2.0.5782]",
+          "XLabs.Serialization": "[2.0.5782]",
+          "Xamarin.Forms": "1.5.1.6471"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wpa81+wp8/XLabs.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wpa81+wp8/XLabs.Forms.dll": {}
+        }
+      },
+      "XLabs.IoC/2.0.5782": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Ioc.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Ioc.dll": {}
+        }
+      },
+      "XLabs.Platform/2.0.5782": {
+        "type": "package",
+        "dependencies": {
+          "ExifLib.PCL": "1.0.1",
+          "XLabs.Core": "[2.0.5782]"
+        },
+        "compile": {
+          "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Platform.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Platform.dll": {}
+        }
+      },
+      "XLabs.Serialization/2.0.5782": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Serialization.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Serialization.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "ExifLib.PCL/1.0.1": {
+      "sha512": "16KG9oXTPJkjCRq2xQmfPfJqCfcCjK3h034oazOE61LM4kddMr50a6EgrOV+F7RtIzVVd5ATEZRCiNWnnWqDkA==",
+      "type": "package",
+      "path": "exiflib.pcl/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "exiflib.pcl.1.0.1.nupkg.sha512",
+        "exiflib.pcl.nuspec",
+        "lib/portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10/ExifLib.dll"
+      ]
+    },
     "Microcharts/0.7.1": {
       "sha512": "Py79bYXqvsqthZtk1ChdDhy/n4mb7T2CKjzTVU7ldj4dnjgFC2nbOJMGeAJkDk1lZPoQPSPx3obSq7S29Zrt8g==",
       "type": "package",
@@ -4919,6 +4996,123 @@
         "xfx.controls.1.1.3.nupkg.sha512",
         "xfx.controls.nuspec"
       ]
+    },
+    "XLabs.Core/2.0.5782": {
+      "sha512": "XLRztFIAjUYfjaaur4aPa/gjBNOwnAoelnmm83v4U0R5dJcWhll5Sci3s8nJWpHv1unwX1TuRsWT0rqMNm0PzA==",
+      "type": "package",
+      "path": "xlabs.core/2.0.5782",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/Xamarin.iOS10/XLabs.Core.XML",
+        "lib/Xamarin.iOS10/XLabs.Core.dll",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Core.XML",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Core.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/XLabs.Core.XML",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/XLabs.Core.dll",
+        "xlabs.core.2.0.5782.nupkg.sha512",
+        "xlabs.core.nuspec"
+      ]
+    },
+    "XLabs.Forms/2.0.5782": {
+      "sha512": "ky3fCcqK1jaSMyIavo8g4Jb/KWhMGH7AlDzFtmP/vNNxiYWHnkmCz1kIvuBNodEwbqJgINpPUcvfW5IbBxbVYg==",
+      "type": "package",
+      "path": "xlabs.forms/2.0.5782",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid/XLabs.Forms.Droid.XML",
+        "lib/MonoAndroid/XLabs.Forms.Droid.dll",
+        "lib/MonoAndroid/XLabs.Forms.XML",
+        "lib/MonoAndroid/XLabs.Forms.dll",
+        "lib/Xamarin.iOS10/XLabs.Forms.XML",
+        "lib/Xamarin.iOS10/XLabs.Forms.dll",
+        "lib/Xamarin.iOS10/XLabs.Forms.iOS.XML",
+        "lib/Xamarin.iOS10/XLabs.Forms.iOS.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8/XLabs.Forms.XML",
+        "lib/portable-net45+netcore45+wpa81+wp8/XLabs.Forms.dll",
+        "lib/wp8/XLabs.Forms.WP8.XML",
+        "lib/wp8/XLabs.Forms.WP8.dll",
+        "lib/wp8/XLabs.Forms.XML",
+        "lib/wp8/XLabs.Forms.dll",
+        "lib/wpa81/XLabs.Forms.WP8.XML",
+        "lib/wpa81/XLabs.Forms.WP8.dll",
+        "lib/wpa81/XLabs.Forms.XML",
+        "lib/wpa81/XLabs.Forms.dll",
+        "xlabs.forms.2.0.5782.nupkg.sha512",
+        "xlabs.forms.nuspec"
+      ]
+    },
+    "XLabs.IoC/2.0.5782": {
+      "sha512": "lFhk1z7pJSlwz2OnxGsZexpzrq5pmH1jvu07oX92ZZEMbJzmvlK9s76G54yE6hQwpv3DVrNtcZ4ubVT1/makRA==",
+      "type": "package",
+      "path": "xlabs.ioc/2.0.5782",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Ioc.XML",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Ioc.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/XLabs.Ioc.XML",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10/XLabs.Ioc.dll",
+        "xlabs.ioc.2.0.5782.nupkg.sha512",
+        "xlabs.ioc.nuspec"
+      ]
+    },
+    "XLabs.Platform/2.0.5782": {
+      "sha512": "n5ZgLrh4Ut7EflUKmVii4feQ5xsLQTyTPYf8IDuldOi2furuxSPfHr2H4dpGTbmDxiB21sS0ZA6tdhoQQM27uA==",
+      "type": "package",
+      "path": "xlabs.platform/2.0.5782",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid/XLabs.Platform.Droid.XML",
+        "lib/MonoAndroid/XLabs.Platform.Droid.dll",
+        "lib/MonoAndroid/XLabs.Platform.XML",
+        "lib/MonoAndroid/XLabs.Platform.dll",
+        "lib/Xamarin.iOS10/XLabs.Platform.XML",
+        "lib/Xamarin.iOS10/XLabs.Platform.dll",
+        "lib/Xamarin.iOS10/XLabs.Platform.iOS.XML",
+        "lib/Xamarin.iOS10/XLabs.Platform.iOS.dll",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Platform.XML",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Platform.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/XLabs.Platform.XML",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/XLabs.Platform.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8/XLabs.Platform.XML",
+        "lib/portable-net45+netcore45+wpa81+wp8/XLabs.Platform.dll",
+        "lib/wp8/XLabs.Platform.WP8.XML",
+        "lib/wp8/XLabs.Platform.WP8.dll",
+        "lib/wp8/XLabs.Platform.WinRT.winmd",
+        "lib/wp8/XLabs.Platform.XML",
+        "lib/wp8/XLabs.Platform.dll",
+        "lib/wpa81/XLabs.Platform.WP8.XML",
+        "lib/wpa81/XLabs.Platform.WP8.dll",
+        "lib/wpa81/XLabs.Platform.WinRT.winmd",
+        "lib/wpa81/XLabs.Platform.XML",
+        "lib/wpa81/XLabs.Platform.dll",
+        "xlabs.platform.2.0.5782.nupkg.sha512",
+        "xlabs.platform.nuspec"
+      ]
+    },
+    "XLabs.Serialization/2.0.5782": {
+      "sha512": "lObYD+cpUv6pnUd9IsWYj5i0sSO8EUT60KaiDKxv2VHr1oAsNC37HpWcetGezYO2nfQN5AZzVtE8ENbYOqx2Dg==",
+      "type": "package",
+      "path": "xlabs.serialization/2.0.5782",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/Xamarin.iOS10/XLabs.Serialization.XML",
+        "lib/Xamarin.iOS10/XLabs.Serialization.dll",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Serialization.XML",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Serialization.dll",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Serialization.dll.CodeAnalysisLog.xml",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/XLabs.Serialization.dll.lastcodeanalysissucceeded",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/XLabs.Serialization.XML",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/XLabs.Serialization.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/XLabs.Serialization.dll.CodeAnalysisLog.xml",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/XLabs.Serialization.dll.lastcodeanalysissucceeded",
+        "xlabs.serialization.2.0.5782.nupkg.sha512",
+        "xlabs.serialization.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -4929,6 +5123,7 @@
       "Microsoft.Azure.Mobile.Client.SQLiteStore >= 4.1.1",
       "NETStandard.Library >= 2.0.3",
       "Sendgrid >= 9.10.0",
+      "XLabs.Forms >= 2.0.5782",
       "Xam.Plugins.Settings >= 3.1.1",
       "Xamarin.Forms >= 3.4.0.1008975",
       "Xfx.Controls >= 1.1.3"
@@ -5001,6 +5196,10 @@
             "target": "Package",
             "version": "[9.10.0, )"
           },
+          "XLabs.Forms": {
+            "target": "Package",
+            "version": "[2.0.5782, )"
+          },
           "Xam.Plugins.Settings": {
             "target": "Package",
             "version": "[3.1.1, )"
@@ -5021,5 +5220,67 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'ExifLib.PCL 1.0.1' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "ExifLib.PCL",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'XLabs.Core 2.0.5782' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "XLabs.Core",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'XLabs.Forms 2.0.5782' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "XLabs.Forms",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'XLabs.IoC 2.0.5782' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "XLabs.IoC",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'XLabs.Platform 2.0.5782' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "XLabs.Platform",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'XLabs.Serialization 2.0.5782' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "XLabs.Serialization",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    }
+  ]
 }

@@ -64,9 +64,15 @@ C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\bin\Deb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\bin\Debug\Microsoft.CSharp.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\bin\Debug\Mono.Security.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\bin\Debug\System.ServiceModel.Internals.pdb
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\bin\Debug\AsapTasks.dll.mdb
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\bin\Debug\Plugin.Settings.Abstractions.dll.mdb
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\bin\Debug\Plugin.Settings.dll.mdb
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\res\drawable\refresh24.png
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\bin\Debug\Mono.Android.Export.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\linksrc\AsapTasks.Android.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\linksrc\FormsViewGroup.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\linksrc\Mono.Android.pdb
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\linksrc\Mono.Android.Export.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\linksrc\mscorlib.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\linksrc\SendGrid.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\linksrc\System.Core.pdb
@@ -89,9 +95,6 @@ C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Deb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\linksrc\Microsoft.CSharp.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\linksrc\Mono.Security.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\linksrc\System.ServiceModel.Internals.pdb
-C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\bin\Debug\AsapTasks.dll.mdb
-C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\bin\Debug\Plugin.Settings.Abstractions.dll.mdb
-C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\bin\Debug\Plugin.Settings.dll.mdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\linksrc\AsapTasks.dll.mdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\linksrc\Plugin.Settings.Abstractions.dll.mdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\linksrc\Plugin.Settings.dll.mdb
@@ -101,6 +104,7 @@ C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Deb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\AsapTasks.Android.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\FormsViewGroup.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Microsoft.CSharp.pdb
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Mono.Android.Export.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Mono.Android.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Mono.Security.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\mscorlib.pdb

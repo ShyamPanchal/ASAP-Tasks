@@ -108,6 +108,7 @@ class MonoPackageManager_Resources {
 		/* We need to ensure that "AsapTasks.Android.dll" comes first in this list. */
 		"AsapTasks.Android.dll",
 		"AsapTasks.dll",
+		"ExifLib.dll",
 		"FormsViewGroup.dll",
 		"Microcharts.dll",
 		"Microcharts.Droid.dll",
@@ -163,6 +164,13 @@ class MonoPackageManager_Resources {
 		"Xamarin.Forms.Xaml.dll",
 		"Xfx.Controls.dll",
 		"Xfx.Controls.Droid.dll",
+		"XLabs.Core.dll",
+		"XLabs.Forms.dll",
+		"XLabs.Forms.Droid.dll",
+		"XLabs.Ioc.dll",
+		"XLabs.Platform.dll",
+		"XLabs.Platform.Droid.dll",
+		"XLabs.Serialization.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};

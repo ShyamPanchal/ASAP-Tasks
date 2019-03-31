@@ -21,6 +21,8 @@ namespace AsapTasks.Pages
 
         public ProjectObject selectedProject;
 
+        public int countOpen, countClosed;
+
 		public ProjectsHomePage ()
 		{
 			InitializeComponent ();
@@ -35,7 +37,9 @@ namespace AsapTasks.Pages
 
         protected async override void OnAppearing()
         {
-            if(App.developer.Id == null || App.developer.Id == string.Empty)
+            #region Getting developer
+
+            if (App.developer.Id == null || App.developer.Id == string.Empty)
             {
                 if(Settings.DeveloperId == string.Empty)
                 {
@@ -55,42 +59,15 @@ namespace AsapTasks.Pages
                 }
             }
 
+            #endregion
+
             text_userName.Text = App.developer.Name;
 
-            // Get Projects List 
-            _projects = new List<Project>();
+            #region Get Projects List 
 
-            _projectObjects = new List<ProjectObject>();
+            await fn_refreshData();
 
-            if (App.developer.Id != string.Empty)
-            {
-                List<Enrollment> enrollments = await App.enrollmentManager.GetEnrollmentFromIdAsync(App.developer.Id);
-                //List<Enrollment> enrollments = await App.enrollmentManager.GetAllEnrollments();
-
-                foreach (var x in enrollments)
-                {
-                    Project __project = await App.projectManager.GetProjectFromIdAsync(x.ProjectId);
-
-                    _projects.Add(__project);
-
-                    ProjectObject projectObject = new ProjectObject();
-
-                    projectObject.Name = __project.Name;
-
-                    if (__project.Description.Length <= 25)
-                    {
-                        projectObject.Description = __project.Description;
-                    }
-                    else
-                    {
-                        projectObject.Description = __project.Description.Substring(0, 22) + "...";
-                    }
-
-                    projectObject.Id = __project.Id;
-
-                    _projectObjects.Add(projectObject);
-                }
-            }
+            #endregion
 
             listview_projectList.ItemsSource = _projectObjects;
             listview_projectList.SelectionMode = ListViewSelectionMode.Single;
@@ -157,9 +134,12 @@ namespace AsapTasks.Pages
 
             _projectObjects = new List<ProjectObject>();
 
+            countOpen = countClosed = 0;
+
             if (App.developer.Id != string.Empty)
             {
-                List<Enrollment> enrollments = await App.enrollmentManager.GetEnrollmentFromIdAsync(App.developer.Id);                
+                List<Enrollment> enrollments = await App.enrollmentManager.GetEnrollmentFromIdAsync(App.developer.Id);
+                //List<Enrollment> enrollments = await App.enrollmentManager.GetAllEnrollments();
 
                 foreach (var x in enrollments)
                 {
@@ -169,24 +149,53 @@ namespace AsapTasks.Pages
 
                     ProjectObject projectObject = new ProjectObject();
 
-                    projectObject.Name = __project.Name;
-
-                    if (__project.Description.Length <= 25)
+                    if (__project.Description.Length <= 50)
                     {
                         projectObject.Description = __project.Description;
                     }
                     else
                     {
-                        projectObject.Description = __project.Description.Substring(0, 22) + "...";
+                        projectObject.Description = __project.Description.Substring(0, 47) + "...";
                     }
 
                     projectObject.Id = __project.Id;
+
+                    projectObject.CompletionStatus = __project.OpenStatus;
+
+                    projectObject.AcceptStatus = x.AcceptStatus;
+
+                    if (x.AcceptStatus)
+                    {
+                        if (__project.OpenStatus)
+                        {
+                            projectObject.Color = Color.White;
+                            projectObject.Name = __project.Name;
+                        }
+                        else
+                        {
+                            projectObject.Color = Color.WhiteSmoke;
+                            projectObject.Name = "[Closed] " + __project.Name;
+                        }
+                    }
+                    else
+                    {
+                        projectObject.Name = "[Invite] " + __project.Name;
+
+                        projectObject.Color = Color.FromHex("AFFFAF");
+                    }
+
+                    if (__project.OpenStatus)
+                        countOpen++;
+                    else
+                        countClosed++;
 
                     _projectObjects.Add(projectObject);
                 }
             }
 
             listview_projectList.ItemsSource = _projectObjects;
+
+            label_count.Text = countOpen + " open projects and " + countClosed + " closed projects";
         }
     }
 }

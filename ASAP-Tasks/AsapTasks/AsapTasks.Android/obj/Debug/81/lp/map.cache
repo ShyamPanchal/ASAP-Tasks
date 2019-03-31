@@ -1,4 +1,5 @@
 AsapTasks
+ExifLib
 FormsViewGroup
 Microcharts
 Microcharts.Droid
@@ -55,6 +56,13 @@ Xamarin.Forms.Platform
 Xamarin.Forms.Xaml
 Xfx.Controls
 Xfx.Controls.Droid
+XLabs.Core
+XLabs.Forms
+XLabs.Forms.Droid
+XLabs.Ioc
+XLabs.Platform
+XLabs.Platform.Droid
+XLabs.Serialization
 netstandard
 System.Collections
 System.Resources.ResourceManager

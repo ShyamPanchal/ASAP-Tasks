@@ -1,5 +1,6 @@
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\AsapTasks.Android.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\AsapTasks.dll
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\ExifLib.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\FormsViewGroup.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Java.Interop.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Microcharts.dll
@@ -11,6 +12,7 @@ C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Deb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Microsoft.Azure.Mobile.Client.SQLiteStore.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Microsoft.Extensions.Primitives.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Mono.Android.dll
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Mono.Android.Export.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\mscorlib.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Newtonsoft.Json.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\PCLCrypto.dll
@@ -66,6 +68,13 @@ C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Deb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Xamarin.Forms.Xaml.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Xfx.Controls.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Xfx.Controls.Droid.dll
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\XLabs.Core.dll
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\XLabs.Forms.dll
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\XLabs.Forms.Droid.dll
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\XLabs.Ioc.dll
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\XLabs.Platform.dll
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\XLabs.Platform.Droid.dll
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\XLabs.Serialization.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\netstandard.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\System.Data.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\System.Numerics.dll
@@ -107,3 +116,4 @@ C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Deb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\System.Runtime.InteropServices.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Mono.Security.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\System.ServiceModel.Internals.dll
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\System.Runtime.Serialization.Xml.dll

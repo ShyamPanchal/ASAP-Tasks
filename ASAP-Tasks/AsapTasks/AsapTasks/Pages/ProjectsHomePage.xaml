@@ -49,6 +49,7 @@
                 <StackLayout Grid.Row="1">
                     <StackLayout BackgroundColor="{StaticResource color_SpaceCadet}">
                         <Label
+                            x:Name="label_count"
                             Margin="5,0,5,5"
                             FontFamily="{StaticResource TextFont}"
                             FontSize="{StaticResource Font_XSmall}"
@@ -67,7 +68,10 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Frame Margin="1,5,1,5" CornerRadius="20">
+                                        <Frame
+                                            Margin="1,5,1,5"
+                                            BackgroundColor="{Binding Color}"
+                                            CornerRadius="20">
                                             <StackLayout>
                                                 <Label
                                                     FontFamily="{StaticResource TextFont}"
