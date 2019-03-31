@@ -123,6 +123,8 @@ class MonoPackageManager_Resources {
 		"PInvoke.Kernel32.dll",
 		"PInvoke.NCrypt.dll",
 		"PInvoke.Windows.Core.dll",
+		"Plugin.Settings.Abstractions.dll",
+		"Plugin.Settings.dll",
 		"SendGrid.dll",
 		"SkiaSharp.dll",
 		"SkiaSharp.Views.Android.dll",

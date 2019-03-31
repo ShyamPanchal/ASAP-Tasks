@@ -17,7 +17,7 @@ namespace AsapTasks.Pages {
     public partial class RegistrationPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xfx.XfxEntry entry_phone;
+        private global::Xfx.XfxEntry entry_email;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xfx.XfxEntry entry_name;
@@ -35,14 +35,18 @@ namespace AsapTasks.Pages {
         private global::Xamarin.Forms.Label button_login;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.ActivityIndicator activityIndicator;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(RegistrationPage));
-            entry_phone = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xfx.XfxEntry>(this, "entry_phone");
+            entry_email = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xfx.XfxEntry>(this, "entry_email");
             entry_name = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xfx.XfxEntry>(this, "entry_name");
             entry_password = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xfx.XfxEntry>(this, "entry_password");
             entry_confirmPassword = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xfx.XfxEntry>(this, "entry_confirmPassword");
             button_signup = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "button_signup");
             button_login = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "button_login");
+            activityIndicator = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ActivityIndicator>(this, "activityIndicator");
         }
     }
 }

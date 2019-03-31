@@ -17,7 +17,10 @@ namespace AsapTasks.Pages {
     public partial class MainPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xfx.XfxEntry entry_phone;
+        private global::Xamarin.Forms.Label label_error;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xfx.XfxEntry entry_email;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xfx.XfxEntry entry_password;
@@ -32,13 +35,18 @@ namespace AsapTasks.Pages {
         private global::Xamarin.Forms.Label button_register_now;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.ActivityIndicator activityIndicator;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MainPage));
-            entry_phone = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xfx.XfxEntry>(this, "entry_phone");
+            label_error = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "label_error");
+            entry_email = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xfx.XfxEntry>(this, "entry_email");
             entry_password = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xfx.XfxEntry>(this, "entry_password");
             button_login = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "button_login");
             button_forgot_password = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "button_forgot_password");
             button_register_now = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "button_register_now");
+            activityIndicator = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ActivityIndicator>(this, "activityIndicator");
         }
     }
 }

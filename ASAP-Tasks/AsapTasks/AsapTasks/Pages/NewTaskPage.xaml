@@ -15,6 +15,7 @@
                     VerticalOptions="StartAndExpand">
                     <StackLayout Margin="10,0,10,0">
                         <Label
+                            x:Name="text_Heading"
                             FontFamily="{StaticResource TitleFont}"
                             FontSize="{StaticResource Font_Large}"
                             HorizontalOptions="Fill"

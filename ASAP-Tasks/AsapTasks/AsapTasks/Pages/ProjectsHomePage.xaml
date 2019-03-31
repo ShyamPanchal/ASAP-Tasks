@@ -24,6 +24,7 @@
                     Orientation="Horizontal"
                     VerticalOptions="Fill">
                     <Label
+                        x:Name="text_userName"
                         Margin="20,5,0,5"
                         FontFamily="{StaticResource TitleFont}"
                         FontSize="{StaticResource Font_Large}"
@@ -44,55 +45,50 @@
                         WidthRequest="40" />
                 </StackLayout>
 
-                <ScrollView Grid.Row="1">
-                    <StackLayout>
-                        <StackLayout BackgroundColor="{StaticResource color_SpaceCadet}">
-                            <Label
-                                Margin="5,0,5,5"
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_XSmall}"
-                                HorizontalOptions="Fill"
-                                HorizontalTextAlignment="Center"
-                                Text="5 open projects and 7 closed projects"
-                                TextColor="{StaticResource color_White}" />
-                        </StackLayout>
-                        <StackLayout Margin="20,5,20,5">
-                            <!--  Main Content  -->
-                            <!--<Frame CornerRadius="20" BackgroundColor="{StaticResource color_GunMetal}">
-                            <StackLayout>
-                                <Label Text="Project Name" FontFamily="{StaticResource TextFont}" FontSize="{StaticResource Font_Medium}" TextColor="{StaticResource color_DimGray}"/>
-                                <Label Text="Project Descption: one complete line" FontFamily="{StaticResource TextFont}" FontSize="{StaticResource Font_Small}" TextColor="{StaticResource color_DimGray}"/>
-                            </StackLayout>
-                        </Frame>-->
-                            <ListView
-                                x:Name="listview_projectList"
-                                HasUnevenRows="True"
-                                SeparatorVisibility="None">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
-                                            <Frame Margin="1,5,1,5" CornerRadius="20">
-                                                <StackLayout>
-                                                    <Label
-                                                        FontFamily="{StaticResource TextFont}"
-                                                        FontSize="{StaticResource Font_Medium}"
-                                                        Text="Project Name"
-                                                        TextColor="{StaticResource color_SpaceCadet}" />
-                                                    <Label
-                                                        FontFamily="{StaticResource TextFont}"
-                                                        FontSize="{StaticResource Font_Small}"
-                                                        Text="Project Descption: one complete line"
-                                                        TextColor="{StaticResource color_DimGray}" />
-                                                </StackLayout>
-                                            </Frame>
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                            <!--  Main Content End  -->
-                        </StackLayout>
+                <!--<ScrollView Grid.Row="1">-->
+                <StackLayout Grid.Row="1">
+                    <StackLayout BackgroundColor="{StaticResource color_SpaceCadet}">
+                        <Label
+                            Margin="5,0,5,5"
+                            FontFamily="{StaticResource TextFont}"
+                            FontSize="{StaticResource Font_XSmall}"
+                            HorizontalOptions="Fill"
+                            HorizontalTextAlignment="Center"
+                            Text="5 open projects and 7 closed projects"
+                            TextColor="{StaticResource color_White}" />
                     </StackLayout>
-                </ScrollView>
+                    <StackLayout Margin="20,5,20,5">
+                        <ListView
+                            x:Name="listview_projectList"
+                            HasUnevenRows="True"
+                            IsPullToRefreshEnabled="True"
+                            SeparatorVisibility="None"
+                            VerticalOptions="Start">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame Margin="1,5,1,5" CornerRadius="20">
+                                            <StackLayout>
+                                                <Label
+                                                    FontFamily="{StaticResource TextFont}"
+                                                    FontSize="{StaticResource Font_Medium}"
+                                                    Text="{Binding Name}"
+                                                    TextColor="{StaticResource color_SpaceCadet}" />
+                                                <Label
+                                                    FontFamily="{StaticResource TextFont}"
+                                                    FontSize="{StaticResource Font_Small}"
+                                                    Text="{Binding Description}"
+                                                    TextColor="{StaticResource color_DimGray}" />
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <!--  Main Content End  -->
+                    </StackLayout>
+                </StackLayout>
+                <!--</ScrollView>-->
             </Grid>
 
             <StackLayout
@@ -121,6 +117,7 @@
                         Margin="5,5,20,5"
                         BackgroundColor="{StaticResource color_SpaceCadet}"
                         BorderRadius="20"
+                        Clicked="fn_NewProjectClicked"
                         HeightRequest="40"
                         HorizontalOptions="End"
                         Image="plus25.png"

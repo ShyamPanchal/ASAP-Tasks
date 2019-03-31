@@ -7,7 +7,6 @@ C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\net
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\Pages\NewIssuePage.xaml.g.cs
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\Pages\NewProjectPage.xaml.g.cs
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\Pages\NewTaskPage.xaml.g.cs
-C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\Pages\PhoneVerificationPage.xaml.g.cs
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\Pages\ProjectInvitePage.xaml.g.cs
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\Pages\ProjectsHomePage.xaml.g.cs
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\Pages\ProjectViewTabbedPage.xaml.g.cs
@@ -20,3 +19,4 @@ C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\net
 C:\Users\shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\AsapTasks.pdb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\AsapTasks.csprojAssemblyReference.cache
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\XamlC.stamp
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Release\netstandard2.0\Pages\EmailVerificationPage.xaml.g.cs

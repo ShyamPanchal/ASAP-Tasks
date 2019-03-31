@@ -18,6 +18,8 @@ C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Deb
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\PInvoke.Kernel32.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\PInvoke.NCrypt.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\PInvoke.Windows.Core.dll
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Plugin.Settings.Abstractions.dll
+C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\Plugin.Settings.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\SendGrid.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\SkiaSharp.dll
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks.Android\obj\Debug\81\android\assets\SkiaSharp.Views.Android.dll

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AsapTasks.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace AsapTasks.Pages
 	{
         bool _nameValid;
 
+        bool _isInEditMode;
+
         public NewIssuePage ()
 		{
 			InitializeComponent ();
@@ -23,16 +26,32 @@ namespace AsapTasks.Pages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            List<string> itemList = new List<string>();
-            itemList.Add("Incomplete");
-            itemList.Add("In Progress");
-            itemList.Add("Done");
 
             editor_description.Focused += fn_DescriptionFocused;
             editor_description.Unfocused += fn_DescriptionUnFocused;
 
             entry_name.Unfocused += fn_nameChanged;
             entry_name.TextChanged += fn_nameChanged;
+
+            if(App.selectedIssue == null)
+            {
+                _isInEditMode = false;
+                checkBox_status.Checked = false;
+                checkBox_status.IsEnabled = false;
+            }
+            else
+            {
+                _isInEditMode = true;
+                text_Heading.Text = "Edit Issue";
+                entry_name.Text = App.selectedIssue.Name;
+                label_description.IsVisible = true;
+                editor_description.Text = App.selectedIssue.Description;
+                checkBox_status.Checked = App.selectedIssue.CompletionStatus;
+
+                button_confirm.Text = "Save";
+
+                //button_delete.IsVisible = true;
+            }
         }
 
         public void fn_DescriptionFocused(object sender, EventArgs e)
@@ -63,14 +82,40 @@ namespace AsapTasks.Pages
 
                 if (_nameValid)
                 {
-                    // create task
-                    await DisplayAlert("New Issue", "Issue " + __name + " was created", "OK");
+                    if (_isInEditMode)
+                    {
+                        Issue issue = App.selectedIssue;
 
+                        issue.Name = __name;
+                        issue.Description = editor_description.Text;
+                        issue.CompletionStatus = checkBox_status.Checked;
+
+                        await App.issueManager.SaveIssueAsync(issue);
+
+                        await DisplayAlert("Issue Changes", "Issue " + __name + " was updated successfully", "OK");
+                    }
+                    else
+                    {
+                        Issue issue = new Issue();
+
+                        issue.Name = __name;
+                        issue.Description = editor_description.Text;
+                        issue.CompletionStatus = false;
+                        issue.ProjectId = App.selectedProject.Id;
+                        issue.DeveloperId = App.developer.Id;
+                        issue.EnrollmentId = (await App.enrollmentManager.GetEnrollmentFromBothIdAsync(App.developer.Id, App.selectedProject.Id)).Id;
+
+                        await App.issueManager.SaveIssueAsync(issue);
+
+                        await DisplayAlert("New Issue", "Issue " + __name + " was created", "OK");
+                    }
+                    App.selectedIssue = null;
                     await Navigation.PopAsync();
                 }
                 else
                 {
                     fn_nameChanged(entry_name, e);
+                    App.selectedIssue = null;
                     return;
                 }
             }

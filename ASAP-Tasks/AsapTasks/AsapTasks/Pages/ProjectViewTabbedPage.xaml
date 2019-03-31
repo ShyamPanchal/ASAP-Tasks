@@ -3,6 +3,7 @@
     x:Class="AsapTasks.Pages.ProjectViewTabbedPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
     xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
     BackgroundColor="{StaticResource color_White}">
     <!--  Pages can be added as references or inline  -->
@@ -14,73 +15,46 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
-            <ScrollView Grid.Row="0">
-                <StackLayout Margin="20,5,20,5">
-                    <Frame Margin="1,5,1,5" CornerRadius="20">
-                        <StackLayout>
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Medium}"
-                                Text="Task Name"
-                                TextColor="{StaticResource color_SpaceCadet}" />
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Small}"
-                                Text="Task Descption: one complete line"
-                                TextColor="{StaticResource color_DimGray}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame Margin="1,5,1,5" CornerRadius="20">
-                        <StackLayout>
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Medium}"
-                                Text="Task Name"
-                                TextColor="{StaticResource color_SpaceCadet}" />
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Small}"
-                                Text="Task Descption: one complete line"
-                                TextColor="{StaticResource color_DimGray}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame Margin="1,5,1,5" CornerRadius="20">
-                        <StackLayout>
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Medium}"
-                                Text="Task Name"
-                                TextColor="{StaticResource color_SpaceCadet}" />
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Small}"
-                                Text="Task Descption: one complete line"
-                                TextColor="{StaticResource color_DimGray}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame Margin="1,5,1,5" CornerRadius="20">
-                        <StackLayout>
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Medium}"
-                                Text="Task Name"
-                                TextColor="{StaticResource color_SpaceCadet}" />
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Small}"
-                                Text="Task Descption: one complete line"
-                                TextColor="{StaticResource color_DimGray}" />
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
-            </ScrollView>
+            <StackLayout Grid.Row="0" Margin="20,5,20,5">
+                <ListView
+                    x:Name="listview_tasksList"
+                    HasUnevenRows="True"
+                    IsPullToRefreshEnabled="True"
+                    SeparatorVisibility="None"
+                    VerticalOptions="Start">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                    Margin="1,5,1,5"
+                                    BackgroundColor="{Binding Color}"
+                                    CornerRadius="20">
+                                    <StackLayout>
+                                        <Label
+                                            FontFamily="{StaticResource TextFont}"
+                                            FontSize="{StaticResource Font_Medium}"
+                                            Text="{Binding Name}"
+                                            TextColor="{StaticResource color_SpaceCadet}" />
+                                        <Label
+                                            FontFamily="{StaticResource TextFont}"
+                                            FontSize="{StaticResource Font_Small}"
+                                            Text="{Binding Description}"
+                                            TextColor="{StaticResource color_DimGray}" />
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
             <StackLayout
                 Grid.Row="1"
                 BackgroundColor="{StaticResource color_SpaceCadet}"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Fill">
                 <Grid
-                    Margin="10,5,10,5"
+                    Margin="10,5,15,5"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
@@ -100,6 +74,7 @@
                         VerticalOptions="Center"
                         WidthRequest="40" />
                     <Label
+                        x:Name="tasks_ProjectName"
                         Grid.Column="1"
                         FontFamily="{StaticResource TitleFont}"
                         FontSize="{StaticResource Font_Large}"
@@ -130,66 +105,38 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
-            <ScrollView Grid.Row="0">
-                <StackLayout Margin="20,5,20,5">
-                    <Frame Margin="1,5,1,5" CornerRadius="20">
-                        <StackLayout>
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Medium}"
-                                Text="Issue Name"
-                                TextColor="{StaticResource color_SpaceCadet}" />
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Small}"
-                                Text="Issue Descption: one complete line"
-                                TextColor="{StaticResource color_DimGray}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame Margin="1,5,1,5" CornerRadius="20">
-                        <StackLayout>
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Medium}"
-                                Text="Issue Name"
-                                TextColor="{StaticResource color_SpaceCadet}" />
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Small}"
-                                Text="Issue Descption: one complete line"
-                                TextColor="{StaticResource color_DimGray}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame Margin="1,5,1,5" CornerRadius="20">
-                        <StackLayout>
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Medium}"
-                                Text="Issue Name"
-                                TextColor="{StaticResource color_SpaceCadet}" />
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Small}"
-                                Text="Issue Descption: one complete line"
-                                TextColor="{StaticResource color_DimGray}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame Margin="1,5,1,5" CornerRadius="20">
-                        <StackLayout>
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Medium}"
-                                Text="Issue Name"
-                                TextColor="{StaticResource color_SpaceCadet}" />
-                            <Label
-                                FontFamily="{StaticResource TextFont}"
-                                FontSize="{StaticResource Font_Small}"
-                                Text="Issue Descption: one complete line"
-                                TextColor="{StaticResource color_DimGray}" />
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
-            </ScrollView>
+            <StackLayout Grid.Row="0" Margin="20,5,20,5">
+                <ListView
+                    x:Name="listview_issuesList"
+                    HasUnevenRows="True"
+                    IsPullToRefreshEnabled="True"
+                    SeparatorVisibility="None"
+                    VerticalOptions="Start">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                    Margin="1,5,1,5"
+                                    BackgroundColor="{Binding BackgroundColor}"
+                                    CornerRadius="20">
+                                    <StackLayout>
+                                        <Label
+                                            FontFamily="{StaticResource TextFont}"
+                                            FontSize="{StaticResource Font_Medium}"
+                                            Text="{Binding Name}"
+                                            TextColor="{Binding TextColor}" />
+                                        <Label
+                                            FontFamily="{StaticResource TextFont}"
+                                            FontSize="{StaticResource Font_Small}"
+                                            Text="{Binding Description}"
+                                            TextColor="{Binding TextColor}" />
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
 
             <StackLayout
                 Grid.Row="1"
@@ -197,7 +144,7 @@
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Fill">
                 <Grid
-                    Margin="10,5,10,5"
+                    Margin="10,5,15,5"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
@@ -217,6 +164,7 @@
                         VerticalOptions="Center"
                         WidthRequest="40" />
                     <Label
+                        x:Name="issues_ProjectName"
                         Grid.Column="1"
                         FontFamily="{StaticResource TitleFont}"
                         FontSize="{StaticResource Font_Large}"
@@ -293,12 +241,12 @@
                             </Grid>
                         </Frame>
                     </Grid>
-                    <Label
+                    <!--<Label
                         FontFamily="{StaticResource TitleFont}"
                         FontSize="{StaticResource Font_MedLarge}"
                         HorizontalTextAlignment="Center"
                         Text="Other Possible Statistics"
-                        TextColor="{StaticResource color_SpaceCadet}" />
+                        TextColor="{StaticResource color_SpaceCadet}" />-->
                 </StackLayout>
             </ScrollView>
 
@@ -308,7 +256,7 @@
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Fill">
                 <Grid
-                    Margin="10,5,10,5"
+                    Margin="10,5,15,5"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
@@ -328,6 +276,7 @@
                         VerticalOptions="Center"
                         WidthRequest="40" />
                     <Label
+                        x:Name="insights_ProjectName"
                         Grid.Column="1"
                         FontFamily="{StaticResource TitleFont}"
                         FontSize="{StaticResource Font_Large}"
@@ -335,11 +284,22 @@
                         Text="Project Name"
                         TextColor="{StaticResource color_White}"
                         VerticalOptions="Center" />
+                    <Button
+                        x:Name="btn_refresh"
+                        Grid.Column="2"
+                        BackgroundColor="{StaticResource color_SpaceCadet}"
+                        BorderRadius="17"
+                        Clicked="fn_refreshClicked"
+                        HeightRequest="34"
+                        HorizontalOptions="End"
+                        Image="refresh24.png"
+                        VerticalOptions="Center"
+                        WidthRequest="34" />
                 </Grid>
             </StackLayout>
         </Grid>
     </ContentPage>
-    <!--<ContentPage Title="Details">
+    <ContentPage Title="Details">
         <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
 
             <Grid.RowDefinitions>
@@ -348,7 +308,7 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <Label Text="Tasks Page" />
+                <Xfx:XfxComboBox x:Name="comboBox_email" Placeholder="Email Address" />
             </Grid>
 
             <StackLayout
@@ -377,6 +337,7 @@
                         VerticalOptions="Center"
                         WidthRequest="40" />
                     <Label
+                        x:Name="details_ProjectName"
                         Grid.Column="1"
                         FontFamily="{StaticResource TitleFont}"
                         FontSize="{StaticResource Font_Large}"
@@ -387,5 +348,5 @@
                 </Grid>
             </StackLayout>
         </Grid>
-    </ContentPage>-->
+    </ContentPage>
 </TabbedPage>

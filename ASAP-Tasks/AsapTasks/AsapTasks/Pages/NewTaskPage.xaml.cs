@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AsapTasks.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace AsapTasks.Pages
 	{
         bool _nameValid;
 
+        bool _isInEditMode;
+
 		public NewTaskPage ()
 		{
 			InitializeComponent ();
@@ -23,12 +26,8 @@ namespace AsapTasks.Pages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            List<string> itemList = new List<string>();
-            itemList.Add("Incomplete");
-            itemList.Add("In Progress");
-            itemList.Add("Done");
 
-            picker_status.ItemsSource = itemList;
+            picker_status.ItemsSource = Constants.taskStatus;
 
             editor_description.Focused += fn_DescriptionFocused;
             editor_description.Unfocused += fn_DescriptionUnFocused;
@@ -40,6 +39,30 @@ namespace AsapTasks.Pages
 
             entry_name.Unfocused += fn_nameChanged;
             entry_name.TextChanged += fn_nameChanged;
+
+            if (App.selectedTask == null)
+            {
+                _isInEditMode = false;
+            }
+            else
+            {
+                _isInEditMode = true;
+                text_Heading.Text = "Edit Task";
+                entry_name.Text = App.selectedTask.Name;
+                label_description.IsVisible = true;
+                editor_description.Text = App.selectedTask.Description;
+                for(int i = 0; i < Constants.taskStatus.Length; i++)
+                {
+                    if(Constants.taskStatus[i] == App.selectedTask.CompletionStatus)
+                    {
+                        picker_status.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                button_confirm.Text = "Save";
+                //button_delete.IsVisible = true;
+            }
         }
 
         public void fn_DescriptionFocused(object sender, EventArgs e)
@@ -66,6 +89,7 @@ namespace AsapTasks.Pages
 
         public async void fn_cancelClicked(object sender, EventArgs e)
         {
+            App.selectedTask = null;
             await Navigation.PopAsync();
         }
 
@@ -80,15 +104,39 @@ namespace AsapTasks.Pages
 
                 if (_nameValid)
                 {
-                    // create task
-                    await DisplayAlert("New Task", "Task " + __name + " was created", "OK");
+                    if (_isInEditMode)
+                    {
+                        App.selectedTask.Name = __name;
+                        App.selectedTask.Description = editor_description.Text;
+                        App.selectedTask.CompletionStatus = picker_status.SelectedItem.ToString();
 
+                        await App.projectTaskManager.SaveProjectTaskAsync(App.selectedTask);
+
+                        await DisplayAlert("Task Changes", "Task " + __name + " was updated successfully", "OK");
+                    }
+                    else
+                    {
+                        ProjectTask task = new ProjectTask();
+
+                        task.Name = __name;
+                        task.Description = editor_description.Text;
+                        task.CompletionStatus = picker_status.SelectedItem.ToString();
+                        task.ProjectId = App.selectedProject.Id;
+                        task.DeveloperId = App.developer.Id;
+                        task.EnrollmentId = (await App.enrollmentManager.GetEnrollmentFromBothIdAsync(App.developer.Id, App.selectedProject.Id)).Id;
+
+                        await App.projectTaskManager.SaveProjectTaskAsync(task);
+
+                        await DisplayAlert("New Task", "Task " + __name + " was created", "OK");
+                    }
+
+                    App.selectedTask = null;
                     await Navigation.PopAsync();
                 }
                 else
                 {
                     fn_nameChanged(entry_name, e);
-                    return;
+                    App.selectedTask = null;
                 }
             }
             catch (Exception ex)

@@ -1,9 +1,12 @@
-﻿using System;
+﻿using AsapTasks.Data;
+using AsapTasks.Managers;
+using AsapTasks.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,7 +15,11 @@ namespace AsapTasks.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProjectsHomePage : ContentPage
 	{
-        List<string> demoList;
+        private List<Project> _projects;
+
+        public List<ProjectObject> _projectObjects;
+
+        public ProjectObject selectedProject;
 
 		public ProjectsHomePage ()
 		{
@@ -21,17 +28,74 @@ namespace AsapTasks.Pages
 
             listview_projectList.ItemSelected += fn_onItemSelected;
 
-            demoList = new List<string>();
-            demoList.Add("asdf");
-            demoList.Add("asdf");
-            demoList.Add("asdf");
-            demoList.Add("asdf");
-            demoList.Add("asdf");
-            demoList.Add("asdf");
-
-            listview_projectList.ItemsSource = demoList;
-
             listview_projectList.ItemTapped += fn_itemClicked;
+
+            listview_projectList.RefreshCommand = RefreshCommand;
+        }
+
+        protected async override void OnAppearing()
+        {
+            if(App.developer.Id == null || App.developer.Id == string.Empty)
+            {
+                if(Settings.DeveloperId == string.Empty)
+                {
+                    // Error !!
+                    Settings.DeveloperId = string.Empty;
+
+                    App.developer = new Developer();
+
+                    await Navigation.PushAsync(new MainPage());
+                    Navigation.RemovePage(this);
+                }
+                else
+                {
+                    Developer developer = await App.developerManager.GetDeveloperFromIdAsync(Settings.DeveloperId);
+
+                    App.developer = developer;
+                }
+            }
+
+            text_userName.Text = App.developer.Name;
+
+            // Get Projects List 
+            _projects = new List<Project>();
+
+            _projectObjects = new List<ProjectObject>();
+
+            if (App.developer.Id != string.Empty)
+            {
+                List<Enrollment> enrollments = await App.enrollmentManager.GetEnrollmentFromIdAsync(App.developer.Id);
+                //List<Enrollment> enrollments = await App.enrollmentManager.GetAllEnrollments();
+
+                foreach (var x in enrollments)
+                {
+                    Project __project = await App.projectManager.GetProjectFromIdAsync(x.ProjectId);
+
+                    _projects.Add(__project);
+
+                    ProjectObject projectObject = new ProjectObject();
+
+                    projectObject.Name = __project.Name;
+
+                    if (__project.Description.Length <= 25)
+                    {
+                        projectObject.Description = __project.Description;
+                    }
+                    else
+                    {
+                        projectObject.Description = __project.Description.Substring(0, 22) + "...";
+                    }
+
+                    projectObject.Id = __project.Id;
+
+                    _projectObjects.Add(projectObject);
+                }
+            }
+
+            listview_projectList.ItemsSource = _projectObjects;
+            listview_projectList.SelectionMode = ListViewSelectionMode.Single;
+
+            base.OnAppearing();
         }
 
         public void fn_onItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -40,17 +104,89 @@ namespace AsapTasks.Pages
             {
                 return;
             }
-            listview_projectList.SelectedItem = null;           
+            selectedProject = listview_projectList.SelectedItem as ProjectObject;
         }
 
         private async void fn_logoutClicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            Settings.DeveloperId = string.Empty;
+
+            App.developer = new Developer();
+
+            await Navigation.PushAsync(new MainPage());
+            Navigation.RemovePage(this);
         }
 
         private async void fn_itemClicked(object sender, EventArgs e)
         {
+            foreach(var p in _projects)
+            {
+                if(p.Id == selectedProject.Id)
+                {
+                    App.selectedProject = p;
+                    break;
+                }
+            }
+            
             await Navigation.PushAsync(new ProjectViewTabbedPage());
+        }
+
+        public async void fn_NewProjectClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewProjectPage());
+        }
+
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    listview_projectList.IsRefreshing = true;
+
+                    await fn_refreshData();
+
+                    listview_projectList.IsRefreshing = false;
+                });
+            }
+        }
+
+        public async Task fn_refreshData()
+        {
+            _projects = new List<Project>();
+
+            _projectObjects = new List<ProjectObject>();
+
+            if (App.developer.Id != string.Empty)
+            {
+                List<Enrollment> enrollments = await App.enrollmentManager.GetEnrollmentFromIdAsync(App.developer.Id);                
+
+                foreach (var x in enrollments)
+                {
+                    Project __project = await App.projectManager.GetProjectFromIdAsync(x.ProjectId);
+
+                    _projects.Add(__project);
+
+                    ProjectObject projectObject = new ProjectObject();
+
+                    projectObject.Name = __project.Name;
+
+                    if (__project.Description.Length <= 25)
+                    {
+                        projectObject.Description = __project.Description;
+                    }
+                    else
+                    {
+                        projectObject.Description = __project.Description.Substring(0, 22) + "...";
+                    }
+
+                    projectObject.Id = __project.Id;
+
+                    _projectObjects.Add(projectObject);
+                }
+            }
+
+            listview_projectList.ItemsSource = _projectObjects;
         }
     }
 }

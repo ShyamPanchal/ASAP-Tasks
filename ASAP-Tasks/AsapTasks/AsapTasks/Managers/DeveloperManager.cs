@@ -129,6 +129,26 @@ namespace AsapTasks.Managers
             return null;
         }
 
+        public async Task<Developer> GetDeveloperFromIdAsync(string developerId)
+        {
+            try
+            {
+                IEnumerable<Developer> items = await devTable
+                    .Where(x => x.Id == developerId).ToEnumerableAsync();
+
+                return items.FirstOrDefault();
+            }
+            catch (MobileServiceInvalidOperationException msioe)
+            {
+                Debug.WriteLine("Invalid sync operation: {0}", new[] { msioe.Message });
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Sync error: {0}", new[] { e.Message });
+            }
+            return null;
+        }
+
         public async Task<Developer> CheckDeveloperEmailAsync(string email, bool syncItems = false)
         {
             try

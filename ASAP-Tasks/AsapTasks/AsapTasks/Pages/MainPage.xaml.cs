@@ -128,6 +128,10 @@ namespace AsapTasks.Pages
                     }
                     else
                     {
+                        App.developer = developer;
+
+                        Settings.DeveloperId = developer.Id;
+
                         this.activityIndicator.IsRunning = false;
                         await Navigation.PushAsync(new ProjectsHomePage());
                     }

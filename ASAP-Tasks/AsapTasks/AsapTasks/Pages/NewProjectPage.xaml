@@ -1,12 +1,110 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AsapTasks.Pages.NewProjectPage">
+<ContentPage
+    x:Class="AsapTasks.Pages.NewProjectPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
+    BackgroundColor="{StaticResource color_SpaceCadet}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
+                <Frame
+                    Margin="20,20,20,5"
+                    BackgroundColor="{StaticResource color_White}"
+                    CornerRadius="25"
+                    VerticalOptions="StartAndExpand">
+                    <StackLayout Margin="10,0,10,0">
+                        <Label
+                            FontFamily="{StaticResource TitleFont}"
+                            FontSize="{StaticResource Font_Large}"
+                            HorizontalOptions="Fill"
+                            HorizontalTextAlignment="Center"
+                            Text="New Project"
+                            TextColor="{StaticResource color_SpaceCadet}" />
+                        <xfx:XfxEntry
+                            x:Name="entry_name"
+                            FontFamily="{StaticResource TextFont}"
+                            FontSize="{StaticResource Font_Small}"
+                            Placeholder="Project Name:"
+                            PlaceholderColor="{StaticResource color_DimGray}"
+                            TextColor="{StaticResource color_SpaceCadet}" />
+                        <Label
+                            x:Name="label_description"
+                            Margin="5,0,0,0"
+                            FontFamily="{StaticResource TitleFont}"
+                            FontSize="{StaticResource Font_XSmall}"
+                            HorizontalOptions="Fill"
+                            HorizontalTextAlignment="Start"
+                            IsVisible="False"
+                            Text="Project Description:"
+                            TextColor="{StaticResource color_DimGray}" />
+                        <Editor
+                            x:Name="editor_description"
+                            AutoSize="TextChanges"
+                            FontFamily="{StaticResource TextFont}"
+                            FontSize="{StaticResource Font_Small}"
+                            Placeholder="Project Description:"
+                            PlaceholderColor="{StaticResource color_DimGray}"
+                            TextColor="{StaticResource color_SpaceCadet}" />
+
+                        <StackLayout
+                            Margin="5,15,0,0"
+                            HorizontalOptions="Fill"
+                            Orientation="Horizontal">
+                            <Label
+                                x:Name="label_startDate"
+                                FontFamily="{StaticResource TitleFont}"
+                                FontSize="{StaticResource Font_XSmall}"
+                                HorizontalOptions="Start"
+                                Text="Starting Date:"
+                                TextColor="{StaticResource color_DimGray}"
+                                VerticalOptions="Center" />
+
+                            <!--  DateSelected="Picker_startDate_DateSelected"  -->
+                            <DatePicker
+                                x:Name="picker_startDate"
+                                Margin="0"
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Small}"
+                                Format="MMMM d, yyyy"
+                                HorizontalOptions="FillAndExpand"
+                                TextColor="{StaticResource color_SpaceCadet}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+
+                        <Grid Margin="0,20,0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button
+                                x:Name="button_cancel"
+                                Grid.Column="0"
+                                BackgroundColor="{StaticResource color_White}"
+                                BorderColor="{StaticResource color_SpaceCadet}"
+                                BorderRadius="25"
+                                BorderWidth="3"
+                                Clicked="fn_cancelClicked"
+                                FontFamily="{StaticResource TitleFont}"
+                                FontSize="{StaticResource Font_Medium}"
+                                HorizontalOptions="Fill"
+                                Text="Cancel"
+                                TextColor="{StaticResource color_SpaceCadet}" />
+                            <Button
+                                x:Name="button_confirm"
+                                Grid.Column="1"
+                                BackgroundColor="{StaticResource color_SpaceCadet}"
+                                BorderRadius="25"
+                                Clicked="fn_confirmClicked"
+                                FontFamily="{StaticResource TitleFont}"
+                                FontSize="{StaticResource Font_Medium}"
+                                HorizontalOptions="Fill"
+                                Text="Confirm"
+                                TextColor="{StaticResource color_White}" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

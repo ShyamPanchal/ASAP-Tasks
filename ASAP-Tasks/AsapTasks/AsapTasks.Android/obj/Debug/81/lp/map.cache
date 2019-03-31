@@ -14,6 +14,8 @@ PInvoke.BCrypt
 PInvoke.Kernel32
 PInvoke.NCrypt
 PInvoke.Windows.Core
+Plugin.Settings.Abstractions
+Plugin.Settings
 SendGrid
 SkiaSharp
 SkiaSharp.Views.Android
