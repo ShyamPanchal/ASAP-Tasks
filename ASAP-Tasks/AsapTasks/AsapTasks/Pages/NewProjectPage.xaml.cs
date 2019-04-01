@@ -15,6 +15,8 @@ namespace AsapTasks.Pages
 	{
         bool _nameValid;
 
+        bool _isInEditMode;
+
         public NewProjectPage ()
 		{
 			InitializeComponent();
@@ -30,6 +32,24 @@ namespace AsapTasks.Pages
 
             entry_name.Unfocused += fn_nameChanged;
             entry_name.TextChanged += fn_nameChanged;
+
+            if(App.selectedProject == null)
+            {
+                _isInEditMode = false;
+                checkBox_status.Checked = false;
+                checkBox_status.IsEnabled = false;
+            }
+            else
+            {
+                _isInEditMode = true;
+                label_heading.Text = "Edit Project Details";
+                entry_name.Text = App.selectedProject.Name;
+                picker_startDate.Date = DateTime.Parse(App.selectedProject.StartDate);
+                editor_description.Text = App.selectedProject.Description;
+                checkBox_status.Checked = !App.selectedProject.OpenStatus;
+
+                button_confirm.Text = "Save";
+            }
         }
 
         public void fn_nameChanged(object sender, EventArgs e)
@@ -85,26 +105,40 @@ namespace AsapTasks.Pages
 
                 if (_nameValid)
                 {
-                    Project project = new Project();
+                    if (_isInEditMode)
+                    {
+                        Project project = App.selectedProject;                        
+                        project.Name = __name;
+                        project.Description = editor_description.Text;
+                        project.OpenStatus = !checkBox_status.Checked;
+                        project.StartDate = picker_startDate.Date.ToShortDateString();
 
-                    project.Name = __name;
-                    project.Description = editor_description.Text;
-                    project.OpenStatus = true;
-                    project.StartDate = picker_startDate.Date.ToShortDateString();
+                        await App.projectManager.SaveProjectAsync(project);
 
-                    await App.projectManager.SaveProjectAsync(project);
+                        await DisplayAlert("Project Changes", "Project " + __name + " was updated successfully.", "OK");
+                    }
+                    else
+                    {
+                        Project project = new Project();
 
-                    Enrollment enrollment = new Enrollment();
-                    enrollment.AcceptStatus = true;
-                    enrollment.DeveloperId = App.developer.Id;
-                    enrollment.ProjectId = project.Id;
+                        project.Name = __name;
+                        project.Description = editor_description.Text;
+                        project.OpenStatus = true;
+                        project.StartDate = picker_startDate.Date.ToShortDateString();
 
-                    System.Diagnostics.Debug.WriteLine("Project: "+project.Id);
+                        await App.projectManager.SaveProjectAsync(project);
 
-                    await App.enrollmentManager.SaveEnrollmentAsync(enrollment);
+                        Enrollment enrollment = new Enrollment();
+                        enrollment.AcceptStatus = true;
+                        enrollment.DeveloperId = App.developer.Id;
+                        enrollment.ProjectId = project.Id;
 
-                    await DisplayAlert("New Project", "Project " + project.Name + " was created", "OK");
+                        System.Diagnostics.Debug.WriteLine("Project: " + project.Id);
 
+                        await App.enrollmentManager.SaveEnrollmentAsync(enrollment);
+
+                        await DisplayAlert("New Project", "Project " + project.Name + " was created", "OK");
+                    }
                     await Navigation.PopAsync();
                 }
                 else

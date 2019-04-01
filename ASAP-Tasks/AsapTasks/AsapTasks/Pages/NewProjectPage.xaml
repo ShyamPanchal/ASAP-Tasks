@@ -3,6 +3,7 @@
     x:Class="AsapTasks.Pages.NewProjectPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
     xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
     BackgroundColor="{StaticResource color_SpaceCadet}">
     <ContentPage.Content>
@@ -15,6 +16,7 @@
                     VerticalOptions="StartAndExpand">
                     <StackLayout Margin="10,0,10,0">
                         <Label
+                            x:Name="label_heading"
                             FontFamily="{StaticResource TitleFont}"
                             FontSize="{StaticResource Font_Large}"
                             HorizontalOptions="Fill"
@@ -71,6 +73,13 @@
                                 TextColor="{StaticResource color_SpaceCadet}"
                                 VerticalOptions="Center" />
                         </StackLayout>
+
+                        <controls:CheckBox
+                            x:Name="checkBox_status"
+                            DefaultText="Closed"
+                            FontName="{StaticResource TextFont}"
+                            FontSize="{StaticResource Font_Small}"
+                            TextColor="{StaticResource color_SpaceCadet}" />
 
                         <Grid Margin="0,20,0,10">
                             <Grid.ColumnDefinitions>

@@ -110,6 +110,7 @@ namespace AsapTasks.Pages
 
         public async void fn_NewProjectClicked(object sender, EventArgs e)
         {
+            App.selectedProject = null;
             await Navigation.PushAsync(new NewProjectPage());
         }
 

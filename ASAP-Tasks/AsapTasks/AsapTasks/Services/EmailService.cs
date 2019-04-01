@@ -45,5 +45,38 @@ namespace AsapTasks.Services
             System.Diagnostics.Debug.WriteLine("-------Email Response : " + response.Headers);
             System.Diagnostics.Debug.WriteLine("-------Email Response : " + response.Body);
         }
+
+        public static async Task SendEmail(Developer d, Project p, Developer sender)
+        {
+            EmailAddress recipient = new EmailAddress(d.Email, d.Name);
+            var msg = fn_CreateMessage(recipient, p, sender);
+            //msg.AddTo(new EmailAddress("test@example.com", "Test User"));
+            var response = await client.SendEmailAsync(msg);
+            System.Diagnostics.Debug.WriteLine("-------Email Response : " + response.StatusCode);
+            System.Diagnostics.Debug.WriteLine("-------Email Response : " + response.Headers);
+            System.Diagnostics.Debug.WriteLine("-------Email Response : " + response.Body);
+        }
+
+        private static SendGridMessage fn_CreateMessage(EmailAddress recipient, Project p, Developer sender)
+        {
+            var msg = new SendGridMessage();
+
+            msg.SetFrom(new EmailAddress("no-reply@asaptasks.com", "Asap Tasks"));
+
+            //var recipients = new List<EmailAddress>{
+            //    new EmailAddress("jeff@example.com", "Jeff Smith"),
+            //    new EmailAddress("anna@example.com", "Anna Lidman"),
+            //    new EmailAddress("peter@example.com", "Peter Saddow")
+            //};
+
+            msg.AddTo(recipient);
+
+            msg.SetSubject("Project Invite");
+
+            //msg.AddContent(MimeType.Text, "Your Verification Code is:");
+            //msg.AddContent(MimeType.Html, "<h2>" + "Your Verification Code is:" + "</h2><br>");
+            msg.AddContent(MimeType.Html, "<p>You have been Invited to Join the project <b>" + p.Name+"</b> by <b>" + sender.Name + "</b>. Open the app to view the invite!</p>");
+            return msg;
+        }
     }
 }

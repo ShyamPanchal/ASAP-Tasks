@@ -159,6 +159,21 @@ namespace AsapTasks.Managers
             return null;
         }
 
+        public async Task<Enrollment> CheckEnrollmentAsync(string projectId, string developerId)
+        {
+            try
+            {
+                Enrollment enrollment = (await enrollmentTable.Where(x => x.ProjectId == projectId).Where(x => x.DeveloperId == developerId).ToEnumerableAsync()).FirstOrDefault();
+
+                return enrollment;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex);
+            }
+            return null;
+        }
+
         /// <summary>
         /// Save Enrollment object
         /// </summary>

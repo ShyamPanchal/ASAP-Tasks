@@ -1,4 +1,5 @@
 ﻿using AsapTasks.Data;
+using AsapTasks.Services;
 using AsapTasks.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,11 @@ namespace AsapTasks.Pages
 
         #endregion
 
-        #region Insights Region
+        #region Details
+
+        List<Developer> projectDevelopers;
+        List<Developer> otherDevelopers;
+        List<MembersModel> members;
 
         #endregion
 
@@ -71,7 +76,7 @@ namespace AsapTasks.Pages
 
             listview_issuesList.RefreshCommand = IssueRefreshCommand;
 
-            #endregion
+            #endregion            
         }
 
         protected override async void OnAppearing()
@@ -100,45 +105,28 @@ namespace AsapTasks.Pages
 
             #region Details Page Section
 
-            // getting list of all developers
+            await fn_detailsRefreshData();
 
-            ObservableCollection<Developer> allDevelopers = await App.developerManager.GetDevelopersAsync();
+            #region Setting up Project Details
 
-            List<Enrollment> currentEnrollments = await App.enrollmentManager.GetEnrollmentFromProjectIdAsync(App.selectedProject.Id);
-
-            List<Developer> projectDevelopers = new List<Developer>();
-            List<Developer> otherDevelopers = new List<Developer>();
-            List<string> emails = new List<string>();
-            
-            foreach(var dev in allDevelopers)
-            {
-                bool devSelected = false;
-                foreach(var enr in currentEnrollments)
-                {
-                    if(enr.DeveloperId == dev.Id)
-                    {
-                        devSelected = true;
-                        projectDevelopers.Add(dev);
-                        break;
-                    }
-                }
-                if (!devSelected)
-                {
-                    otherDevelopers.Add(dev);
-                    emails.Add(dev.Email);
-                }
-            }
-
-            ComboBoxViewModel viewModel = new ComboBoxViewModel();
-
-            ComboBoxViewModel._emails = emails;
-
-            comboBox_email.BindingContext = viewModel;
-            //comboBox_email.ItemsSource = viewModel.EmailSuggestions;
-            //comboBox_email.SortingAlgorithm = viewModel.SortingAlgorithm;
-            //comboBox_email.Text = viewModel.EmailAddress;
+            det_name.Text = App.selectedProject.Name;
+            det_desc.Text = App.selectedProject.Description;
+            System.Diagnostics.Debug.WriteLine("=================> " + App.selectedProject.StartDate);
+            det_date.Text = DateTime.Parse(App.selectedProject.StartDate).ToLongDateString();
+            det_stat.Text = App.selectedProject.OpenStatus ? "Open" : "Closed";
 
             #endregion
+
+            listview_detailsList.RefreshCommand = DetailsRefreshCommand;
+
+            #endregion
+        }
+
+        public void fn_backClicked(object sender, EventArgs e)
+        {
+            base.OnBackButtonPressed();
+            App.selectedProject = null;
+            Navigation.PopAsync();
         }
 
         #region Tasks Region
@@ -258,8 +246,15 @@ namespace AsapTasks.Pages
 
         public async void fn_addTaskClicked(object sender, EventArgs e)
         {
-            App.selectedTask = null;
-            await Navigation.PushAsync(new NewTaskPage());
+            if (App.selectedProject.OpenStatus)
+            {
+                App.selectedTask = null;
+                await Navigation.PushAsync(new NewTaskPage());
+            }
+            else
+            {
+                await DisplayAlert("Closed Project", "Cannot add task to a closed project.", "OK");
+            }
         }
 
         #endregion
@@ -292,8 +287,15 @@ namespace AsapTasks.Pages
 
         public async void fn_addIssueClicked(object sender, EventArgs e)
         {
-            App.selectedIssue = null;
-            await Navigation.PushAsync(new NewIssuePage());
+            if (App.selectedProject.OpenStatus)
+            {
+                App.selectedIssue = null;
+                await Navigation.PushAsync(new NewIssuePage());
+            }
+            else
+            {
+                await DisplayAlert("Closed Project", "Cannot add issues to a closed project.", "OK");
+            }
         }
 
         public ICommand IssueRefreshCommand
@@ -302,11 +304,11 @@ namespace AsapTasks.Pages
             {
                 return new Command(async () =>
                 {
-                    listview_tasksList.IsRefreshing = true;
+                    listview_issuesList.IsRefreshing = true;
 
                     await fn_issuesRefreshData();
 
-                    listview_tasksList.IsRefreshing = false;
+                    listview_issuesList.IsRefreshing = false;
                 });
             }
         }
@@ -570,16 +572,135 @@ namespace AsapTasks.Pages
 
         public void fn_refreshClicked(object sender, EventArgs e)
         {
-
+            GenerateTasksChart();
+            GenerateIssuesChart();
         }
 
         #endregion
 
-        public void fn_backClicked(object sender, EventArgs e)
+        #region Details Region
+
+        public async void fn_detEditClicked(object sender, EventArgs e)
         {
-            base.OnBackButtonPressed();
-            App.selectedProject = null;
-            Navigation.PopAsync();
+            // Redirect to new Project Page
+            await Navigation.PushAsync(new NewProjectPage());
         }
+
+        public async void fn_inviteClicked(object sender, EventArgs e)
+        {
+            if(comboBox_email.Text == null || comboBox_email.Text == "")
+            {
+                return;
+            }
+            // check if developer exists
+            Developer dev = await App.developerManager.CheckDeveloperEmailAsync(comboBox_email.Text);
+            if(dev == null)
+            {
+                await DisplayAlert("No Developer found", "No Developer found with the email: \"" + comboBox_email.Text + "\"", "OK");
+            }
+            else
+            {
+                Enrollment enr = await App.enrollmentManager.CheckEnrollmentAsync(App.selectedProject.Id, dev.Id);
+
+                if (enr == null)
+                {
+
+                    Enrollment enrollment = new Enrollment();
+                    enrollment.AcceptStatus = false;
+                    enrollment.DeveloperId = dev.Id;
+                    enrollment.ProjectId = App.selectedProject.Id;
+
+                    await App.enrollmentManager.SaveEnrollmentAsync(enrollment);
+
+                    await EmailService.SendEmail(dev, App.selectedProject, App.developer);
+
+                    await DisplayAlert("Invite Sent", "Invite Sent to: \"" + comboBox_email.Text + "\"", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Invalid Request", "Memeber \"" + comboBox_email.Text + "\" is already in the project", "OK");
+                }
+            }
+        }
+
+        public ICommand DetailsRefreshCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    listview_detailsList.IsRefreshing = true;
+
+                    await fn_detailsRefreshData();
+
+                    listview_detailsList.IsRefreshing = false;
+                });
+            }
+        }
+
+        public async Task fn_detailsRefreshData()
+        {
+            #region Setting up auto-complete
+
+            members = new List<MembersModel>();
+
+            ObservableCollection<Developer> allDevelopers = await App.developerManager.GetDevelopersAsync();
+
+            List<Enrollment> currentEnrollments = await App.enrollmentManager.GetEnrollmentFromProjectIdAsync(App.selectedProject.Id);
+
+            projectDevelopers = new List<Developer>();
+            otherDevelopers = new List<Developer>();
+            List<string> emails = new List<string>();
+
+            foreach (var dev in allDevelopers)
+            {
+                bool devSelected = false;
+                foreach (var enr in currentEnrollments)
+                {
+                    if (enr.DeveloperId == dev.Id)
+                    {
+                        devSelected = true;
+                        projectDevelopers.Add(dev);
+
+                        MembersModel member = new MembersModel();
+                        member.Name = dev.Name;
+                        member.Status = enr.AcceptStatus ? "[Accepted]" : "[Pending]";
+                        if (enr.AcceptStatus)
+                        {
+                            member.Color = (Color)Application.Current.Resources["color_White"];
+                        }
+                        else
+                        {
+                            member.Color = (Color)Application.Current.Resources["color_Error"];
+                        }
+
+                        members.Add(member);
+
+                        break;
+                    }
+                }
+                if (!devSelected)
+                {
+                    otherDevelopers.Add(dev);
+                    emails.Add(dev.Email);
+                }
+            }
+
+            ComboBoxViewModel viewModel = new ComboBoxViewModel();
+
+            ComboBoxViewModel._emails = emails;
+
+            comboBox_email.BindingContext = viewModel;
+
+            #endregion
+
+            #region Generating List View Model            
+
+            listview_detailsList.ItemsSource = members;
+
+            #endregion 
+        }
+
+        #endregion
     }
 }

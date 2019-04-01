@@ -108,21 +108,28 @@ namespace AsapTasks.ViewModel
 
         private static void EmailAddressPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            var model = (ComboBoxViewModel)bindable;
-            // make sure we have the latest string.
-            var text = newvalue.ToString();
+            try
+            {
+                var model = (ComboBoxViewModel)bindable;
+                // make sure we have the latest string.
+                var text = newvalue.ToString();
 
-            // if the text is empty or already contains an @ symbol, don't update anything.
-            //if (string.IsNullOrEmpty(text) || text.Contains("@")) return;
-            if (string.IsNullOrEmpty(text)) return;
+                // if the text is empty or already contains an @ symbol, don't update anything.
+                //if (string.IsNullOrEmpty(text) || text.Contains("@")) return;
+                if (string.IsNullOrEmpty(text)) return;
 
-            // clear the old suggestions, you're starting over. This also can be more efficient, 
-            // I'll leave that for you to figure out.
-            model.EmailSuggestions.Clear();
+                // clear the old suggestions, you're starting over. This also can be more efficient, 
+                // I'll leave that for you to figure out.
+                model.EmailSuggestions.Clear();
 
-            // side note: for loops will add a tiny performance boost over foreach
-            for (var i = 0; i < _emails.Count; i++)
-                model.EmailSuggestions.Add($"{_emails[i]}");
+                // side note: for loops will add a tiny performance boost over foreach
+                for (var i = 0; i < _emails.Count; i++)
+                    model.EmailSuggestions.Add($"{_emails[i]}");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
         }
 
         public override void ValidateProperty([CallerMemberName]string propertyName = null)

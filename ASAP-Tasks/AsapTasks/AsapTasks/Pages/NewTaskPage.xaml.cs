@@ -62,6 +62,12 @@ namespace AsapTasks.Pages
 
                 button_confirm.Text = "Save";
                 frame_delete.IsVisible = true;
+
+                if (!App.selectedProject.OpenStatus)
+                {
+                    frame_delete.IsVisible = false;
+                    button_confirm.IsVisible = false;
+                }
             }
         }
 
@@ -136,7 +142,6 @@ namespace AsapTasks.Pages
                 else
                 {
                     fn_nameChanged(entry_name, e);
-                    App.selectedTask = null;
                 }
             }
             catch (Exception ex)
