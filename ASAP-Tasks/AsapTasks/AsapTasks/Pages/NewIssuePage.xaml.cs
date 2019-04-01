@@ -50,7 +50,7 @@ namespace AsapTasks.Pages
 
                 button_confirm.Text = "Save";
 
-                //button_delete.IsVisible = true;
+                frame_delete.IsVisible = true;
             }
         }
 
@@ -148,6 +148,19 @@ namespace AsapTasks.Pages
                 entry.ErrorText = "";
                 _nameValid = true;
             }
+        }
+
+        public async void fn_deleteClicked(object sender, EventArgs e)
+        {
+            string name = App.selectedIssue.Name;
+
+            await App.issueManager.DeleteAsync(App.selectedIssue);
+
+            App.selectedIssue = null;
+
+            await DisplayAlert("Delete Issue", "Task " + name + " successfully deleted !", "OK");
+
+            await Navigation.PopAsync();
         }
     }
 }

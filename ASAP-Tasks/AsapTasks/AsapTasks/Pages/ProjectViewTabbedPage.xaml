@@ -308,7 +308,12 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <Xfx:XfxComboBox x:Name="comboBox_email" Placeholder="Email Address" />
+                <Xfx:XfxComboBox
+                    x:Name="comboBox_email"
+                    ItemsSource="{Binding EmailSuggestions}"
+                    Placeholder="Email Address"
+                    SortingAlgorithm="{Binding SortingAlgorithm}"
+                    Text="{Binding EmailAddress}" />
             </Grid>
 
             <StackLayout

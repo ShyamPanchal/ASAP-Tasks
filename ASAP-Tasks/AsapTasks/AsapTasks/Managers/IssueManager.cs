@@ -158,5 +158,20 @@ namespace AsapTasks.Managers
                 Debug.WriteLine("Save error: {0}", new[] { e.Message });
             }
         }
+
+        public async Task DeleteAsync(Issue issue)
+        {
+            try
+            {
+                if (issue.Id != null)
+                {
+                    await issueTable.DeleteAsync(issue);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Save error: {0}", new[] { e.Message });
+            }
+        }
     }
 }

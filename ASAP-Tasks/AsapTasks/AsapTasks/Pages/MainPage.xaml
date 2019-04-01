@@ -82,6 +82,7 @@
                 </StackLayout>
             </Frame>
             <Frame
+                x:Name="frame_delete"
                 Margin="20,5,20,20"
                 BackgroundColor="{StaticResource color_White}"
                 CornerRadius="25"

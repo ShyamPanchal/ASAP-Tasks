@@ -78,6 +78,26 @@ namespace AsapTasks.Pages
         {
             base.OnAppearing();
 
+            #region Tasks Section
+
+            await fn_tasksRefreshData();
+
+            #endregion
+
+            #region Issues Section
+
+            await fn_issuesRefreshData();
+
+            #endregion
+
+            #region Pie Chart for Tasks Overview
+            GenerateTasksChart();
+            #endregion
+
+            #region Pie Chart for Issues Region
+            GenerateIssuesChart();
+            #endregion
+
             #region Details Page Section
 
             // getting list of all developers
@@ -114,31 +134,11 @@ namespace AsapTasks.Pages
             ComboBoxViewModel._emails = emails;
 
             comboBox_email.BindingContext = viewModel;
-            comboBox_email.ItemsSource = viewModel.EmailSuggestions;
-            comboBox_email.SortingAlgorithm = viewModel.SortingAlgorithm;
+            //comboBox_email.ItemsSource = viewModel.EmailSuggestions;
+            //comboBox_email.SortingAlgorithm = viewModel.SortingAlgorithm;
+            //comboBox_email.Text = viewModel.EmailAddress;
 
             #endregion
-
-            #region Tasks Section
-
-            await fn_tasksRefreshData();
-
-            #endregion
-
-            #region Issues Section
-
-            await fn_issuesRefreshData();
-
-            #endregion
-
-            #region Pie Chart for Tasks Overview
-            GenerateTasksChart();
-            #endregion
-
-            #region Pie Chart for Issues Region
-            GenerateIssuesChart();
-            #endregion
-
         }
 
         #region Tasks Region
@@ -258,6 +258,7 @@ namespace AsapTasks.Pages
 
         public async void fn_addTaskClicked(object sender, EventArgs e)
         {
+            App.selectedTask = null;
             await Navigation.PushAsync(new NewTaskPage());
         }
 
@@ -291,6 +292,7 @@ namespace AsapTasks.Pages
 
         public async void fn_addIssueClicked(object sender, EventArgs e)
         {
+            App.selectedIssue = null;
             await Navigation.PushAsync(new NewIssuePage());
         }
 
@@ -576,6 +578,8 @@ namespace AsapTasks.Pages
         public void fn_backClicked(object sender, EventArgs e)
         {
             base.OnBackButtonPressed();
+            App.selectedProject = null;
+            Navigation.PopAsync();
         }
     }
 }

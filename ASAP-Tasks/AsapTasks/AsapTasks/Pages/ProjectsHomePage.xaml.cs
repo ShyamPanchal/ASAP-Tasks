@@ -196,6 +196,7 @@ namespace AsapTasks.Pages
             listview_projectList.ItemsSource = _projectObjects;
 
             label_count.Text = countOpen + " open projects and " + countClosed + " closed projects";
+            label_count.HorizontalOptions = LayoutOptions.Center;
         }
     }
 }
