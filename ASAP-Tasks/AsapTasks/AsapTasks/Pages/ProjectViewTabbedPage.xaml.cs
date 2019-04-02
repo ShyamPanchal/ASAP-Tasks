@@ -85,13 +85,21 @@ namespace AsapTasks.Pages
 
             #region Tasks Section
 
+            this.tasks_activityIndicator.IsRunning = true;
+
             await fn_tasksRefreshData();
+
+            this.tasks_activityIndicator.IsRunning = false;
 
             #endregion
 
             #region Issues Section
 
+            this.tasks_activityIndicator.IsRunning = true;
+
             await fn_issuesRefreshData();
+
+            this.tasks_activityIndicator.IsRunning = false;
 
             #endregion
 
@@ -105,7 +113,11 @@ namespace AsapTasks.Pages
 
             #region Details Page Section
 
+            this.tasks_activityIndicator.IsRunning = true;
+
             await fn_detailsRefreshData();
+
+            this.tasks_activityIndicator.IsRunning = false;
 
             #region Setting up Project Details
 
@@ -592,10 +604,15 @@ namespace AsapTasks.Pages
             {
                 return;
             }
+
+            this.details_activityIndicator.IsRunning = true;
+
             // check if developer exists
             Developer dev = await App.developerManager.CheckDeveloperEmailAsync(comboBox_email.Text);
             if(dev == null)
             {
+                this.details_activityIndicator.IsRunning = false;
+
                 await DisplayAlert("No Developer found", "No Developer found with the email: \"" + comboBox_email.Text + "\"", "OK");
             }
             else
@@ -604,7 +621,6 @@ namespace AsapTasks.Pages
 
                 if (enr == null)
                 {
-
                     Enrollment enrollment = new Enrollment();
                     enrollment.AcceptStatus = false;
                     enrollment.DeveloperId = dev.Id;
@@ -614,10 +630,14 @@ namespace AsapTasks.Pages
 
                     await EmailService.SendEmail(dev, App.selectedProject, App.developer);
 
+                    this.details_activityIndicator.IsRunning = false;
+
                     await DisplayAlert("Invite Sent", "Invite Sent to: \"" + comboBox_email.Text + "\"", "OK");
                 }
                 else
                 {
+                    this.details_activityIndicator.IsRunning = false;
+
                     await DisplayAlert("Invalid Request", "Memeber \"" + comboBox_email.Text + "\" is already in the project", "OK");
                 }
             }
@@ -667,7 +687,7 @@ namespace AsapTasks.Pages
                         member.Status = enr.AcceptStatus ? "[Accepted]" : "[Pending]";
                         if (enr.AcceptStatus)
                         {
-                            member.Color = (Color)Application.Current.Resources["color_White"];
+                            member.Color = (Color)Application.Current.Resources["color_SpaceCadet"];
                         }
                         else
                         {

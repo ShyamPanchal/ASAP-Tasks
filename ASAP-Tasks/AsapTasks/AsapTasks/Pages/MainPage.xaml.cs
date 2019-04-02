@@ -134,6 +134,7 @@ namespace AsapTasks.Pages
 
                         this.activityIndicator.IsRunning = false;
                         await Navigation.PushAsync(new ProjectsHomePage());
+                        Navigation.RemovePage(this);
                     }
                 }
                 else

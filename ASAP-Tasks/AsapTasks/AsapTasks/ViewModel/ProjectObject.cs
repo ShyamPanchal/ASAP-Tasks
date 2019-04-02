@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AsapTasks.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -18,5 +19,7 @@ namespace AsapTasks.ViewModel
         public bool AcceptStatus { get; set; }
 
         public Color Color { get; set; }
+
+        public Enrollment enrollment { get; set; }
     }
 }

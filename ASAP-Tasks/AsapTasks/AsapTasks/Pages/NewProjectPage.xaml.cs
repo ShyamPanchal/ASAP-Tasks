@@ -107,6 +107,8 @@ namespace AsapTasks.Pages
                 {
                     if (_isInEditMode)
                     {
+                        this.activityIndicator.IsRunning = true;
+
                         Project project = App.selectedProject;                        
                         project.Name = __name;
                         project.Description = editor_description.Text;
@@ -115,10 +117,14 @@ namespace AsapTasks.Pages
 
                         await App.projectManager.SaveProjectAsync(project);
 
+                        this.activityIndicator.IsRunning = false;
+
                         await DisplayAlert("Project Changes", "Project " + __name + " was updated successfully.", "OK");
                     }
                     else
                     {
+                        this.activityIndicator.IsRunning = true;
+
                         Project project = new Project();
 
                         project.Name = __name;
@@ -137,6 +143,8 @@ namespace AsapTasks.Pages
 
                         await App.enrollmentManager.SaveEnrollmentAsync(enrollment);
 
+                        this.activityIndicator.IsRunning = false;
+
                         await DisplayAlert("New Project", "Project " + project.Name + " was created", "OK");
                     }
                     await Navigation.PopAsync();
@@ -150,6 +158,7 @@ namespace AsapTasks.Pages
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex);
+                this.activityIndicator.IsRunning = false;
             }
         }
     }

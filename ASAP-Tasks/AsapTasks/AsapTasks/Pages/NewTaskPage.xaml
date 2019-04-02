@@ -6,126 +6,134 @@
     xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
     BackgroundColor="{StaticResource color_SpaceCadet}">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
-                <Frame
-                    Margin="20,20,20,5"
-                    BackgroundColor="{StaticResource color_White}"
-                    CornerRadius="25"
-                    VerticalOptions="Start">
-                    <StackLayout Margin="10,0,10,0">
-                        <Label
-                            x:Name="text_Heading"
-                            FontFamily="{StaticResource TitleFont}"
-                            FontSize="{StaticResource Font_Large}"
-                            HorizontalOptions="Fill"
-                            HorizontalTextAlignment="Center"
-                            Text="New Task"
-                            TextColor="{StaticResource color_SpaceCadet}" />
-                        <xfx:XfxEntry
-                            x:Name="entry_name"
-                            FontFamily="{StaticResource TextFont}"
-                            FontSize="{StaticResource Font_Small}"
-                            Placeholder="Task Name:"
-                            PlaceholderColor="{StaticResource color_DimGray}"
-                            TextColor="{StaticResource color_SpaceCadet}" />
-                        <Label
-                            x:Name="label_description"
-                            Margin="5,0,0,0"
-                            FontFamily="{StaticResource TitleFont}"
-                            FontSize="{StaticResource Font_XSmall}"
-                            HorizontalOptions="Fill"
-                            HorizontalTextAlignment="Start"
-                            IsVisible="False"
-                            Text="Task Description:"
-                            TextColor="{StaticResource color_DimGray}" />
-                        <Editor
-                            x:Name="editor_description"
-                            AutoSize="TextChanges"
-                            FontFamily="{StaticResource TextFont}"
-                            FontSize="{StaticResource Font_Small}"
-                            Placeholder="Task Description:"
-                            PlaceholderColor="{StaticResource color_DimGray}"
-                            TextColor="{StaticResource color_SpaceCadet}" />
-
-                        <StackLayout
-                            Margin="5,15,0,0"
-                            HorizontalOptions="Fill"
-                            Orientation="Horizontal">
+        <Grid>
+            <ScrollView>
+                <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
+                    <Frame
+                        Margin="20,20,20,5"
+                        BackgroundColor="{StaticResource color_White}"
+                        CornerRadius="25"
+                        VerticalOptions="Start">
+                        <StackLayout Margin="10,0,10,0">
                             <Label
-                                x:Name="label_status"
+                                x:Name="text_Heading"
                                 FontFamily="{StaticResource TitleFont}"
-                                FontSize="{StaticResource Font_XSmall}"
-                                HorizontalOptions="Start"
-                                Text="Task Status:"
-                                TextColor="{StaticResource color_DimGray}"
-                                VerticalOptions="Center" />
-
-                            <Picker
-                                x:Name="picker_status"
-                                Title="Task Status"
-                                Margin="0"
+                                FontSize="{StaticResource Font_Large}"
+                                HorizontalOptions="Fill"
+                                HorizontalTextAlignment="Center"
+                                Text="New Task"
+                                TextColor="{StaticResource color_SpaceCadet}" />
+                            <xfx:XfxEntry
+                                x:Name="entry_name"
                                 FontFamily="{StaticResource TextFont}"
                                 FontSize="{StaticResource Font_Small}"
-                                HorizontalOptions="FillAndExpand"
-                                TextColor="{StaticResource color_SpaceCadet}"
-                                VerticalOptions="Center" />
-                        </StackLayout>
-
-                        <Grid Margin="0,20,0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Button
-                                x:Name="button_cancel"
-                                Grid.Column="0"
-                                BackgroundColor="{StaticResource color_White}"
-                                BorderColor="{StaticResource color_SpaceCadet}"
-                                BorderRadius="25"
-                                BorderWidth="3"
-                                Clicked="fn_cancelClicked"
-                                FontFamily="{StaticResource TitleFont}"
-                                FontSize="{StaticResource Font_Medium}"
-                                HorizontalOptions="Fill"
-                                Text="Cancel"
+                                Placeholder="Task Name:"
+                                PlaceholderColor="{StaticResource color_DimGray}"
                                 TextColor="{StaticResource color_SpaceCadet}" />
-                            <Button
-                                x:Name="button_confirm"
-                                Grid.Column="1"
-                                BackgroundColor="{StaticResource color_SpaceCadet}"
-                                BorderRadius="25"
-                                Clicked="fn_confirmClicked"
+                            <Label
+                                x:Name="label_description"
+                                Margin="5,0,0,0"
                                 FontFamily="{StaticResource TitleFont}"
-                                FontSize="{StaticResource Font_Medium}"
+                                FontSize="{StaticResource Font_XSmall}"
                                 HorizontalOptions="Fill"
-                                Text="Confirm"
-                                TextColor="{StaticResource color_White}" />
-                        </Grid>
-                    </StackLayout>
-                </Frame>
-                <Frame
-                    x:Name="frame_delete"
-                    Margin="20,5,20,20"
-                    BackgroundColor="{StaticResource color_White}"
-                    CornerRadius="25"
-                    HorizontalOptions="Fill"
-                    IsVisible="False"
-                    VerticalOptions="Start">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="fn_deleteClicked" />
-                    </Frame.GestureRecognizers>
-                    <Label
-                        x:Name="button_delete"
+                                HorizontalTextAlignment="Start"
+                                IsVisible="False"
+                                Text="Task Description:"
+                                TextColor="{StaticResource color_DimGray}" />
+                            <Editor
+                                x:Name="editor_description"
+                                AutoSize="TextChanges"
+                                FontFamily="{StaticResource TextFont}"
+                                FontSize="{StaticResource Font_Small}"
+                                Placeholder="Task Description:"
+                                PlaceholderColor="{StaticResource color_DimGray}"
+                                TextColor="{StaticResource color_SpaceCadet}" />
+
+                            <StackLayout
+                                Margin="5,15,0,0"
+                                HorizontalOptions="Fill"
+                                Orientation="Horizontal">
+                                <Label
+                                    x:Name="label_status"
+                                    FontFamily="{StaticResource TitleFont}"
+                                    FontSize="{StaticResource Font_XSmall}"
+                                    HorizontalOptions="Start"
+                                    Text="Task Status:"
+                                    TextColor="{StaticResource color_DimGray}"
+                                    VerticalOptions="Center" />
+
+                                <Picker
+                                    x:Name="picker_status"
+                                    Title="Task Status"
+                                    Margin="0"
+                                    FontFamily="{StaticResource TextFont}"
+                                    FontSize="{StaticResource Font_Small}"
+                                    HorizontalOptions="FillAndExpand"
+                                    TextColor="{StaticResource color_SpaceCadet}"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+
+                            <Grid Margin="0,20,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button
+                                    x:Name="button_cancel"
+                                    Grid.Column="0"
+                                    BackgroundColor="{StaticResource color_White}"
+                                    BorderColor="{StaticResource color_SpaceCadet}"
+                                    BorderRadius="25"
+                                    BorderWidth="3"
+                                    Clicked="fn_cancelClicked"
+                                    FontFamily="{StaticResource TitleFont}"
+                                    FontSize="{StaticResource Font_Medium}"
+                                    HorizontalOptions="Fill"
+                                    Text="Cancel"
+                                    TextColor="{StaticResource color_SpaceCadet}" />
+                                <Button
+                                    x:Name="button_confirm"
+                                    Grid.Column="1"
+                                    BackgroundColor="{StaticResource color_SpaceCadet}"
+                                    BorderRadius="25"
+                                    Clicked="fn_confirmClicked"
+                                    FontFamily="{StaticResource TitleFont}"
+                                    FontSize="{StaticResource Font_Medium}"
+                                    HorizontalOptions="Fill"
+                                    Text="Confirm"
+                                    TextColor="{StaticResource color_White}" />
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        x:Name="frame_delete"
+                        Margin="20,5,20,20"
                         BackgroundColor="{StaticResource color_White}"
-                        FontFamily="{StaticResource TextFont}"
-                        FontSize="{StaticResource Font_Small}"
-                        HorizontalOptions="Center"
-                        Text="Delete Task"
-                        TextColor="{StaticResource color_Error}"
-                        VerticalOptions="Center" />
-                </Frame>
-            </StackLayout>
-        </ScrollView>
+                        CornerRadius="25"
+                        HorizontalOptions="Fill"
+                        IsVisible="False"
+                        VerticalOptions="Start">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="fn_deleteClicked" />
+                        </Frame.GestureRecognizers>
+                        <Label
+                            x:Name="button_delete"
+                            BackgroundColor="{StaticResource color_White}"
+                            FontFamily="{StaticResource TextFont}"
+                            FontSize="{StaticResource Font_Small}"
+                            HorizontalOptions="Center"
+                            Text="Delete Task"
+                            TextColor="{StaticResource color_Error}"
+                            VerticalOptions="Center" />
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+            <ActivityIndicator
+                x:Name="activityIndicator"
+                HorizontalOptions="Center"
+                IsRunning="False"
+                VerticalOptions="Center"
+                Color="{StaticResource color_Mantis}" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

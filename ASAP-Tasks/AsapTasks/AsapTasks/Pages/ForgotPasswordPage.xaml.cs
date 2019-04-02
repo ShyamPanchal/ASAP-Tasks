@@ -32,8 +32,8 @@ namespace AsapTasks.Pages
 
         private int _verificationCode;
 
-        //private TimeSpan _maxTime = new TimeSpan(0, 3, 0);
-        private TimeSpan _maxTime = new TimeSpan(0, 0, 10);
+        private TimeSpan _maxTime = new TimeSpan(0, 3, 0);
+        //private TimeSpan _maxTime = new TimeSpan(0, 0, 10);
 
         #endregion
 

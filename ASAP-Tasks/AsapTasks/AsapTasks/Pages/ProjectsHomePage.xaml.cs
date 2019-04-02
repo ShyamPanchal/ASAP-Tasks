@@ -15,17 +15,22 @@ namespace AsapTasks.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProjectsHomePage : ContentPage
 	{
+        #region Private Variables
+
         private List<Project> _projects;
 
         public List<ProjectObject> _projectObjects;
 
-        public ProjectObject selectedProject;
+        private ProjectObject selectedProject;
 
-        public int countOpen, countClosed;
+        private int countOpen, countClosed;
 
-		public ProjectsHomePage ()
+        #endregion
+
+        public ProjectsHomePage ()
 		{
 			InitializeComponent ();
+
             NavigationPage.SetHasNavigationBar(this, false);
 
             listview_projectList.ItemSelected += fn_onItemSelected;
@@ -49,11 +54,16 @@ namespace AsapTasks.Pages
                     App.developer = new Developer();
 
                     await Navigation.PushAsync(new MainPage());
+
                     Navigation.RemovePage(this);
                 }
                 else
                 {
+                    this.activityIndicator.IsRunning = true;
+
                     Developer developer = await App.developerManager.GetDeveloperFromIdAsync(Settings.DeveloperId);
+
+                    this.activityIndicator.IsRunning = false;
 
                     App.developer = developer;
                 }
@@ -64,9 +74,11 @@ namespace AsapTasks.Pages
             text_userName.Text = App.developer.Name;
 
             #region Get Projects List 
+            this.activityIndicator.IsRunning = true;
 
             await fn_refreshData();
 
+            this.activityIndicator.IsRunning = false;
             #endregion
 
             listview_projectList.ItemsSource = _projectObjects;
@@ -91,6 +103,7 @@ namespace AsapTasks.Pages
             App.developer = new Developer();
 
             await Navigation.PushAsync(new MainPage());
+
             Navigation.RemovePage(this);
         }
 
@@ -104,13 +117,22 @@ namespace AsapTasks.Pages
                     break;
                 }
             }
-            
-            await Navigation.PushAsync(new ProjectViewTabbedPage());
+
+            if (selectedProject.enrollment.AcceptStatus)
+            {
+                await Navigation.PushAsync(new ProjectViewTabbedPage());
+            }
+            else
+            {
+                App.selectedEnrollment = selectedProject.enrollment;
+                await Navigation.PushAsync(new ProjectInvitePage());
+            }
         }
 
         public async void fn_NewProjectClicked(object sender, EventArgs e)
         {
             App.selectedProject = null;
+
             await Navigation.PushAsync(new NewProjectPage());
         }
 
@@ -140,7 +162,6 @@ namespace AsapTasks.Pages
             if (App.developer.Id != string.Empty)
             {
                 List<Enrollment> enrollments = await App.enrollmentManager.GetEnrollmentFromIdAsync(App.developer.Id);
-                //List<Enrollment> enrollments = await App.enrollmentManager.GetAllEnrollments();
 
                 foreach (var x in enrollments)
                 {
@@ -149,6 +170,8 @@ namespace AsapTasks.Pages
                     _projects.Add(__project);
 
                     ProjectObject projectObject = new ProjectObject();
+
+                    projectObject.enrollment = x;
 
                     if (__project.Description.Length <= 50)
                     {

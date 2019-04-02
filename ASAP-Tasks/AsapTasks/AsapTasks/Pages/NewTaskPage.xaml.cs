@@ -13,11 +13,15 @@ namespace AsapTasks.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NewTaskPage : ContentPage
 	{
-        bool _nameValid;
+        #region Private Variables
 
-        bool _isInEditMode;
+        private bool _nameValid;
 
-		public NewTaskPage ()
+        private bool _isInEditMode;
+
+        #endregion
+
+        public NewTaskPage ()
 		{
 			InitializeComponent ();
             NavigationPage.SetHasNavigationBar(this, false);
@@ -112,16 +116,22 @@ namespace AsapTasks.Pages
                 {
                     if (_isInEditMode)
                     {
+                        this.activityIndicator.IsRunning = true;
+
                         App.selectedTask.Name = __name;
                         App.selectedTask.Description = editor_description.Text;
                         App.selectedTask.CompletionStatus = picker_status.SelectedItem.ToString();
 
                         await App.projectTaskManager.SaveProjectTaskAsync(App.selectedTask);
 
+                        this.activityIndicator.IsRunning = false;
+
                         await DisplayAlert("Task Changes", "Task " + __name + " was updated successfully", "OK");
                     }
                     else
                     {
+                        this.activityIndicator.IsRunning = true;
+
                         ProjectTask task = new ProjectTask();
 
                         task.Name = __name;
@@ -133,6 +143,8 @@ namespace AsapTasks.Pages
 
                         await App.projectTaskManager.SaveProjectTaskAsync(task);
 
+                        this.activityIndicator.IsRunning = false;
+
                         await DisplayAlert("New Task", "Task " + __name + " was created", "OK");
                     }
 
@@ -142,11 +154,13 @@ namespace AsapTasks.Pages
                 else
                 {
                     fn_nameChanged(entry_name, e);
+                    return;
                 }
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex);
+                this.activityIndicator.IsRunning = false;
             }
         }
 

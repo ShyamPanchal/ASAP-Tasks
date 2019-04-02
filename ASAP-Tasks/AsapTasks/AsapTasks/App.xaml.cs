@@ -30,6 +30,8 @@ namespace AsapTasks
 
         public static Issue selectedIssue;
 
+        public static Enrollment selectedEnrollment;
+
         public App()
         {
             InitializeComponent();

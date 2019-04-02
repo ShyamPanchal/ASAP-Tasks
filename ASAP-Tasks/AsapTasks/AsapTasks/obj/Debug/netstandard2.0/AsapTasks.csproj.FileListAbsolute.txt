@@ -12,7 +12,6 @@ C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netst
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\Pages\ProjectsHomePage.xaml.g.cs
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\Pages\ProjectViewTabbedPage.xaml.g.cs
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\Pages\RegistrationPage.xaml.g.cs
-C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\Pages\ResetPasswordPage.xaml.g.cs
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\AsapTasks.csproj.CoreCompileInputs.cache
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\AsapTasks.AssemblyInfoInputs.cache
 C:\Users\Shyam\Desktop\ASAP-Tasks\ASAP-Tasks\AsapTasks\AsapTasks\obj\Debug\netstandard2.0\AsapTasks.AssemblyInfo.cs

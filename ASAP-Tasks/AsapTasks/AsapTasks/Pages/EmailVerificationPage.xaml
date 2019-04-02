@@ -100,6 +100,7 @@
                 IsRunning="False"
                 VerticalOptions="Center"
                 Color="{StaticResource color_Mantis}" />
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

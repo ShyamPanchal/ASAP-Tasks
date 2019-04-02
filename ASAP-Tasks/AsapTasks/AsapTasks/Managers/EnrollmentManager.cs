@@ -197,5 +197,20 @@ namespace AsapTasks.Managers
                 Debug.WriteLine("Save error: {0}", new[] { e.Message });
             }
         }
+
+        public async Task DeleteAsync(Enrollment enrollment)
+        {
+            try
+            {
+                if (enrollment.Id != null)
+                {
+                    await enrollmentTable.DeleteAsync(enrollment);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Save error: {0}", new[] { e.Message });
+            }
+        }
     }
 }

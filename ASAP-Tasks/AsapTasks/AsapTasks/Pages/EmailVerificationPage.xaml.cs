@@ -28,8 +28,8 @@ namespace AsapTasks.Pages
 
         private Developer developer;
 
-        //private TimeSpan _maxTime = new TimeSpan(0, 3, 0);
-        private TimeSpan _maxTime = new TimeSpan(0, 0, 10);
+        private TimeSpan _maxTime = new TimeSpan(0, 3, 0);
+        //private TimeSpan _maxTime = new TimeSpan(0, 0, 10);
         #endregion
 
         public EmailVerificationPage()
@@ -44,6 +44,8 @@ namespace AsapTasks.Pages
             base.OnAppearing();
 
             this.activityIndicator.IsRunning = true;
+
+            #region Task
 
             developerManager = DeveloperManager.DefaultManager;
 
@@ -63,6 +65,8 @@ namespace AsapTasks.Pages
             _isTimerStart = true;
 
             Device.StartTimer(TimeSpan.FromSeconds(1), fn_timeElapsed);
+
+            #endregion
 
             this.activityIndicator.IsRunning = false;
         }
@@ -122,6 +126,7 @@ namespace AsapTasks.Pages
         public async void fn_resendClicked(object sender, EventArgs e)
         {
             this.activityIndicator.IsRunning = true;
+
             await EmailService.SendEmail(developer, _verificationCode.ToString());
 
             label_error.IsVisible = false;
@@ -133,6 +138,7 @@ namespace AsapTasks.Pages
             Device.StartTimer(TimeSpan.FromSeconds(1), fn_timeElapsed);
 
             button_resend.IsVisible = false;
+
             this.activityIndicator.IsRunning = false;
         }
 

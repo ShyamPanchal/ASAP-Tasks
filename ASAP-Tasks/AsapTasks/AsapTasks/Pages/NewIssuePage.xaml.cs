@@ -13,9 +13,13 @@ namespace AsapTasks.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NewIssuePage : ContentPage
 	{
-        bool _nameValid;
+        #region Private Variables
 
-        bool _isInEditMode;
+        private bool _nameValid;
+
+        private bool _isInEditMode;
+
+        #endregion
 
         public NewIssuePage ()
 		{
@@ -90,6 +94,8 @@ namespace AsapTasks.Pages
                 {
                     if (_isInEditMode)
                     {
+                        this.activityIndicator.IsRunning = true;
+
                         Issue issue = App.selectedIssue;
 
                         issue.Name = __name;
@@ -98,10 +104,14 @@ namespace AsapTasks.Pages
 
                         await App.issueManager.SaveIssueAsync(issue);
 
+                        this.activityIndicator.IsRunning = false;
+
                         await DisplayAlert("Issue Changes", "Issue " + __name + " was updated successfully", "OK");
                     }
                     else
                     {
+                        this.activityIndicator.IsRunning = true;
+
                         Issue issue = new Issue();
 
                         issue.Name = __name;
@@ -112,6 +122,8 @@ namespace AsapTasks.Pages
                         issue.EnrollmentId = (await App.enrollmentManager.GetEnrollmentFromBothIdAsync(App.developer.Id, App.selectedProject.Id)).Id;
 
                         await App.issueManager.SaveIssueAsync(issue);
+
+                        this.activityIndicator.IsRunning = false;
 
                         await DisplayAlert("New Issue", "Issue " + __name + " was created", "OK");
                     }
@@ -127,6 +139,7 @@ namespace AsapTasks.Pages
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex);
+                this.activityIndicator.IsRunning = false;
             }
         }
 

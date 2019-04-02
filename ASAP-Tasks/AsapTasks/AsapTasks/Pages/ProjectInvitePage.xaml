@@ -1,12 +1,168 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AsapTasks.Pages.ProjectInvitePage">
+<ContentPage
+    x:Class="AsapTasks.Pages.ProjectInvitePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{StaticResource color_SpaceCadet}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <ScrollView>
+                <StackLayout HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Frame
+                        Margin="20,20,20,5"
+                        BackgroundColor="{StaticResource color_White}"
+                        CornerRadius="25"
+                        VerticalOptions="Start">
+                        <StackLayout Margin="10,0,10,0">
+                            <!--#region Section Project Details-->
+                            <Label
+                                FontFamily="{StaticResource TitleFont}"
+                                FontSize="{StaticResource Font_Large}"
+                                HorizontalOptions="Center"
+                                Text="Project Details"
+                                TextColor="{StaticResource color_SpaceCadet}" />
+                            <Grid Margin="0,10,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*" />
+                                    <ColumnDefinition Width="6*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!--#region Project Name-->
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    FontFamily="{StaticResource TitleFont}"
+                                    FontSize="{StaticResource Font_Small}"
+                                    HorizontalOptions="Start"
+                                    Text="Name: "
+                                    TextColor="{StaticResource color_SpaceCadet}" />
+
+                                <Label
+                                    x:Name="det_name"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontFamily="{StaticResource TextFont}"
+                                    FontSize="{StaticResource Font_Small}"
+                                    HorizontalOptions="StartAndExpand"
+                                    TextColor="{StaticResource color_Amazon}" />
+                                <!--#endregion-->
+
+                                <!--#region Description-->
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    FontFamily="{StaticResource TitleFont}"
+                                    FontSize="{StaticResource Font_Small}"
+                                    HorizontalOptions="Start"
+                                    Text="Description: "
+                                    TextColor="{StaticResource color_SpaceCadet}"
+                                    VerticalOptions="Start" />
+                                <Label
+                                    x:Name="det_desc"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    FontFamily="{StaticResource TextFont}"
+                                    FontSize="{StaticResource Font_Small}"
+                                    HorizontalOptions="StartAndExpand"
+                                    TextColor="{StaticResource color_Amazon}" />
+                                <!--#endregion-->
+
+                                <!--#region Start Date-->
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    FontFamily="{StaticResource TitleFont}"
+                                    FontSize="{StaticResource Font_Small}"
+                                    HorizontalOptions="Start"
+                                    Text="Start Date: "
+                                    TextColor="{StaticResource color_SpaceCadet}" />
+                                <Label
+                                    x:Name="det_date"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    FontFamily="{StaticResource TextFont}"
+                                    FontSize="{StaticResource Font_Small}"
+                                    HorizontalOptions="StartAndExpand"
+                                    TextColor="{StaticResource color_Amazon}" />
+                                <!--#endregion-->
+
+                                <!--#region Project Status-->
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    FontFamily="{StaticResource TitleFont}"
+                                    FontSize="{StaticResource Font_Small}"
+                                    HorizontalOptions="Start"
+                                    Text="Project Status: "
+                                    TextColor="{StaticResource color_SpaceCadet}" />
+                                <Label
+                                    x:Name="det_stat"
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    FontFamily="{StaticResource TextFont}"
+                                    FontSize="{StaticResource Font_Small}"
+                                    HorizontalOptions="StartAndExpand"
+                                    TextColor="{StaticResource color_Amazon}" />
+                                <!--#endregion-->
+
+                            </Grid>
+
+                            <!--#endregion-->
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        x:Name="frame_accept"
+                        Margin="20,5,20,5"
+                        BackgroundColor="{StaticResource color_Amazon}"
+                        CornerRadius="25"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Start">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="fn_acceptClicked" />
+                        </Frame.GestureRecognizers>
+                        <Label
+                            x:Name="button_accept"
+                            FontFamily="{StaticResource TextFont}"
+                            FontSize="{StaticResource Font_Small}"
+                            HorizontalOptions="Center"
+                            Text="Accept Invite"
+                            TextColor="{StaticResource color_White}"
+                            VerticalOptions="Center" />
+                    </Frame>
+                    <Frame
+                        x:Name="frame_delete"
+                        Margin="20,5,20,20"
+                        BackgroundColor="{StaticResource color_White}"
+                        CornerRadius="25"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Start">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="fn_declineClicked" />
+                        </Frame.GestureRecognizers>
+                        <Label
+                            x:Name="button_delete"
+                            BackgroundColor="{StaticResource color_White}"
+                            FontFamily="{StaticResource TextFont}"
+                            FontSize="{StaticResource Font_Small}"
+                            HorizontalOptions="Center"
+                            Text="Decline Invite"
+                            TextColor="{StaticResource color_Error}"
+                            VerticalOptions="Center" />
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+            <ActivityIndicator
+                x:Name="activityIndicator"
+                HorizontalOptions="Center"
+                IsRunning="False"
+                VerticalOptions="Center"
+                Color="{StaticResource color_Mantis}" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
