@@ -11,6 +11,8 @@ namespace AsapTasks.Managers
 {
     public partial class ProjectTaskManager
     {
+        #region Creating Service Client and Singleton Variable
+
         static ProjectTaskManager defaultInstance = new ProjectTaskManager();
         MobileServiceClient client;
 
@@ -68,6 +70,8 @@ namespace AsapTasks.Managers
         {
             get { return projectTaskTable is Microsoft.WindowsAzure.MobileServices.Sync.IMobileServiceSyncTable<ProjectTask>; }
         }
+
+        #endregion
 
         /// <summary>
         /// Get ProjectTask from ProjectTask Id
@@ -159,6 +163,11 @@ namespace AsapTasks.Managers
             }
         }
 
+        /// <summary>
+        /// Delete Project Task
+        /// </summary>
+        /// <param name="task"></param>
+        /// <returns></returns>
         public async Task DeleteAsync(ProjectTask task)
         {
             try

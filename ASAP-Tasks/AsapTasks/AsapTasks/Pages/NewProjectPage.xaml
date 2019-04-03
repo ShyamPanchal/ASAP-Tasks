@@ -7,9 +7,13 @@
     xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
     BackgroundColor="{StaticResource color_SpaceCadet}">
     <ContentPage.Content>
+
         <Grid>
+
+            <!--#region Content-->
             <ScrollView>
                 <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
+                    <!--#region Add/Edit Project Form-->
                     <Frame
                         Margin="20,20,20,5"
                         BackgroundColor="{StaticResource color_White}"
@@ -114,14 +118,21 @@
                             </Grid>
                         </StackLayout>
                     </Frame>
+                    <!--#endregion-->
                 </StackLayout>
             </ScrollView>
+            <!--#endregion-->
+
+            <!--#region Activity Indicator-->
             <ActivityIndicator
                 x:Name="activityIndicator"
                 HorizontalOptions="Center"
                 IsRunning="False"
                 VerticalOptions="Center"
                 Color="{StaticResource color_Mantis}" />
+            <!--#endregion-->
+
         </Grid>
+
     </ContentPage.Content>
 </ContentPage>

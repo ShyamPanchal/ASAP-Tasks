@@ -11,6 +11,8 @@ namespace AsapTasks.Managers
 {
     public partial class IssueManager
     {
+        #region Creating Service Client and Singleton Variable
+
         static IssueManager defaultInstance = new IssueManager();
         MobileServiceClient client;
 
@@ -68,6 +70,8 @@ namespace AsapTasks.Managers
         {
             get { return issueTable is Microsoft.WindowsAzure.MobileServices.Sync.IMobileServiceSyncTable<Issue>; }
         }
+
+        #endregion
 
         /// <summary>
         /// Get Issue from Issue Id
@@ -159,6 +163,11 @@ namespace AsapTasks.Managers
             }
         }
 
+        /// <summary>
+        /// Delete Issue
+        /// </summary>
+        /// <param name="issue"></param>
+        /// <returns></returns>
         public async Task DeleteAsync(Issue issue)
         {
             try

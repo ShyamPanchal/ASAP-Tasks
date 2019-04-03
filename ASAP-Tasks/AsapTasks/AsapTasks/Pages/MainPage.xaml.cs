@@ -19,6 +19,9 @@ namespace AsapTasks.Pages
         private DeveloperManager developerManager;
         #endregion
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MainPage()
         {
             InitializeComponent();
@@ -34,6 +37,9 @@ namespace AsapTasks.Pages
             entry_password.TextChanged += fn_passwordChanged;
         }
 
+        /// <summary>
+        /// Function called when the Page Components are ready to be rendered
+        /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -42,6 +48,11 @@ namespace AsapTasks.Pages
             this.activityIndicator.IsRunning = false;
         }
 
+        /// <summary>
+        /// Function called when the email text is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_emailChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
@@ -76,6 +87,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when the password text is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_passwordChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
@@ -101,6 +117,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when the Login Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void fn_loginClicked(object sender, EventArgs e)
         {
             try
@@ -152,11 +173,21 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when the Forgot Password text is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void fn_forgotPassword(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ForgotPasswordPage());
         }
 
+        /// <summary>
+        /// Function called when the Register Now Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void fn_registerNow(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new RegistrationPage());

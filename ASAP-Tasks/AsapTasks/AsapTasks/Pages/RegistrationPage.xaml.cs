@@ -23,6 +23,9 @@ namespace AsapTasks.Pages
         DeveloperManager developerManager;
         #endregion
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public RegistrationPage()
         {
             InitializeComponent();
@@ -45,6 +48,9 @@ namespace AsapTasks.Pages
             entry_confirmPassword.TextChanged += fn_confirmPasswordChanged;
         }
 
+        /// <summary>
+        /// Function called when the page components are ready to be rendered
+        /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -53,6 +59,11 @@ namespace AsapTasks.Pages
             this.activityIndicator.IsRunning = false;
         }
 
+        /// <summary>
+        /// Function called when the Signup Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void fn_signupClicked(object sender, EventArgs e)
         {
             try
@@ -120,11 +131,21 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when the Login Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void fn_loginClicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
 
+        /// <summary>
+        /// Function called when the name text is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_nameChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
@@ -150,6 +171,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when email text is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_emailChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
@@ -184,6 +210,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when password text is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_passwordChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
@@ -222,6 +253,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when confirm password is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_confirmPasswordChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;

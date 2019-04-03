@@ -20,7 +20,7 @@ namespace AsapTasks.Pages
 
         string confirmButtonState;
 
-        bool _emailValid, _passwordsValid, _codeValid;
+        private bool _emailValid, _passwordsValid, _codeValid;
 
         private System.Diagnostics.Stopwatch _stopwatch;
 
@@ -37,6 +37,9 @@ namespace AsapTasks.Pages
 
         #endregion
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ForgotPasswordPage()
         {
             InitializeComponent();
@@ -65,6 +68,11 @@ namespace AsapTasks.Pages
             this.activityIndicator.IsRunning = false;
         }
 
+        /// <summary>
+        /// Function called when the Confirm Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void fn_confirmClicked(object sender, EventArgs e)
         {
             switch (confirmButtonState)
@@ -238,6 +246,10 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function to send an Email
+        /// </summary>
+        /// <returns></returns>
         private async Task fn_sendEmail()
         {
             Random random = new Random();
@@ -256,11 +268,21 @@ namespace AsapTasks.Pages
             Device.StartTimer(TimeSpan.FromSeconds(1), fn_timeElapsed);
         }
 
+        /// <summary>
+        /// Function called when the Cancel Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void fn_cancelClicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
 
+        /// <summary>
+        /// Function called when the Email Text is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_emailChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
@@ -295,6 +317,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function Called when the password text is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_passwordChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
@@ -333,6 +360,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when the confirm password text is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_confirmPasswordChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
@@ -366,6 +398,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when the code text is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_codeChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
@@ -396,6 +433,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when the Resend Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void fn_resendClicked(object sender, EventArgs e)
         {
             await EmailService.SendEmail(developer, _verificationCode.ToString());
@@ -411,6 +453,10 @@ namespace AsapTasks.Pages
             button_resend.IsVisible = false;
         }
 
+        /// <summary>
+        /// Function called to implement Time Text updation
+        /// </summary>
+        /// <returns></returns>
         private bool fn_timeElapsed()
         {
             Device.BeginInvokeOnMainThread(() =>

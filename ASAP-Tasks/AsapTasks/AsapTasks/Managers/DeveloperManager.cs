@@ -26,7 +26,10 @@ namespace AsapTasks.Managers
 {
     public partial class DeveloperManager
     {
+        #region Creating Service Client and Singleton Variable
+
         static DeveloperManager defaultInstance = new DeveloperManager();
+
         MobileServiceClient client;
 
 #if OFFLINE_SYNC_ENABLED
@@ -76,6 +79,13 @@ namespace AsapTasks.Managers
             get { return devTable is Microsoft.WindowsAzure.MobileServices.Sync.IMobileServiceSyncTable<Developer>; }
         }
 
+        #endregion
+
+        /// <summary>
+        /// Get All Developers
+        /// </summary>
+        /// <param name="syncItems"></param>
+        /// <returns></returns>
         public async Task<ObservableCollection<Developer>> GetDevelopersAsync(bool syncItems = false)
         {
             try
@@ -102,6 +112,13 @@ namespace AsapTasks.Managers
             return null;
         }
 
+        /// <summary>
+        /// Get Developer for login
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <param name="syncItems"></param>
+        /// <returns></returns>
         public async Task<Developer> GetDeveloperAsync(string email, string password, bool syncItems = false)
         {
             try
@@ -129,6 +146,11 @@ namespace AsapTasks.Managers
             return null;
         }
 
+        /// <summary>
+        /// Get Develper from Id
+        /// </summary>
+        /// <param name="developerId"></param>
+        /// <returns></returns>
         public async Task<Developer> GetDeveloperFromIdAsync(string developerId)
         {
             try
@@ -149,6 +171,12 @@ namespace AsapTasks.Managers
             return null;
         }
 
+        /// <summary>
+        /// Check and Get Developer from Email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="syncItems"></param>
+        /// <returns></returns>
         public async Task<Developer> CheckDeveloperEmailAsync(string email, bool syncItems = false)
         {
             try
@@ -176,6 +204,11 @@ namespace AsapTasks.Managers
             return null;
         }
 
+        /// <summary>
+        /// Save Developer
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public async Task<Constants.DataEntryErrors> SaveDeveloperAsync(Developer item)
         {
             try
@@ -206,6 +239,11 @@ namespace AsapTasks.Managers
             }
         }
 
+        /// <summary>
+        /// Check if an email is available or used
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public async Task<Constants.DataCheckErrors> CheckEmailAsync(string email)
         {
             try
@@ -226,6 +264,7 @@ namespace AsapTasks.Managers
             return Constants.DataCheckErrors.ERROR;
         }
 
+        #region If Offline Sync is enabled
 
 #if OFFLINE_SYNC_ENABLED
         public async Task SyncAsync()
@@ -272,5 +311,7 @@ namespace AsapTasks.Managers
             }
         }
 #endif
+
+        #endregion
     }
 }

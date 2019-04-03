@@ -12,6 +12,8 @@ namespace AsapTasks
 {
     public partial class App : Application
     {
+        #region Application Variables
+
         public static Developer developer;
 
         public static EnrollmentManager enrollmentManager;
@@ -32,6 +34,11 @@ namespace AsapTasks
 
         public static Enrollment selectedEnrollment;
 
+        #endregion
+
+        /// <summary>
+        /// Application Constructor
+        /// </summary>
         public App()
         {
             InitializeComponent();
@@ -55,6 +62,9 @@ namespace AsapTasks
 
         }
 
+        /// <summary>
+        /// Function Called when application starts
+        /// </summary>
         protected override void OnStart()
         {
             enrollmentManager = EnrollmentManager.DefaultManager;
@@ -66,16 +76,6 @@ namespace AsapTasks
             projectTaskManager = ProjectTaskManager.DefaultManager;
 
             issueManager = IssueManager.DefaultManager;
-        }
-
-        protected override void OnSleep()
-        {
-            // Handle when your app sleeps
-        }
-
-        protected override void OnResume()
-        {
-            // Handle when your app resumes
         }
     }
 }

@@ -16,7 +16,5 @@ namespace AsapTasks
 
             set => AppSetting.AddOrUpdateValue(nameof(DeveloperId), value);
         }
-
-        
     }
 }

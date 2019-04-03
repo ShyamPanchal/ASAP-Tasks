@@ -7,6 +7,7 @@
     BackgroundColor="{StaticResource color_SpaceCadet}">
     <ContentPage.Content>
         <Grid>
+            <!--#region Content-->
             <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
                 <Frame
                     Margin="20,20,20,5"
@@ -95,12 +96,16 @@
                         VerticalOptions="Center" />
                 </Frame>
             </StackLayout>
+            <!--#endregion-->
+
+            <!--#region Activity Indicator-->
             <ActivityIndicator
                 x:Name="activityIndicator"
                 HorizontalOptions="Center"
                 IsRunning="False"
                 VerticalOptions="Center"
                 Color="{StaticResource color_Mantis}" />
+            <!--#endregion-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

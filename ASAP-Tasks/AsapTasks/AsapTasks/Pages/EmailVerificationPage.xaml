@@ -7,12 +7,15 @@
     BackgroundColor="{StaticResource color_SpaceCadet}">
     <ContentPage.Content>
         <Grid>
+
+            <!--#region Content-->
             <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
                 <Frame
                     Margin="20,20,20,5"
                     BackgroundColor="{StaticResource color_White}"
                     CornerRadius="25">
                     <StackLayout Margin="10,0,10,0" Spacing="20">
+                        <!--#region  Email Verification Heading-->
                         <Label
                             FontFamily="{StaticResource TitleFont}"
                             FontSize="{StaticResource Font_Large}"
@@ -20,7 +23,9 @@
                             HorizontalTextAlignment="Center"
                             Text="Email Verification"
                             TextColor="{StaticResource color_SpaceCadet}" />
+                        <!--#endregion-->
 
+                        <!--#region  Email Verificaiton Instruction-->
                         <Label
                             FontFamily="{StaticResource TextFont}"
                             FontSize="{StaticResource Font_Small}"
@@ -28,7 +33,9 @@
                             HorizontalTextAlignment="Center"
                             Text="Please enter the code sent on the email id:"
                             TextColor="{StaticResource color_SpaceCadet}" />
+                        <!--#endregion-->
 
+                        <!--#region  Label to Show error-->
                         <Label
                             x:Name="label_error"
                             FontFamily="{StaticResource TextFont}"
@@ -38,7 +45,9 @@
                             IsVisible="False"
                             Text="Incorrect Code"
                             TextColor="{StaticResource color_Error}" />
+                        <!--#endregion-->
 
+                        <!--#region  Entry Field to enter Code-->
                         <xfx:XfxEntry
                             x:Name="entry_code"
                             FontFamily="{StaticResource TextFont}"
@@ -48,7 +57,9 @@
                             Keyboard="Numeric"
                             Placeholder="Code"
                             TextColor="{StaticResource color_SpaceCadet}" />
+                        <!--#endregion-->
 
+                        <!--#region  Timer to indicate how long since the user can ask to resend the code-->
                         <Label
                             x:Name="label_time"
                             FontFamily="{StaticResource TextFont}"
@@ -57,7 +68,9 @@
                             HorizontalTextAlignment="Center"
                             Text=""
                             TextColor="{StaticResource color_SpaceCadet}" />
+                        <!--#endregion-->
 
+                        <!--#region  Submit Button-->
                         <Button
                             x:Name="button_submit"
                             BackgroundColor="{StaticResource color_SpaceCadet}"
@@ -68,7 +81,9 @@
                             HorizontalOptions="Fill"
                             Text="Submit"
                             TextColor="{StaticResource color_White}" />
+                        <!--#endregion-->
 
+                        <!--#region  Resend Button-->
                         <Button
                             x:Name="button_resend"
                             BackgroundColor="{StaticResource color_SpaceCadet}"
@@ -80,8 +95,11 @@
                             IsVisible="False"
                             Text="Resend Code"
                             TextColor="{StaticResource color_White}" />
+                        <!--#endregion-->
                     </StackLayout>
                 </Frame>
+
+                <!--#region  Cancel Button-->
                 <Button
                     x:Name="button_cancel"
                     Margin="20,5,20,20"
@@ -93,13 +111,19 @@
                     HorizontalOptions="Fill"
                     Text="Cancel"
                     TextColor="{StaticResource color_SpaceCadet}" />
+                <!--#endregion-->
+
             </StackLayout>
+            <!--#endregion-->
+
+            <!--#region Activity Indicator-->
             <ActivityIndicator
                 x:Name="activityIndicator"
                 HorizontalOptions="Center"
                 IsRunning="False"
                 VerticalOptions="Center"
                 Color="{StaticResource color_Mantis}" />
+            <!--#endregion-->
 
         </Grid>
     </ContentPage.Content>

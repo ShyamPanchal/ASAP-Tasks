@@ -21,12 +21,18 @@ namespace AsapTasks.Pages
 
         #endregion
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public NewIssuePage ()
 		{
 			InitializeComponent ();
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
+        /// <summary>
+        /// Function called whent the page components are ready to be rendered
+        /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -64,6 +70,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when the description editor is Focused
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_DescriptionFocused(object sender, EventArgs e)
         {
             label_description.IsVisible = true;
@@ -71,16 +82,31 @@ namespace AsapTasks.Pages
             editor_description.Placeholder = "Issue Description";
         }
 
+        /// <summary>
+        /// Function called when the description editor is UnFocused
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_DescriptionUnFocused(object sender, EventArgs e)
         {
             label_description.TextColor = (Color)Application.Current.Resources["color_DimGray"];
         }
 
+        /// <summary>
+        /// Function called when the Cancel Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void fn_cancelClicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
 
+        /// <summary>
+        /// Function called when the Confirm Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void fn_confirmClicked(object sender, EventArgs e)
         {
             try
@@ -143,6 +169,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called whent the name text is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_nameChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
@@ -168,6 +199,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when the Delete Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void fn_deleteClicked(object sender, EventArgs e)
         {
             string name = App.selectedIssue.Name;

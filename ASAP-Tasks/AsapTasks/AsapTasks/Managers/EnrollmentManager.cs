@@ -11,6 +11,8 @@ namespace AsapTasks.Managers
 {
     public partial class EnrollmentManager
     {
+        #region Creating Service Client and Singleton Variable
+
         static EnrollmentManager defaultInstance = new EnrollmentManager();
         MobileServiceClient client;
 
@@ -68,6 +70,8 @@ namespace AsapTasks.Managers
         {
             get { return enrollmentTable is Microsoft.WindowsAzure.MobileServices.Sync.IMobileServiceSyncTable<Enrollment>; }
         }
+
+        #endregion
 
         /// <summary>
         /// Get Enrollment from Developer Id
@@ -144,6 +148,10 @@ namespace AsapTasks.Managers
             return null;
         }
 
+        /// <summary>
+        /// Get all Enrollments
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Enrollment>> GetAllEnrollments()
         {
             try
@@ -159,6 +167,12 @@ namespace AsapTasks.Managers
             return null;
         }
 
+        /// <summary>
+        /// Get Enrollment from projectId and developerId
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="developerId"></param>
+        /// <returns></returns>
         public async Task<Enrollment> CheckEnrollmentAsync(string projectId, string developerId)
         {
             try
@@ -198,6 +212,11 @@ namespace AsapTasks.Managers
             }
         }
 
+        /// <summary>
+        /// Delete Enreollment
+        /// </summary>
+        /// <param name="enrollment"></param>
+        /// <returns></returns>
         public async Task DeleteAsync(Enrollment enrollment)
         {
             try

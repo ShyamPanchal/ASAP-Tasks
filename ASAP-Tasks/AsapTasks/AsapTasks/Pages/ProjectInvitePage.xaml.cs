@@ -12,6 +12,9 @@ namespace AsapTasks.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProjectInvitePage : ContentPage
 	{
+        /// <summary>
+        /// Constructor
+        /// </summary>
 		public ProjectInvitePage ()
 		{
 			InitializeComponent ();
@@ -23,6 +26,11 @@ namespace AsapTasks.Pages
             det_stat.Text = App.selectedProject.OpenStatus ? "Open" : "Closed";
 		}
 
+        /// <summary>
+        /// Function called when decline button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void fn_declineClicked(object sender, EventArgs e)
         {
             this.activityIndicator.IsRunning = true;
@@ -35,6 +43,11 @@ namespace AsapTasks.Pages
             await Navigation.PopAsync();
         }
 
+        /// <summary>
+        /// Function called when accept button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void fn_acceptClicked(object sender, EventArgs e)
         {
             this.activityIndicator.IsRunning = true;

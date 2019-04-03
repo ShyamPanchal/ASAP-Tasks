@@ -13,22 +13,32 @@ namespace AsapTasks.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NewProjectPage : ContentPage
 	{
-        bool _nameValid;
+        #region Private Variables
 
-        bool _isInEditMode;
+        private bool _nameValid;
 
+        private bool _isInEditMode;
+
+        #endregion
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public NewProjectPage ()
 		{
 			InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
+        /// <summary>
+        /// Function called when the page components are ready to be rendered
+        /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            editor_description.Focused += fn_DescriptionFocused;
-            editor_description.Unfocused += fn_DescriptionUnFocused;
+            editor_description.Focused += fn_descriptionFocused;
+            editor_description.Unfocused += fn_descriptionUnFocused;
 
             entry_name.Unfocused += fn_nameChanged;
             entry_name.TextChanged += fn_nameChanged;
@@ -52,6 +62,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when the name text is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_nameChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
@@ -77,23 +92,43 @@ namespace AsapTasks.Pages
             }
         }
 
-        public void fn_DescriptionFocused(object sender, EventArgs e)
+        /// <summary>
+        /// Function called when the Description editor is Focused
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void fn_descriptionFocused(object sender, EventArgs e)
         {
             label_description.IsVisible = true;
             label_description.TextColor = (Color)Application.Current.Resources["color_Amazon"];
             editor_description.Placeholder = "Project Description";
         }
 
-        public void fn_DescriptionUnFocused(object sender, EventArgs e)
+        /// <summary>
+        /// Function called when the Description Editor is Unfocused
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void fn_descriptionUnFocused(object sender, EventArgs e)
         {
             label_description.TextColor = (Color)Application.Current.Resources["color_DimGray"];
         }
 
+        /// <summary>
+        /// Function called whent the Cancel button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void fn_cancelClicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
 
+        /// <summary>
+        /// Function called when the confirm button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void fn_confirmClicked(object sender, EventArgs e)
         {
             try

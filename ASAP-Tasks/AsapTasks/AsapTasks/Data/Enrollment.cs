@@ -8,12 +8,16 @@ namespace AsapTasks.Data
 {
     public class Enrollment
     {
+        #region Private Variables
+
         string id;
         bool acceptStatus;
-
         string developerId;
-
         string projectId;
+
+        #endregion
+
+        #region Json Properties
 
         [JsonProperty(PropertyName = "id")]
         public string Id
@@ -42,6 +46,8 @@ namespace AsapTasks.Data
             get { return projectId; }
             set { projectId = value; }
         }
+
+        #endregion
 
         [Version]
         public string Version { get; set; }

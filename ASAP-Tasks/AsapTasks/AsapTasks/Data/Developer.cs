@@ -6,11 +6,17 @@ namespace AsapTasks.Data
 {
     public class Developer
     {
+        #region Private Variables
+
         string id;
         string name;
         bool isVerified;
         string password;
         string email;
+
+        #endregion
+
+        #region JsonProperties
 
         [JsonProperty(PropertyName = "id")]
         public string Id
@@ -46,6 +52,8 @@ namespace AsapTasks.Data
             get { return email; }
             set { email = value; }
         }
+
+        #endregion
 
         [Version]
         public string Version { get; set; }

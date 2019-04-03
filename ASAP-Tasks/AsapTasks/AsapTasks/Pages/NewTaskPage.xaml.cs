@@ -21,12 +21,18 @@ namespace AsapTasks.Pages
 
         #endregion
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public NewTaskPage ()
 		{
 			InitializeComponent ();
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
+        /// <summary>
+        /// Function called when the page components are ready to be rendered
+        /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -75,6 +81,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when the description editor is Focused
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_DescriptionFocused(object sender, EventArgs e)
         {
             label_description.IsVisible = true;
@@ -82,27 +93,52 @@ namespace AsapTasks.Pages
             editor_description.Placeholder = "Task Description";
         }
 
+        /// <summary>
+        /// Function called when the description editor is Unfocused
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_DescriptionUnFocused(object sender, EventArgs e)
         {
             label_description.TextColor = (Color)Application.Current.Resources["color_DimGray"];
         }
 
+        /// <summary>
+        /// Function called when the Status is Focused
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_StatusFocused(object sender, EventArgs e)
         {
             label_status.TextColor = (Color)Application.Current.Resources["color_DimGray"];
         }
 
+        /// <summary>
+        /// Function called when the Status is Unfocused
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_StatusUnFocused(object sender, EventArgs e)
         {
             label_status.TextColor = (Color)Application.Current.Resources["color_DimGray"];
         }
 
+        /// <summary>
+        /// Function called when the Cancel Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void fn_cancelClicked(object sender, EventArgs e)
         {
             App.selectedTask = null;
             await Navigation.PopAsync();
         }
 
+        /// <summary>
+        /// Function called when Confirm Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void fn_confirmClicked(object sender, EventArgs e)
         {
             try
@@ -164,6 +200,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when name text is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_nameChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
@@ -189,6 +230,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when delete button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void fn_deleteClicked(object sender, EventArgs e)
         {
             string name = App.selectedTask.Name;

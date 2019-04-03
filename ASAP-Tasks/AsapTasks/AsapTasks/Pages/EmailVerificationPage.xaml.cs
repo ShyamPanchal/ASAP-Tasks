@@ -32,6 +32,9 @@ namespace AsapTasks.Pages
         //private TimeSpan _maxTime = new TimeSpan(0, 0, 10);
         #endregion
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public EmailVerificationPage()
         {
             InitializeComponent();
@@ -39,6 +42,9 @@ namespace AsapTasks.Pages
             _codeValid = false;
         }
 
+        /// <summary>
+        /// Function Called when Page Components are ready to be rendered
+        /// </summary>
         protected async override void OnAppearing()
         {
             base.OnAppearing();
@@ -71,6 +77,11 @@ namespace AsapTasks.Pages
             this.activityIndicator.IsRunning = false;
         }
 
+        /// <summary>
+        /// Function Called when submit button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void fn_submitClicked(object sender, EventArgs e)
         {
             try
@@ -123,6 +134,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when Resend Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void fn_resendClicked(object sender, EventArgs e)
         {
             this.activityIndicator.IsRunning = true;
@@ -142,6 +158,11 @@ namespace AsapTasks.Pages
             this.activityIndicator.IsRunning = false;
         }
 
+        /// <summary>
+        /// Function called when the entered code in entry field changes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_codeChanged(object sender, EventArgs e)
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
@@ -172,11 +193,20 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when Cancel Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void fn_cancelClicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
 
+        /// <summary>
+        /// Function to Implement Timer Text updation
+        /// </summary>
+        /// <returns></returns>
         private bool fn_timeElapsed()
         {
             Device.BeginInvokeOnMainThread(() =>

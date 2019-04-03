@@ -27,6 +27,9 @@ namespace AsapTasks.Pages
 
         #endregion
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ProjectsHomePage ()
 		{
 			InitializeComponent ();
@@ -40,6 +43,9 @@ namespace AsapTasks.Pages
             listview_projectList.RefreshCommand = RefreshCommand;
         }
 
+        /// <summary>
+        /// Function called when the page components are ready to be rendered
+        /// </summary>
         protected async override void OnAppearing()
         {
             #region Getting developer
@@ -87,6 +93,11 @@ namespace AsapTasks.Pages
             base.OnAppearing();
         }
 
+        /// <summary>
+        /// Function called when list item is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void fn_onItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if(e.SelectedItem == null)
@@ -96,6 +107,11 @@ namespace AsapTasks.Pages
             selectedProject = listview_projectList.SelectedItem as ProjectObject;
         }
 
+        /// <summary>
+        /// Function called when Logout Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void fn_logoutClicked(object sender, EventArgs e)
         {
             Settings.DeveloperId = string.Empty;
@@ -107,6 +123,11 @@ namespace AsapTasks.Pages
             Navigation.RemovePage(this);
         }
 
+        /// <summary>
+        /// Function called when List Item is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void fn_itemClicked(object sender, EventArgs e)
         {
             foreach(var p in _projects)
@@ -129,6 +150,11 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function called when New Project Button is Clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void fn_NewProjectClicked(object sender, EventArgs e)
         {
             App.selectedProject = null;
@@ -136,6 +162,9 @@ namespace AsapTasks.Pages
             await Navigation.PushAsync(new NewProjectPage());
         }
 
+        /// <summary>
+        /// Command to Refresh the List
+        /// </summary>
         public ICommand RefreshCommand
         {
             get
@@ -151,6 +180,10 @@ namespace AsapTasks.Pages
             }
         }
 
+        /// <summary>
+        /// Function that refreshed the List Data
+        /// </summary>
+        /// <returns></returns>
         public async Task fn_refreshData()
         {
             _projects = new List<Project>();

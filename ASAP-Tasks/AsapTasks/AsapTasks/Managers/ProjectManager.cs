@@ -11,6 +11,8 @@ namespace AsapTasks.Managers
 {
     public partial class ProjectManager
     {
+        #region Creating Service Client and Singleton Variable
+
         static ProjectManager defaultInstance = new ProjectManager();
         MobileServiceClient client;
 
@@ -68,6 +70,8 @@ namespace AsapTasks.Managers
         {
             get { return projectTable is Microsoft.WindowsAzure.MobileServices.Sync.IMobileServiceSyncTable<Project>; }
         }
+
+        #endregion
 
         /// <summary>
         /// Get Project from Project Id

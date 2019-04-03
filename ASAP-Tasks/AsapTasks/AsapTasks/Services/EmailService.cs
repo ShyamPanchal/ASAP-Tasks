@@ -10,9 +10,19 @@ namespace AsapTasks.Services
 {
     static class EmailService
     {
+        #region Private Variables
+
         private static string apiKey = Constants.SendGridApiKey;
         private static SendGridClient client = new SendGridClient(apiKey);
 
+        #endregion
+
+        /// <summary>
+        /// Function to Create a Message Object
+        /// </summary>
+        /// <param name="recipient"></param>
+        /// <param name="verificationCode"></param>
+        /// <returns></returns>
         private static SendGridMessage fn_CreateMessage(EmailAddress recipient, string verificationCode)
         {
             var msg = new SendGridMessage();
@@ -35,6 +45,12 @@ namespace AsapTasks.Services
             return msg;
         }
 
+        /// <summary>
+        /// Function to Email verification Code
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="verificationCode"></param>
+        /// <returns></returns>
         public static async Task SendEmail(Developer d, string verificationCode)
         {
             EmailAddress recipient = new EmailAddress(d.Email, d.Name);
@@ -46,6 +62,13 @@ namespace AsapTasks.Services
             System.Diagnostics.Debug.WriteLine("-------Email Response : " + response.Body);
         }
 
+        /// <summary>
+        /// Function to Email Invite
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="p"></param>
+        /// <param name="sender"></param>
+        /// <returns></returns>
         public static async Task SendEmail(Developer d, Project p, Developer sender)
         {
             EmailAddress recipient = new EmailAddress(d.Email, d.Name);
@@ -57,6 +80,13 @@ namespace AsapTasks.Services
             System.Diagnostics.Debug.WriteLine("-------Email Response : " + response.Body);
         }
 
+        /// <summary>
+        /// Function to Create message object
+        /// </summary>
+        /// <param name="recipient"></param>
+        /// <param name="p"></param>
+        /// <param name="sender"></param>
+        /// <returns></returns>
         private static SendGridMessage fn_CreateMessage(EmailAddress recipient, Project p, Developer sender)
         {
             var msg = new SendGridMessage();

@@ -8,7 +8,10 @@
     BackgroundColor="{StaticResource color_SpaceCadet}">
 
     <Grid>
+
+        <!--#region Content-->
         <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
+            <!--#region Login Form-->
             <Frame
                 Margin="20,20,20,5"
                 BackgroundColor="{StaticResource color_White}"
@@ -81,6 +84,9 @@
                     </StackLayout>
                 </StackLayout>
             </Frame>
+            <!--#endregion-->
+
+            <!--#region Register Button-->
             <Frame
                 x:Name="frame_delete"
                 Margin="20,5,20,20"
@@ -102,12 +108,17 @@
                     TextColor="{StaticResource color_DimGray}"
                     VerticalOptions="Center" />
             </Frame>
+            <!--#endregion-->
         </StackLayout>
+        <!--#endregion-->
+
+        <!--#region Activity Indicator-->
         <ActivityIndicator
             x:Name="activityIndicator"
             HorizontalOptions="Center"
             VerticalOptions="Center"
             Color="{StaticResource color_Mantis}" />
+        <!--#endregion-->
     </Grid>
 
 </ContentPage>
