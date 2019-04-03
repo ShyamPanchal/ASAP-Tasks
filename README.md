@@ -14,7 +14,7 @@
 
 Asap Tasks is an Xamarin Forms app that works with Microsoft Azure to provide developers a means to manage tasks and issues for their project. The app also generates insights to help developers keep track of their project progress.
 
-*Note: Asap Task Manager requires an internet connection at all times.*
+*Note: The app requires an internet connection at all times.*
 
 ### About Asap Tasks
 
