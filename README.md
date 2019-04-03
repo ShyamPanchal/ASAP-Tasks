@@ -1,4 +1,4 @@
-# ASAP-Tasks: A task manager by Shyam Panchal
+# ASAP-Tasks
 
  - [Overview](#overview)
      - [Description](#description)
