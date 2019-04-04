@@ -1,3 +1,8 @@
 ASAP-Tasks/AsapTasks/AsapTasks/Constants.cs
 TasksWebService
 Assets
+ASAP-Tasks/AsapTasks/AsapTasks.Android/bin/Release/com.companyname.AsapTasks.apk
+ASAP-Tasks/AsapTasks/AsapTasks.Android/bin/Debug/com.companyname.AsapTasks-Signed.apk
+ASAP-Tasks/AsapTasks/AsapTasks.Android/obj/Release/81/android/bin/com.companyname.AsapTasks.apk
+ASAP-Tasks/AsapTasks/AsapTasks.Android/obj/Debug/81/android/bin/com.companyname.AsapTasks.apk
+credentials.txt
