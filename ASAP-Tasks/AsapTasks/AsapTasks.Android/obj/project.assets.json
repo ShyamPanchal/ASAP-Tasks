@@ -5556,7 +5556,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Shyam\\.nuget\\packages\\": {}
+    "C:\\Users\\Shyam\\.nuget\\packages\\": {},
+    "C:\\ProgramData\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -5568,9 +5569,13 @@
       "outputPath": "C:\\Users\\Shyam\\Desktop\\ASAP-Tasks\\ASAP-Tasks\\AsapTasks\\AsapTasks.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\ProgramData\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
         "C:\\Users\\Shyam\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "monoandroid81"
