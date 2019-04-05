@@ -1,3 +1,4 @@
+
 # ASAP-Tasks
 
  - [Overview](#overview)
@@ -5,8 +6,6 @@
 	 - [About Asap Tasks](#about-asap-tasks)
  - [Screenshots](#screenshots)
  - [Contributions](#contributions)
-
------
 
 ## Overview
 
@@ -27,10 +26,60 @@ Asap Tasks is an Xamarin Forms app that works with Microsoft Azure to provide de
 * [Settings Plugin](https://github.com/jamesmontemagno/SettingsPlugin)
 * [Xfx.Controls](https://github.com/XamFormsExtended/Xfx.Controls/blob/master/readme.md#ios)
 * [Xamarin Forms Labs](https://github.com/XLabs/Xamarin-Forms-Labs)
+* [Ubuntu Font](https://design.ubuntu.com/font/)
 
 ## Screenshots
 Login Page:
+
 ![Login Page](Screenshots/LoginPage.png)
+
+----
+
+Signup Page:
+
+![Signup Page](Screenshots/SignupPage.png)
+
+----
+
+Email Verification Page:
+
+![Email Verification Page](Screenshots/EmailVerificationpage.png)
+
+----
+
+Projects Home Page:
+
+![Projects Home Page](Screenshots/ProjectsHome.png)
+
+----
+
+Project Invite Page:
+
+![Project Invite Page](Screenshots/ProjectInvite.png)
+
+----
+
+Tasks Tab Page:
+
+![Tasks Tab Page](Screenshots/TasksTab.png)
+
+----
+
+Issues Tab Page:
+
+![Issues Tab Page](Screenshots/IssuesTab.png)
+
+----
+
+Insights Tab Page:
+
+![Insights Tab Page](Screenshots/InsightsTab.png)
+
+----
+
+Details Page:
+
+![Details Page](Screenshots/DetailsPage.png)
 
 ## Contributions
 
