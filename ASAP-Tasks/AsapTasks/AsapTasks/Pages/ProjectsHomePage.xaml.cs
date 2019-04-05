@@ -1,6 +1,7 @@
 ﻿using AsapTasks.Data;
 using AsapTasks.Managers;
 using AsapTasks.ViewModel;
+using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +49,18 @@ namespace AsapTasks.Pages
         /// </summary>
         protected async override void OnAppearing()
         {
+
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                Settings.DeveloperId = string.Empty;
+
+                App.developer = new Developer();
+
+                await Navigation.PushAsync(new MainPage());
+
+                Navigation.RemovePage(this);
+            }
+
             #region Getting developer
 
             if (App.developer.Id == null || App.developer.Id == string.Empty)
@@ -190,6 +203,8 @@ namespace AsapTasks.Pages
 
             _projectObjects = new List<ProjectObject>();
 
+            List<ProjectObject> __unsorted = new List<ProjectObject>();
+
             countOpen = countClosed = 0;
 
             if (App.developer.Id != string.Empty)
@@ -217,7 +232,7 @@ namespace AsapTasks.Pages
 
                     projectObject.Id = __project.Id;
 
-                    projectObject.CompletionStatus = __project.OpenStatus;
+                    projectObject.OpenStatus = __project.OpenStatus;
 
                     projectObject.AcceptStatus = x.AcceptStatus;
 
@@ -246,7 +261,34 @@ namespace AsapTasks.Pages
                     else
                         countClosed++;
 
-                    _projectObjects.Add(projectObject);
+                    __unsorted.Add(projectObject);
+                }
+            }
+
+            // Add project invites
+            foreach(var po in __unsorted)
+            {
+                if (!po.AcceptStatus)
+                {
+                    _projectObjects.Add(po);
+                }
+            }
+
+            // Add open projects
+            foreach (var po in __unsorted)
+            {
+                if (po.AcceptStatus && po.OpenStatus)
+                {
+                    _projectObjects.Add(po);
+                }
+            }
+
+            // Add closed projects
+            foreach (var po in __unsorted)
+            {
+                if (po.AcceptStatus && !po.OpenStatus)
+                {
+                    _projectObjects.Add(po);
                 }
             }
 

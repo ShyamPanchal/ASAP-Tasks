@@ -6,6 +6,7 @@ using AsapTasks.Data;
 using AsapTasks.Services;
 using AsapTasks.Managers;
 using System.Collections.Generic;
+using Plugin.Connectivity;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace AsapTasks

@@ -1,5 +1,6 @@
 ﻿using AsapTasks.Data;
 using AsapTasks.Managers;
+using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,13 +41,14 @@ namespace AsapTasks.Pages
         /// <summary>
         /// Function called when the Page Components are ready to be rendered
         /// </summary>
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
+
             this.activityIndicator.IsRunning = true;
             developerManager = DeveloperManager.DefaultManager;
             this.activityIndicator.IsRunning = false;
-        }
+        }        
 
         /// <summary>
         /// Function called when the email text is changed
@@ -57,7 +59,7 @@ namespace AsapTasks.Pages
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
 
-            var regex = @"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$";
+            var regex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
 
             if (entry.Text == null)
             {
@@ -162,7 +164,6 @@ namespace AsapTasks.Pages
                 {
                     fn_emailChanged(entry_email, e);
                     fn_passwordChanged(entry_password, e);
-                    return;
                 }
                 this.activityIndicator.IsRunning = false;
             }

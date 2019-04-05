@@ -180,7 +180,7 @@ namespace AsapTasks.Pages
         {
             Xfx.XfxEntry entry = (Xfx.XfxEntry)sender;
 
-            var regex = @"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$";
+            var regex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
 
             if (entry.Text == null)
             {

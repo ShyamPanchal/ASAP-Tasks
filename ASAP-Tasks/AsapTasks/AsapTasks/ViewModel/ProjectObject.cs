@@ -14,7 +14,7 @@ namespace AsapTasks.ViewModel
 
         public string Description { get; set; }
 
-        public bool CompletionStatus { get; set; }
+        public bool OpenStatus { get; set; }
 
         public bool AcceptStatus { get; set; }
 
